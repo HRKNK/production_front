@@ -15,7 +15,12 @@
     "esModuleInterop": true,
     // Для default import,
     // import * as React from 'react'; => import React from 'react';
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // Все пути/экспорты идут из папки src
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
   },
   "ts-node": {
     "compilerOptions": {

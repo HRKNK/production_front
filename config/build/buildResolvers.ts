@@ -1,7 +1,12 @@
 import { ResolveOptions } from 'webpack';
+import { BuildOptions } from './types/config';
 
-export function buildResolvers(): ResolveOptions { // TS type
+export function buildResolvers(options: BuildOptions): ResolveOptions { // TS type
 	return {
-		extensions: ['.tsx', '.ts', '.js'], // TS расширения импортируемых компонентов
+		extensions: [".ts", ".tsx", ".js", ".jsx"], // TS расширения импортируемых компонентов
+		preferAbsolute: true, // использование абсолютных путей
+		modules: [ options.paths.src, 'node_modules'],
+		mainFiles: ['index'],
+		alias: {},
 	}
 }

@@ -15,7 +15,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
 		module: { // TS // Обработка расширений файла
 			rules: buildLoaders(options),
 		},
-		resolve: buildResolvers(),
+		resolve: buildResolvers(options),
 
 		devServer: buildDevServer(options),
 		devtool: isDev ? 'inline-source-map' : undefined, // карта исходного кода / поиск ошибки в коде
