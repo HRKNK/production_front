@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // Подсвечивание типов
+    "noImplicitAny": true,
+    // Тип модулей
+    "module": "esnext",
+    // Компиляция в указанную специфиацию
+    "target": "es5",
+    "jsx": "react-jsx",
+    // Обработка компилятором JS файлов (вместе с TS)
+    "allowJs": true,
+    "moduleResolution": "node",
+    // commonJS => import Moment from 'moment';
+    "esModuleInterop": true,
+    // Для default import,
+    // import * as React from 'react'; => import React from 'react';
+    "allowSyntheticDefaultImports": true,
+    
+    // Все пути/экспорты идут из папки src
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
+  },
+  "ts-node": { // доп. настройка экспорта
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
