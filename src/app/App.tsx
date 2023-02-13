@@ -1,37 +1,33 @@
-import React, { Suspense, useContext, useState } from 'react';
+import React, { Suspense } from 'react';
 import './styles/index.scss';
 
-import { Link, Route, Routes } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // npm i react-router-dom
 
-import { AboutPage } from 'pages/AboutPage/public';
-import { MainPage } from 'pages/MainPage/public';
+// https://react.i18next.com/getting-started // плагин-интернационализации
+// npm install react-i18next i18next --save
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider/public';
+import { AppRouter } from 'app/providers/router/public';
+import { NavBar } from 'widgets/NavBar/public';
+import { SideBar } from 'widgets/SideBar/public';
 
 const App = () => {
-	const {theme, toggleTheme} = useTheme();
+	const { theme } = useTheme();
 
 	return (
 		<div className={classNames('app', {}, [theme])}>
-			<button onClick={toggleTheme}>Toggle Theme</button>
 
 			{/* переходы по страницам(отменяет явление перезагрузки) */}
-			<Link to={'/main'}>Главная</Link>
-			<Link to={'/about'}>О сайте</Link>
-
-
-			{/* компоненты с ленивой подгрузкой // https://ru.reactjs.org/docs/code-splitting.html */}
-			<Suspense fallback={<div>Здесь размещается индикатор загрузки...</div>}>
-				{/* маршрутизация */}
-				<Routes> 				
-					{/* путь(браузер), элемент(ссылка на компонент) */}
-					<Route path={'/main'} element={<MainPage/>}></Route>
-					<Route path={'/about'} element={<AboutPage/>}></Route>
-				</Routes>
+			{/* <Link to={'/'}>Главная</Link> */}
+			<Suspense fallback=''>
+				<NavBar></NavBar>
+				<div className='content-page'>
+					<SideBar/>
+					<AppRouter/> {/* маршрутизация */}
+				</div>
 			</Suspense>
-
 
 			{/* <Counter/> */}
 		</div>

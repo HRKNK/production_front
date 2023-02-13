@@ -12,7 +12,7 @@ export interface BuildEnv {
 	port: number;
 }
 
-export interface BuildOptions{
+export interface BuildOptions {
 	mode: BuildType;
 	paths: BuildPaths;
 	isDev: boolean;

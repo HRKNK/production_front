@@ -1,0 +1,24 @@
+.sidebar {
+    height: calc(100vh - var(--navbar-height)); // высота : вся высота страницы - высота навбара
+    width: var(--sidebar-widht); // ширина
+    background: var(--inverted-bg-color);
+
+    position: relative;
+    transition: width 0.3s; // анимация для шириеы
+}
+
+.collapsed {
+    width: var(--sidebar-widht-collapsed);
+}
+
+.switchers {
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.lang {
+    margin-left: 20px;
+}
