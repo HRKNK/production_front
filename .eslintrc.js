@@ -6,6 +6,7 @@ module.exports = {
 	extends: [
 		'plugin:react/recommended',
 		'standard-with-typescript',
+		'plugin:i18next/recommended',
 	],
 	overrides: [
 	],
@@ -16,6 +17,7 @@ module.exports = {
 	},
 	plugins: [
 		'react',
+		'i18next',
 	],
 	rules: {
 		'no-console': 'warn', // варнинги на консоль в коде
@@ -34,6 +36,8 @@ module.exports = {
 
 		semi: ['warn', 'always'], // точки с запятой
 		'@typescript-eslint/semi': ['warn', 'always'],
+
+		'i18next/no-literal-string': ['warn', { markupOnly: true }], // переводы внутри [j]tsx
 
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/no-unused-vars': 'off', // игнорировать бесполезные объявления

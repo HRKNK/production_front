@@ -1,11 +1,4 @@
-// https://babeljs.io/setup#installation
-// npm install --save-dev babel-loader @babel/core // Babel loader // Транспайлер ES стандарта
-
-// npm install @babel/preset-env --save-dev
-
-
 // https://github.com/gilbsgilbs/babel-plugin-i18next-extract
-
 {
     "presets": ["@babel/preset-env"],
     "plugins": [
