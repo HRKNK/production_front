@@ -19,7 +19,8 @@
 // npm install --save-dev mini-css-extract-plugin
 
 // https://eslint.org/docs/latest/use/getting-started // Линтер (правила для код стайла)
-// npm install --save-dev eslint + npm init @eslint/config
+// npm install --save-dev eslint + 
+// npm init @eslint/config
 
 // npm i webpack webpack-cli --save-dev // cli cредство, используемое для запуска webpack в командной строке
 // npm i html-webpack-plugin --save-dev // связывание сборки с html шаблоном
@@ -36,6 +37,13 @@
 // BABEL https://babeljs.io/setup#installation
 // npm install --save-dev babel-loader @babel/core // Babel loader // Транспайлер ES стандарта
 // npm install @babel/preset-env --save-dev
+
+// JEST https://jestjs.io/ru/docs/getting-started // Тестирование JS приложений
+// npm install --save-dev jest
+// npm i --save-dev jest-environment-jsdom
+// npm i --save-dev @types/jest // типы для JEST
+// npx jest --init
+// npm install --save-dev @babel/preset-typescript
 
 // git init
 

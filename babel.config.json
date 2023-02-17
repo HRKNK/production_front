@@ -1,6 +1,9 @@
 // https://github.com/gilbsgilbs/babel-plugin-i18next-extract
 {
-    "presets": ["@babel/preset-env"],
+    "presets": [
+      "@babel/preset-env", 
+      "@babel/preset-typescript"
+    ],
     "plugins": [
         "i18next-extract"
         // […] your other plugins […]
