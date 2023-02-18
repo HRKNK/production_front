@@ -6,12 +6,13 @@ import { Route, Routes } from 'react-router-dom';
 // import { MainPage } from 'pages/MainPage/public';
 
 import { routeConfig } from 'shared/config/routeConfig';
+import PageLoader from 'widgets/PageLoader/ui/PageLoader';
 
 const AppRouter = () => {
 	return (
 		<div className='page-wrapper'>
 			{/* компоненты с ленивой подгрузкой // https://ru.reactjs.org/docs/code-splitting.html */}
-			<Suspense fallback={<div>Здесь размещается индикатор загрузки...</div>}>
+			<Suspense fallback={<PageLoader></PageLoader>}>
 				{/* маршрутизация */}
 				<Routes>
 					{/* путь(браузер), элемент(ссылка на компонент) */}

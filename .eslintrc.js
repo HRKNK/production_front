@@ -25,8 +25,7 @@ module.exports = {
 		quotes: ['warn', 'single'], // правило кавычек (single ? double)
 		'jsx-quotes': ['warn', 'prefer-single'], // правило кавычек для jsx (prefer-single ? prefer-single)
 		'prefer-const': 'error', // использование констант для неизменяемых переменных
-		'max-len': ['error', { code: 300 }], // максимальная длина строки
-
+		'max-len': ['error', { code: 200, ignoreComments: true }], // максимальная длина строки + правило игнорирует комментарии
 		indent: ['warn', 'tab'], // отступы
 		'react/jsx-indent': ['warn', 'tab'],
 		'@typescript-eslint/indent': ['warn', 'tab'],
