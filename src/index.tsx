@@ -8,12 +8,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'app/providers/ThemeProvider/public';
 
 import 'shared/config/I18n/i18n';
+import { ErrorBoundary } from 'app/providers/ErrorBoundary/public';
 
 render(
-	<BrowserRouter>
-		<ThemeProvider>
-			<App/>
-		</ThemeProvider>
-	</BrowserRouter>,
+	<ErrorBoundary>
+		<BrowserRouter>
+			<ThemeProvider>
+				<App/>
+			</ThemeProvider>
+		</BrowserRouter>
+	</ErrorBoundary>,
 	document.getElementById('root'),
 );

@@ -26,6 +26,9 @@
   "ts-node": { // доп. настройка экспорта
     "compilerOptions": {
       "module": "CommonJS"
-    }
+    },
+    "include": [
+      "./config/jest/jest-setup.ts" // jest-dom
+    ]
   }
 }

@@ -1,5 +1,7 @@
 {
     "Пример теста": "Test example",
     "Перевод": "Translate",
-    "Язык": "Language"
+    "Язык": "Language",
+    "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+    "Обновить страницу": "Refresh the page"
 }

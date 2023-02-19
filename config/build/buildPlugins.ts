@@ -1,6 +1,7 @@
 import { type BuildOptions } from './types/config';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 // import { ReactRefreshPlugin } from '@pmmmwh/react-refresh-webpack-plugin';
@@ -18,5 +19,8 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
 		}),
 		new webpack.HotModuleReplacementPlugin(), // апдейты изменений без перезагрузок страницы
 		// new ReactRefreshPlugin(), // апдейты для реакт компонентов
+		new BundleAnalyzerPlugin({
+			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
+		}), // анализ бандла
 	];
 }
