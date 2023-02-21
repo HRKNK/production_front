@@ -28,7 +28,8 @@
       "module": "CommonJS"
     },
     "include": [
-      "./config/jest/jest-setup.ts" // jest-dom
+      "./config/jest/jest-setup.ts", // jest-dom
+      "./src/**/*.{tsx,ts}"
     ]
   }
 }
