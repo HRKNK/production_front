@@ -15,7 +15,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
 
-	// Несуществующие маршрут: *
+	// Несуществующие маршруты: *
 	[AppRoutes.NOT_FOUND]: '*',
 };
 

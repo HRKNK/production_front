@@ -1,33 +1,29 @@
 import { type BuildPaths } from '../build/types/config';
 
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { type RuleSetRule } from 'webpack';
 
 import path from 'path';
 
 import type webpack from 'webpack';
 
-function loaders (options: boolean) {
+const cssLoaders = () => {
 	return {
 		test: /\.s[ac]ss$/i,
 		use: [
-			// Creates `style` nodes from JS strings
-			options ? 'style-loader' : MiniCssExtractPlugin.loader, // OR "style-loader",
-			// Translates CSS into CommonJS
+			'style-loader',
 			{
 				loader: 'css-loader',
-				options: {
-				// modules: true, // поддержка модулей ('./Counter.module.scss') and use (global.d.ts)
+				options: { // modules: true, // поддержка модулей ('./Counter.module.scss') and use (global.d.ts)
 					modules: {
 						auto: /\.module\.s[ac]ss$/i, // для каких файлов действует правило module
-						localIdentName: options ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]', // генерация имени стилей
+						localIdentName: '[path][name]__[local]--[hash:base64:5]', // генерация имени стилей
 					},
 				},
 			},
-			// Compiles Sass to CSS
 			'sass-loader',
 		],
 	};
-}
+};
 
 export default ({ config }: { config: webpack.Configuration, }) => {
 	const paths: BuildPaths = {
@@ -38,6 +34,16 @@ export default ({ config }: { config: webpack.Configuration, }) => {
 	};
 	config.resolve.modules.push(paths.src);
 	config.resolve.extensions.push('.tsx', '.ts');
-	config.module.rules.push(loaders(true));
+
+	config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+		// eslint-disable-next-line @typescript-eslint/prefer-includes
+		if (/svg/.test(rule.test as string)) {
+			return { ...rule, exclude: /\.svg/i };
+		}
+		return rule;
+	});
+
+	config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] });
+	config.module.rules.push(cssLoaders());
 	return config;
 };

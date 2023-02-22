@@ -1,4 +1,4 @@
-import Button, { ThemeButton } from './Button';
+import AppLink, { AppLinkTheme } from './AppLink';
 
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';
@@ -8,34 +8,29 @@ import { Theme } from 'app/providers/ThemeProvider/public';
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
-	title: 'Shared/Button',
-	component: Button,
+	title: 'Shared/AppLink',
+	component: AppLink,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof Button>;
+	args: { // для обязательных пропсов
+		to: '/',
+	},
+} as ComponentMeta<typeof AppLink>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
 	children: 'More word',
+	theme: AppLinkTheme.PRIMARY,
 };
-Primary.decorators = [ // применение отдельной темы
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+	children: 'More word',
+	theme: AppLinkTheme.SECONDARY,
+};
+Secondary.decorators = [ // применение отдельной темы
 	themeDecorator(Theme.LIGHT),
 ];
-
-export const Clear = Template.bind({});
-Clear.args = {
-	children: 'More word',
-	theme: ThemeButton.CLEAR,
-};
-Clear.decorators = [
-	themeDecorator(Theme.LIGHT),
-];
-
-export const Outline = Template.bind({});
-Outline.args = {
-	children: 'More word',
-	theme: ThemeButton.OUTLINE,
-};

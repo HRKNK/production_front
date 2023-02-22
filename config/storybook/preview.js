@@ -1,4 +1,7 @@
-import { StyleDecorator } from '../../src/shared/config/storybook/styleDecorator';
+import { styleDecorator } from '../../src/shared/config/storybook/styleDecorator';
+import { themeDecorator } from '../../src/shared/config/storybook/themeDecorator';
+import { Theme } from '../../src/app/providers/ThemeProvider/public';
+import { routeDecorator } from '../../src/shared/config/storybook/routeDecorator';
 
 import { addDecorator } from '@storybook/react';
 
@@ -12,4 +15,7 @@ export const parameters = {
 	},
 };
 
-addDecorator(StyleDecorator);
+// декораторы или (дефолтное применение к сторибуку)
+addDecorator(routeDecorator);
+addDecorator(styleDecorator);
+addDecorator(themeDecorator(Theme.DARK));
