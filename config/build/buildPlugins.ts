@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 // import { ReactRefreshPlugin } from '@pmmmwh/react-refresh-webpack-plugin';
 
 export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
-	return [
+	const plugins = [
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({ template: paths.html }), // файл используется как шаблон (куда подключать сборку/файлы)
 		new MiniCssExtractPlugin({
@@ -17,10 +17,15 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
 		new webpack.DefinePlugin({
 			_IS_DEV: JSON.stringify(isDev),
 		}),
-		new webpack.HotModuleReplacementPlugin(), // апдейты изменений без перезагрузок страницы
 		// new ReactRefreshPlugin(), // апдейты для реакт компонентов
-		new BundleAnalyzerPlugin({
-			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
-		}), // анализ бандла
 	];
+
+	if (isDev) {
+		plugins.push(new webpack.HotModuleReplacementPlugin()); // апдейты изменений без перезагрузок страницы
+		plugins.push(new BundleAnalyzerPlugin({
+			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
+		}));
+	}
+
+	return plugins;
 }
