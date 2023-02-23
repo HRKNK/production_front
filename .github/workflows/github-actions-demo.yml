@@ -2,28 +2,28 @@ name: GitHub Actions / Linting, Testing, Building
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-	pipeline:
-		runs-on: ubuntu-latest
-		strategy:
-			matrix:
-				node-version: [ 17.x ]
-	steps:
-	# Setup NodeJS
-		- uses: actions/checkout@v2
-		- name: Staring Node.js ${{ matrix.node-version }}
-		uses: actions/setup-node@v1
-		with:
-			node-version: ${{ matrix.node-version }}
-		- name: install modules
-			run: npm install
-		# Build
-		- name: Assemble Production
-			run: npm run build:prod
-		# Linting | Lint
-		- name: TS linting
-			run: npm run eslint
-		- name: CSS linting
-			run: npm run stlint
-		# Testing
-		- name: Unit testing
-			run: npm run test:unit
+  Pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+  steps:
+  # Setup NodeJS
+    - uses: actions/checkout@v2
+    - name: Staring Node.js ${{ matrix.node-version }}
+    uses: actions/setup-node@v1
+    with:
+      node-version: ${{ matrix.node-version }}
+    - name: install modules
+      run: npm install
+    # Build
+    - name: Assemble Production
+      run: npm run build:prod
+    # Linting | Lint
+    - name: TS linting
+      run: npm run eslint
+    - name: CSS linting
+      run: npm run stlint
+    # Testing
+    - name: Unit testing
+      run: npm run test:unit
