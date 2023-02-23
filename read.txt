@@ -6,10 +6,8 @@
 
 // https://webpack.js.org/loaders/sass-loader/
 // npm install sass-loader sass webpack style-loader css-loader --save-dev // sass loader
-
 // https://www.npmjs.com/package/@svgr/webpack
 // npm install @svgr/webpack --save-dev // SVG loader
-
 // https://v4.webpack.js.org/loaders/file-loader/
 // npm install file-loader --save-dev // FILE loader
 
@@ -39,8 +37,6 @@
 // npm install @babel/preset-env --save-dev
 // npm install --save-dev @babel/preset-typescript
 
-// git init
-
 // STYLELINT
 // npm install --save-dev stylelint stylelint-config-standard-scss
 
@@ -68,3 +64,8 @@
 
 // Библиотека тестирования компонентов Storybook // https://storybook.js.org/blog/storybook-for-webpack-5/
 // npx sb init --builder webpack5 // установка с флагом для вэбпака 5-ой версии
+
+// Скриншотное тестирование LOKI // https://loki.js.org/getting-started.html (работает в связке со Storybook)
+// npm i loki --save-dev
+// npx loki init --config ./config/storybook/
+// npx loki test // запуск
