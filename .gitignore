@@ -1,6 +1,7 @@
 /build
 node_modules
 .loki
+/storybook-static
 
 # webStorm
 .idea

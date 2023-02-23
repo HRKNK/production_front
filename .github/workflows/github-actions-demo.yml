@@ -21,5 +21,9 @@ jobs:
         run: npm run eslint
       - name: CSS linting
         run: npm run stlint
-      - name: Unit testing
+      - name: Unit testing (JEST)
         run: npm run test:unit
+      - name: StoryBook build (STORYBOOK testing)
+        run: npm run storybook:build
+      - name: Screenshot testing (LOKI testing)
+        run: npm run test:loki:ci
