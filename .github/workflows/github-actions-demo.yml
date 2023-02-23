@@ -8,7 +8,7 @@ jobs:
       matrix:
         node-version: [ 17.x ]
   steps:
-  # Setup NodeJS
+
     - uses: actions/checkout@v2
     - name: Staring Node.js ${{ matrix.node-version }}
     uses: actions/setup-node@v1
@@ -16,14 +16,14 @@ jobs:
       node-version: ${{ matrix.node-version }}
     - name: install modules
       run: npm install
-    # Build
+
     - name: Assemble Production
       run: npm run build:prod
-    # Linting | Lint
+
     - name: TS linting
       run: npm run eslint
     - name: CSS linting
       run: npm run stlint
-    # Testing
+
     - name: Unit testing
       run: npm run test:unit
