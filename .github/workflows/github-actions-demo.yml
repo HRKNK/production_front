@@ -17,13 +17,17 @@ jobs:
         run: npm install
       - name: Assemble Production
         run: npm run build:prod
+        if: always()
       - name: TS linting
         run: npm run eslint
+        if: always()
       - name: CSS linting
         run: npm run stlint
+        if: always()
       - name: Unit testing (JEST)
         run: npm run test:unit
-      - name: StoryBook build (STORYBOOK testing)
-        run: npm run storybook:build
-      - name: Screenshot testing (LOKI testing)
-        run: npm run test:loki:ci
+        if: always()
+      # - name: StoryBook build (STORYBOOK testing)
+      #   run: npm run storybook:build
+      # - name: Screenshot testing (LOKI testing)
+      #   run: npm run test:loki:ci

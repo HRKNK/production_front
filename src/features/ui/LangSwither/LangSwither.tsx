@@ -1,5 +1,3 @@
-import cls from './LangSwither.module.scss';
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -8,9 +6,10 @@ import Button, { ThemeButton } from 'shared/ui/Button/Button';
 
 interface LangSwitherProps {
 	className?: string;
+	short?: boolean;
 }
 
-const LangSwither = ({ className }: LangSwitherProps) => {
+const LangSwither = ({ className, short }: LangSwitherProps) => {
 	const { t, i18n } = useTranslation();
 
 	const toggle = () => {
@@ -18,8 +17,8 @@ const LangSwither = ({ className }: LangSwitherProps) => {
 	};
 
 	return (
-		<Button theme={ThemeButton.CLEAR} className={classNames(cls.LangSwither, {}, [className])} onClick={toggle}>
-			{t('Язык')}
+		<Button theme={ThemeButton.CLEAR} className={classNames('', {}, [className])} onClick={toggle}>
+			{t(short ? 'Язык' : 'Короткий язык')}
 		</Button>
 	);
 };
