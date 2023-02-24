@@ -72,3 +72,6 @@
 // npm i loki --save-dev
 // npx loki init --config ./config/storybook/
 // npx loki test // запуск
+// npm i -D reg-cli // инструмент для локи // https://www.npmjs.com/package/reg-cli
+// node scripts/generate-visual-json-report.js // https://github.com/oblador/loki/issues/76
+// npx reg-cli --from .loki/report.json --report .loki/report.html
