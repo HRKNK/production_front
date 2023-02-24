@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import componentRender from 'shared/lib/tests/componentRender';
 // import { withTranslation } from 'react-i18next';
-import renderWithTranslation from 'shared/lib/tests/renderWithTranslation';
 
 import SideBar from 'widgets/SideBar/ui/SideBar';
 
@@ -11,13 +11,13 @@ describe('SideBar', () => { // коллекция тестов
 		// render - изолированный рендер // отдаём завернутый в хок сайдбар
 		// render(<SideBarTranslation/>);
 
-		renderWithTranslation(<SideBar/>);
+		componentRender(<SideBar/>);
 		// Ожидаем (селектор по ид), результат (отрендрился)
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument();
 	});
 
 	test('sidebar open|close', () => {
-		renderWithTranslation(<SideBar/>);
+		componentRender(<SideBar/>);
 		const toogleButton = screen.getByTestId('sidebar-toogle'); // селектор
 		// Ожидаем (селектор по ид), результат (отрендрился)
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument();
