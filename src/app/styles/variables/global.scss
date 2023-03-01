@@ -1,3 +1,4 @@
+/* stylelint-disable color-function-notation */
 :root {
 	// -- объявление переменной
 	--font-family-main: consolas, 'Times New Roman', serif;
@@ -15,4 +16,10 @@
 	--navbar-height: 50px;
 	--sidebar-widht-collapsed: 300px;
 	--sidebar-widht: 120px;
+
+	// Z
+	--modal-z-index: 10;
+
+	// Цвета
+	--overlay-color: rgba(0, 0, 0, 50%);
 }

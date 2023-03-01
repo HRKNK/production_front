@@ -4,7 +4,13 @@ module.exports = {
 		es2021: true,
 		jest: true,
 	},
-	extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+	extends: [
+		'plugin:react/recommended',
+		'standard-with-typescript',
+		'plugin:i18next/recommended',
+		'plugin:storybook/recommended',
+		'plugin:react-hooks/recommended',
+	],
 	overrides: [
 		// исключение
 		{
@@ -19,7 +25,7 @@ module.exports = {
 		sourceType: 'module',
 		project: ['./tsconfig.json'],
 	},
-	plugins: ['react', 'i18next'],
+	plugins: ['react', 'i18next', 'react-hooks'],
 	rules: {
 		'no-console': 'warn', // варнинги на консоль в коде
 
@@ -73,6 +79,9 @@ module.exports = {
 		//
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
+
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn',
 	},
 
 	settings: {

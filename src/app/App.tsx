@@ -1,11 +1,7 @@
-import React, { Suspense } from 'react';
-import './styles/index.scss';
+import React, { Suspense, useState } from 'react';
 
 // import { Link } from 'react-router-dom';
 // npm i react-router-dom
-
-// https://react.i18next.com/getting-started // плагин-интернационализации
-// npm install react-i18next i18next --save
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider/public';
@@ -28,7 +24,6 @@ const App = () => {
 					<AppRouter/> {/* маршрутизация */}
 				</div>
 			</Suspense>
-
 			{/* <Counter/> */}
 		</div>
 	);
