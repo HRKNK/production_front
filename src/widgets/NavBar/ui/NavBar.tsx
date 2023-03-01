@@ -22,7 +22,7 @@ const NavBar = ({ className }: NavBarProps) => {
 	}, []);
 
 	return (
-		<div className={classNames(cls.navbar, {}[className])}>
+		<div className={classNames(cls.navbar, {}, [className])}>
 			<Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onToggleModal}>
 				{t('Войти')}
 			</Button>

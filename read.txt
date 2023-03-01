@@ -81,6 +81,8 @@
 // node scripts/generate-visual-json-report.js // https://github.com/oblador/loki/issues/76
 // npx reg-cli --from .loki/report.json --report .loki/report.html
 
-
 // Плагин для ESLINT по REACT хукам // https://www.npmjs.com/package/eslint-plugin-react-hooks
 // npm install eslint-plugin-react-hooks --save-dev
+
+// Стейт-менеджер REDUX // https://redux.js.org/introduction/getting-started
+// npm i @reduxjs/toolkit react-redux @types/react-redux
