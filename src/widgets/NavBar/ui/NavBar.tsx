@@ -18,7 +18,7 @@ const NavBar = ({ className }: NavBarProps) => {
 	const { t } = useTranslation();
 
 	const onToggleModal = useCallback(() => {
-		setisAuthModal(prev => !prev)
+		setisAuthModal(prev => !prev);
 	}, []);
 
 	return (
@@ -27,7 +27,9 @@ const NavBar = ({ className }: NavBarProps) => {
 				{t('Войти')}
 			</Button>
 
-			<Modal isOpen={isAuthModal} onClose={onToggleModal}>OLOLOLOLO</Modal>
+			<Modal isOpen={isAuthModal} onClose={onToggleModal}>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec semper enim, vitae euismod nunc. Fusce in congue diam.
+			</Modal>
 		</div>
 	);
 };

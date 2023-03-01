@@ -14,9 +14,10 @@ module.exports = {
 	overrides: [
 		// исключение
 		{
-			files: ['**/src/**/*.test.{ts,tsx,js,jsx}'],
+			files: ['**/src/**/*.{test,stories}.{ts,tsx,js,jsx}'],
 			rules: {
 				'i18next/no-literal-string': 'off', // отключить переводы внутри test.[j]tsx
+				'max-len': 'off',
 			},
 		}],
 

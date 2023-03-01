@@ -5,9 +5,13 @@ import React, { type FC, useMemo, useState } from 'react';
 // преобразование к типу через AS
 const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
 
+interface ThemeProviderProps {
+	initialTheme?: Theme;
+}
+
 // FC типизация для Пропсов
-const ThemeProvider: FC = ({ children }) => {
-	const [theme, setTheme] = useState<Theme>(defaultTheme);
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
+	const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 
 	const defaultProps = useMemo(() => ({
 		theme,
