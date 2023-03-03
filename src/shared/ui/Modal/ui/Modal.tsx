@@ -10,6 +10,7 @@ interface ModalProps {
 	children?: ReactNode;
 	isOpen?: boolean;
 	onClose?: () => void;
+	lazy?: boolean;
 }
 
 const Modal = (props: ModalProps) => {
@@ -18,11 +19,19 @@ const Modal = (props: ModalProps) => {
 
 	const { theme } = useTheme();
 
-	const { className, children, isOpen, onClose } = props;
+	const { className, children, isOpen, onClose, lazy } = props;
 	const mods: Record<string, boolean> = {
 		[cls.opened]: isOpen,
 		[cls.isClosing]: isClosing,
 	};
+
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		if (isOpen) {
+			setIsMounted(true);
+		}
+	}, [isOpen]);
 
 	const closeHandler = useCallback(() => { // useCallback - мемомизирует функцию
 		if (onClose) {
@@ -53,6 +62,10 @@ const Modal = (props: ModalProps) => {
 	const onContentClick = (event: React.MouseEvent) => {
 		event.stopPropagation();
 	};
+
+	if (lazy && !isMounted) {
+		return null;
+	}
 
 	return (
 		<Portal>

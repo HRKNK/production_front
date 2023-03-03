@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/public';
 
 import classNames from 'shared/lib/classNames/classNames';
-import LangSwither from 'features/ui/LangSwither/LangSwither';
+import LangSwither from 'features/LangSwither/LangSwither';
 import { BugButton } from 'app/providers/ErrorBoundary/public';
 import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
