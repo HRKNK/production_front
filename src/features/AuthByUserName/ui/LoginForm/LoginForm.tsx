@@ -13,6 +13,8 @@ import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/public';
 import { useDispatch, useSelector } from 'react-redux';
+import { Text } from 'shared/ui/Text/public';
+import { TextTheme } from 'shared/ui/Text/ui/Text';
 
 interface LoginFormProps {
 	className?: string;
@@ -37,7 +39,8 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 
 	return (
 		<div className={classNames(cls.LoginForm, {}, [className])}>
-			{error && <div>{error}</div>}
+			<Text title={t('Форма авторизации')}/>
+			{error && <Text text={error} theme={TextTheme.ERROR}/>}
 			<Input onChange={onChangeUserName} value={username} placeholder={'Введите логин'} autoFocus className={cls.input} type='text'></Input>
 			<Input onChange={onChangePassword} value={password} placeholder={'Введите пароль'} className={cls.input} type='text'></Input>
 			<Button disabled={isLoading} onClick={onLoginClick} theme={ThemeButton.OUTLINE} className={cls.loginBtn} >{t('Войти')}</Button>
