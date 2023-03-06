@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-/* eslint-disable react-hooks/exhaustive-deps */
 import cls from './LoginForm.module.scss';
 
 import { loginActions } from '../../model/slice/loginSlice';
@@ -22,7 +21,7 @@ interface LoginFormProps {
 const LoginForm = memo(({ className }: LoginFormProps) => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch<any>(); // проблема типизации в 8ой версии редакса // https://github.com/reduxjs/redux-thunk/issues/333
-	const { username, password } = useSelector(getLoginState);
+	const { username, password, error, isLoading } = useSelector(getLoginState);
 
 	const onChangeUserName = useCallback((value: string) => {
 		dispatch(loginActions.setUsername(value)); // закидываем action в reducer
@@ -34,13 +33,14 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 
 	const onLoginClick = useCallback(() => {
 		dispatch(loginByUsername({ password, username }));
-	}, [dispatch]);
+	}, [dispatch, password, username]);
 
 	return (
 		<div className={classNames(cls.LoginForm, {}, [className])}>
+			{error && <div>{error}</div>}
 			<Input onChange={onChangeUserName} value={username} placeholder={'Введите логин'} autoFocus className={cls.input} type='text'></Input>
 			<Input onChange={onChangePassword} value={password} placeholder={'Введите пароль'} className={cls.input} type='text'></Input>
-			<Button onClick={onLoginClick} theme={ThemeButton.OUTLINE} className={cls.loginBtn} >{t('Войти')}</Button>
+			<Button disabled={isLoading} onClick={onLoginClick} theme={ThemeButton.OUTLINE} className={cls.loginBtn} >{t('Войти')}</Button>
 		</div>
 	);
 });
