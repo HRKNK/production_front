@@ -80,6 +80,7 @@ module.exports = {
 		//
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
+		'@typescript-eslint/no-dynamic-delete': 'off',
 
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
