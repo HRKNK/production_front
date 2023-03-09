@@ -7,8 +7,9 @@ import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
-export function createReduxStore (initialState?: StateSchema) {
+export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
 	const rootReducers: ReducersMapObject<StateSchema> = {
+		...asyncReducers,
 		counter: counterReducer,
 		user: userReducer,
 		// loginForm: loginReducer,
