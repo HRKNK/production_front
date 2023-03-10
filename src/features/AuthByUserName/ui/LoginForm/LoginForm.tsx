@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 /* eslint-disable react/display-name */
 import cls from './LoginForm.module.scss';
 
@@ -42,8 +43,8 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 	// useEffect(() => {
 	// 	store.reducerManager.add('loginForm', loginReducer);
 
-	// 	return () => {
-	// 		store.reducerManager.remove('loginForm');
+	//	return () => {
+	//		store.reducerManager.remove('loginForm');
 	// 	};
 	// 	// eslint-disable-next-line
 	// }, []);
