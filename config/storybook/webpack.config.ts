@@ -47,6 +47,7 @@ export default ({ config }: { config: webpack.Configuration, }) => {
 	config.module.rules.push(cssLoaders());
 	config.plugins.push(new DefinePlugin({
 		_IS_DEV: true,
+		_API: JSON.stringify(''),
 	}));
 
 	return config;

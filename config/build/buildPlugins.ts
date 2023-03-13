@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 // import { ReactRefreshPlugin } from '@pmmmwh/react-refresh-webpack-plugin';
 
-export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
+export function buildPlugins ({ paths, isDev, apiUrl }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
 	const plugins = [
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({ template: paths.html }), // файл используется как шаблон (куда подключать сборку/файлы)
@@ -14,8 +14,9 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
 			filename: 'css/[name].[contenthash:8].css',
 			chunkFilename: 'css/[name].[contenthash:8].css',
 		}),
-		new webpack.DefinePlugin({
+		new webpack.DefinePlugin({ // переменные окружения
 			_IS_DEV: JSON.stringify(isDev),
+			_API: JSON.stringify(apiUrl),
 		}),
 		// new ReactRefreshPlugin(), // апдейты для реакт компонентов
 	];
@@ -23,7 +24,7 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
 	if (isDev) {
 		plugins.push(new webpack.HotModuleReplacementPlugin()); // апдейты изменений без перезагрузок страницы
 		plugins.push(new BundleAnalyzerPlugin({
-			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
+			openAnalyzer: true, // открытие вкладки статистики (ссылка дублируется в консоль)
 		}));
 	}
 

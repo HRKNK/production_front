@@ -5,9 +5,15 @@ import { createReducerManager } from './reducerManager';
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
+import { $api } from 'shared/ui/api/api';
+import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
-export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
+export function createReduxStore (
+	initialState?: StateSchema,
+	asyncReducers?: ReducersMapObject<StateSchema>,
+	navigate?: (to: To, options?: NavigateOptions) => void,
+) {
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		counter: counterReducer,
@@ -21,6 +27,16 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 		reducer: reducerManager.reduce, // reducer: rootReducers,
 		devTools: _IS_DEV,
 		preloadedState: initialState,
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		middleware: getDefaultMiddleware => getDefaultMiddleware({
+			thunk: {
+				extraArgument: {
+					api: $api,
+					navigate,
+				},
+			},
+		}),
 	});
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
