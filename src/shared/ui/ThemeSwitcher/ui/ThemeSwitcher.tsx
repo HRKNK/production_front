@@ -1,7 +1,8 @@
+/* eslint-disable react/display-name */
 import cls from './ThemeSwitcher.module.scss';
 
 import { Theme, useTheme } from 'app/providers/ThemeProvider/public';
-import React from 'react';
+import React, { memo } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
 
@@ -13,7 +14,7 @@ interface ThemeSwitcherProps {
 	className?: string;
 }
 
-const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
 	const { theme, toggleTheme } = useTheme();
 
 	return (
@@ -21,6 +22,6 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
 			{theme === Theme.DARK ? <DarkIcon/> : <LightIcon/>}
 		</Button>
 	);
-};
+});
 
 export default ThemeSwitcher;

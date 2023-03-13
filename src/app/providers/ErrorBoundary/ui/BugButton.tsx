@@ -15,7 +15,7 @@ const BugButton = () => { // Компонент тестирования (Fake E
 	}, [error]);
 
 	return (
-		<Button onClick={onThrow}>Throw error</Button>
+		<Button onClick={onThrow}>Throw Err</Button>
 	);
 };
 

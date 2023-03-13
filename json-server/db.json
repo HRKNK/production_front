@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Pups",
+    "lastname": "Ups",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
+  }
 }

@@ -3,10 +3,13 @@ import { type RouteProps } from 'react-router-dom';
 import { AboutPage } from 'pages/AboutPage/public';
 import { MainPage } from 'pages/MainPage/public';
 import { NotFoundPage } from 'pages/NotFoundPage/public';
+import { ProfilePage } from 'pages/ProfilePage/public';
 
 export enum AppRoutes {
 	MAIN = 'main',
 	ABOUT = 'about',
+	PROFILE = 'profile',
+	//
 	NOT_FOUND = 'not_found',
 }
 
@@ -14,7 +17,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
-
+	[AppRoutes.PROFILE]: '/profile',
 	// Несуществующие маршруты: *
 	[AppRoutes.NOT_FOUND]: '*',
 };
@@ -28,6 +31,10 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.ABOUT]: {
 		path: RoutePath.about,
 		element: <AboutPage/>,
+	},
+	[AppRoutes.PROFILE]: {
+		path: RoutePath.profile,
+		element: <ProfilePage/>,
 	},
 
 	// Несуществующие маршрут: * / 404

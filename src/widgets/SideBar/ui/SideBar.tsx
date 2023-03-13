@@ -1,7 +1,11 @@
+/* eslint-disable react/display-name */
 import cls from './SideBar.module.scss';
 
-import React, { useState } from 'react';
+import { SidebarItem } from './SidebarItem/SidebarItem';
 
+import { SidebarItemsList } from '../model/items';
+
+import React, { memo, useMemo, useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/public';
 
 import classNames from 'shared/lib/classNames/classNames';
@@ -18,11 +22,15 @@ interface SideBarProps {
 	className?: string;
 }
 
-const SideBar = ({ className }: SideBarProps) => {
+const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
 	const toggle = () => {
 		setCollapsed(prev => !prev);
 	};
+
+	// const itemList = useMemo(() => {
+	// 	return SidebarItemsList.map((item, id) => <SidebarItem key={id} item={item} collapsed={collapsed}></SidebarItem>);
+	// }, [collapsed]);
 
 	return (
 		<div data-testid='sidebar' className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
@@ -43,14 +51,15 @@ const SideBar = ({ className }: SideBarProps) => {
 				{/* переходы по страницам(отменяет явление перезагрузки)
 				<Link to={'/'} className={cls.link}>Главная</Link>
 				<Link to={'/about'} className={cls.link}>О сайте</Link> */}
-				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.main} className={cls.item}>
+				{/* <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.main} className={cls.item}>
 					<MainIcon className={cls.icon}/>
 					<span className={cls.link}>Главная</span>
 				</AppLink>
 				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.about} className={cls.item}>
 					<AboutIcon className={cls.icon}/>
 					<span className={cls.link}>О сайте</span>
-				</AppLink>
+				</AppLink> */}
+				{SidebarItemsList.map((item, id) => <SidebarItem key={id} item={item} collapsed={collapsed}></SidebarItem>)}
 			</div>
 
 			<div className={cls.switchers}>
@@ -60,6 +69,6 @@ const SideBar = ({ className }: SideBarProps) => {
 
 		</div>
 	);
-};
+});
 
 export default SideBar;

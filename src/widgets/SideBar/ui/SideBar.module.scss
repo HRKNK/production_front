@@ -4,7 +4,7 @@
 	width: var(--sidebar-widht); // ширина
 	background: var(--inverted-bg-color);
 	position: relative;
-	transition: width 0.3s; // анимация для шириеы
+	transition: width 0.3s; // анимация для ширина
 }
 
 .switchers {
@@ -33,19 +33,10 @@
 }
 
 .item {
-	margin-top: 10px;
+	margin-top: 30px;
+	margin-left: 20px;
 	display: flex;
 	align-items: center;
-}
-
-.icon {
-	fill: var(--primary-color);
-}
-
-.link {
-	opacity: 0;
-	transition: 0.2s opacity;
-	width: 0;
 }
 
 .collapsed {
@@ -56,10 +47,5 @@
 	}
 	.lang {
 		margin-left: 0;
-	}
-	.link {
-		width: 100%;
-		margin-left: 10px;
-		opacity: 1;
 	}
 }

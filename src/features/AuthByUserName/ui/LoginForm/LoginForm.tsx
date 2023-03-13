@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable no-tabs */
 /* eslint-disable react/display-name */
 import cls from './LoginForm.module.scss';
@@ -21,14 +22,17 @@ import { Text } from 'shared/ui/Text/public';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { type ReduxStoreWithManager } from 'app/providers/storeProvider/public';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface LoginFormProps {
 	className?: string;
+	onSuccess: () => void;
 }
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 	const { t } = useTranslation();
-	const dispatch = useDispatch<any>(); // проблема типизации в 8ой версии редакса // https://github.com/reduxjs/redux-thunk/issues/333
+	const dispatch = useAppDispatch();
+	// const dispatch = useDispatch<any>(); // проблема типизации в 8ой версии редакса // https://github.com/reduxjs/redux-thunk/issues/333
 	// const store = useStore() as ReduxStoreWithManager;
 	// const { username, password, error, isLoading } = useSelector(getLoginState);
 
@@ -57,9 +61,12 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 		dispatch(loginActions.setPassword(value)); // закидываем action в reducer
 	}, [dispatch]);
 
-	const onLoginClick = useCallback(() => {
-		dispatch(loginByUsername({ password, username }));
-	}, [dispatch, password, username]);
+	const onLoginClick = useCallback(async () => {
+		const result = await dispatch(loginByUsername({ password, username }));
+		if (result.meta.requestStatus === 'fulfilled') {
+			onSuccess();
+		};
+	}, [dispatch, onSuccess, password, username]);
 
 	return (
 		<DynamicModuleLoader removeAfterUnmount={true} reducers={initialReducers}>

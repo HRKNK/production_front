@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react/display-name */
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'shared/lib/classNames/classNames';
@@ -9,7 +10,7 @@ interface LangSwitherProps {
 	short?: boolean;
 }
 
-const LangSwither = ({ className, short }: LangSwitherProps) => {
+const LangSwither = memo(({ className, short }: LangSwitherProps) => {
 	const { t, i18n } = useTranslation();
 
 	const toggle = () => {
@@ -21,6 +22,6 @@ const LangSwither = ({ className, short }: LangSwitherProps) => {
 			{t(short ? 'Язык' : 'Короткий язык')}
 		</Button>
 	);
-};
+});
 
 export default LangSwither;

@@ -1,6 +1,7 @@
+/* eslint-disable react/display-name */
 import cls from './NavBar.module.scss';
 
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 // import { Link } from 'react-router-dom';
 
 import classNames from 'shared/lib/classNames/classNames';
@@ -15,7 +16,7 @@ interface NavBarProps {
 	className?: string;
 }
 
-const NavBar = ({ className }: NavBarProps) => {
+const NavBar = memo(({ className }: NavBarProps) => {
 	const [isAuthModal, setisAuthModal] = useState(false);
 	const { t } = useTranslation();
 
@@ -52,6 +53,6 @@ const NavBar = ({ className }: NavBarProps) => {
 			{ isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>}
 		</div>
 	);
-};
+});
 
 export default NavBar;

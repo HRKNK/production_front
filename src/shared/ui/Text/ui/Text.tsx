@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
 import cls from './Text.module.scss';
 
 import classNames from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 
 export enum TextTheme {
 	PRIMARY = 'primary',
@@ -14,7 +16,7 @@ interface TextProps {
 	theme?: TextTheme;
 }
 
-const Text = (props: TextProps) => {
+const Text = memo((props: TextProps) => {
 	const {
 		className,
 		text,
@@ -28,6 +30,6 @@ const Text = (props: TextProps) => {
 			{text && <p className={cls.text}>{text}</p>}
 		</div>
 	);
-};
+});
 
 export default Text;

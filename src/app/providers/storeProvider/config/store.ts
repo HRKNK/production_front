@@ -26,6 +26,10 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-expect-error
 	store.reducerManager = reducerManager;
-
 	return store;
 }
+
+// https://redux-toolkit.js.org/usage/usage-with-typescript
+// export type AppDispatch = typeof store.dispatch
+// export const useAppDispatch: () => AppDispatch = useDispatch // Export a hook that can be reused to resolve types
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']; // получаем тип createReduxStore => какое св-во нужно получить
