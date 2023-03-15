@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import cls from './Modal.module.scss';
 
 import React, { type MutableRefObject, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';

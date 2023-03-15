@@ -1,8 +1,8 @@
-import { type StateSchema } from './stateSchema';
+import { type ThunkExtraArg, type StateSchema } from './stateSchema';
 
 import { createReducerManager } from './reducerManager';
 
-import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
+import { type CombinedState, configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
 import { $api } from 'shared/api/api';
@@ -23,23 +23,27 @@ export function createReduxStore (
 
 	const reducerManager = createReducerManager(rootReducers);
 
+	// типизируем extraArgument
+	const extraArg: ThunkExtraArg = {
+		api: $api,
+		navigate,
+	};
+
 	const store = configureStore<StateSchema>({
-		reducer: reducerManager.reduce, // reducer: rootReducers,
+		// as костылит тип для reducerManager
+		// reducer: reducerManager.reduce as ReducersMapObject<StateSchema>,
+
+		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>, // reducer: rootReducers,
 		devTools: _IS_DEV,
 		preloadedState: initialState,
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-expect-error
 		middleware: getDefaultMiddleware => getDefaultMiddleware({
 			thunk: {
-				extraArgument: {
-					api: $api,
-					navigate,
-				},
+				extraArgument: extraArg,
 			},
 		}),
 	});
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-expect-error
 	store.reducerManager = reducerManager;
 	return store;

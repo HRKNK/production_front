@@ -52,6 +52,12 @@ module.exports = {
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/no-unused-vars': 'off', // игнорировать бесполезные объявления
 
+		'@typescript-eslint/ban-ts-comment': 'warn', // предупреждение на @ts-ignore
+		'@typescript-eslint/prefer-ts-expect-error': 'warn', // предупреждение на @ts-expect-error
+
+		'react-hooks/exhaustive-deps': 'warn', // зависимости реакт-хуков
+		'react-hooks/rules-of-hooks': 'error',
+
 		'import/order': [ // последовательность импорта // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
 			'error', {
 				groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
@@ -76,14 +82,11 @@ module.exports = {
 					},
 				},
 			}],
-		'@typescript-eslint/explicit-function-return-type': 'off',
 		//
+		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/no-dynamic-delete': 'off',
-
-		'react-hooks/rules-of-hooks': 'error',
-		'react-hooks/exhaustive-deps': 'warn',
 	},
 
 	settings: {
