@@ -11,7 +11,7 @@ export default {
 	component: ProfilePage,
 	argTypes: {
 		backgroundColor: { control: 'color' },
-	}
+	},
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;

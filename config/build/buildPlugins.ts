@@ -24,7 +24,7 @@ export function buildPlugins ({ paths, isDev, apiUrl }: BuildOptions): webpack.W
 	if (isDev) {
 		plugins.push(new webpack.HotModuleReplacementPlugin()); // апдейты изменений без перезагрузок страницы
 		plugins.push(new BundleAnalyzerPlugin({
-			openAnalyzer: true, // открытие вкладки статистики (ссылка дублируется в консоль)
+			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
 		}));
 	}
 

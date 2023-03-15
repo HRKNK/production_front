@@ -5,7 +5,7 @@ import { createReducerManager } from './reducerManager';
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
-import { $api } from 'shared/ui/api/api';
+import { $api } from 'shared/api/api';
 import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 

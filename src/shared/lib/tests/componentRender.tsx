@@ -1,6 +1,6 @@
 // https://react.i18next.com/misc/testing
 
-import { type DeepPartial } from '@reduxjs/toolkit';
+// import { type DeepPartial } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
 import { StoreProvider } from 'app/providers/storeProvider/public';
 import { type StateSchema } from 'entities/Counter/public';

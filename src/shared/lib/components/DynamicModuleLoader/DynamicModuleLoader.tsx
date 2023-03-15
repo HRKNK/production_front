@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { type FC, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
@@ -21,15 +22,15 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-			store.reducerManager.add(name, reducer);
+		Object.entries(reducers).forEach(([name, reducer]) => { // ([name, reducer]: ReducersListEntry)
+			store.reducerManager.add(name as StateSchemaKey, reducer); // добавлено: as StateSchemaKey взамен типизации аргументов forEach
 			dispatch({ type: `@INIT ${name} reducer` });
 		});
 
 		return () => {
 			if (removeAfterUnmount) {
-				Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-					store.reducerManager.remove(name);
+				Object.entries(reducers).forEach(([name, reducer]) => { // ([name, reducer]: ReducersListEntry)
+					store.reducerManager.remove(name as StateSchemaKey); // добавлено: as StateSchemaKey взамен типизации аргументов forEach
 					dispatch({ type: `@DESTROY ${name} reducer` });
 				});
 			}

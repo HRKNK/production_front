@@ -1,6 +1,6 @@
 import { getCounterValue } from './getCounterValue';
 
-import { type DeepPartial } from '@reduxjs/toolkit';
+// import { type DeepPartial } from '@reduxjs/toolkit';
 import { type StateSchema } from 'entities/Counter/public';
 
 describe('getCounterValue', () => {
