@@ -10,6 +10,8 @@
     "jsx": "react-jsx",
     // Обработка компилятором JS файлов (вместе с TS)
     "allowJs": true,
+    // строгий режим
+    "strict": false,
     "moduleResolution": "node",
     // commonJS => import Moment from 'moment';
     "esModuleInterop": true,
