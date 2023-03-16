@@ -14,7 +14,21 @@ const initialState: ProfileSchema = {
 export const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
-	reducers: {},
+	reducers: {
+		setReadOnly: (state, action: PayloadAction<boolean>) => {
+			state.readonly = action.payload;
+		},
+		cancelEdit: (state) => {
+			state.readonly = true;
+			state.form = state.data;
+		},
+		updateProfileData: (state, action: PayloadAction<Profile>) => {
+			state.form = {
+				...state.data,
+				...action.payload,
+			};
+		},
+	},
 	extraReducers: (builder) => { // хэндлер для AsyncThunk
 		builder // state = initialState
 			.addCase(fetchProfileData.pending, (state) => { // идёт запрос // ожидание
@@ -24,6 +38,7 @@ export const profileSlice = createSlice({
 			.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => { // запрос выполнен
 				state.isLoading = false;
 				state.data = action.payload; // записываем ответ от сервера
+				state.form = action.payload; // записываем ответ от сервера
 			})
 			.addCase(fetchProfileData.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;

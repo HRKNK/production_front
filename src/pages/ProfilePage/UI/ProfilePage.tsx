@@ -1,8 +1,10 @@
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, getProfileData, getProfileError, getProfileIsLoading, ProfileCard, profileReducer } from 'entities/Profile/public';
+import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions, ProfileCard, profileReducer } from 'entities/Profile/public';
 import classNames from 'shared/lib/classNames/classNames';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { useSelector } from 'react-redux';
@@ -19,18 +21,35 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 
-	const data = useSelector(getProfileData);
+	const formData = useSelector(getProfileForm);
 	const isLoading = useSelector(getProfileIsLoading);
 	const error = useSelector(getProfileError);
+	const readOnly = useSelector(getProfileReadonly);
 
 	useEffect(() => {
 		void dispatch(fetchProfileData());
 	}, [dispatch]);
 
+	const onChangeFirstname = useCallback((value?: string) => {
+		dispatch(profileActions.updateProfileData({ first: value || '' }));
+	}, [dispatch]);
+
+	const onChangeLastname = useCallback((value?: string) => {
+		dispatch(profileActions.updateProfileData({ lastname: value || '' }));
+	}, [dispatch]);
+
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames('', {}, [className])}>
-				<ProfileCard data={data} isLoading={isLoading} error={error}/>
+				<ProfilePageHeader></ProfilePageHeader>
+				<ProfileCard
+					onChangeFirstname={onChangeFirstname}
+					onChangeLastname={onChangeLastname}
+					data={formData}
+					isLoading={isLoading}
+					error={error}
+					readonly={readOnly}
+				/>
 			</div>
 		</DynamicModuleLoader>
 	);
