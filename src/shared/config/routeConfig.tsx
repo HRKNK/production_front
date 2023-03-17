@@ -5,6 +5,10 @@ import { MainPage } from 'pages/MainPage/public';
 import { NotFoundPage } from 'pages/NotFoundPage/public';
 import { ProfilePage } from 'pages/ProfilePage/public';
 
+type AppRouteProps = RouteProps & { // Route properties
+	authOnly?: boolean,
+};
+
 export enum AppRoutes {
 	MAIN = 'main',
 	ABOUT = 'about',
@@ -23,7 +27,8 @@ export const RoutePath: Record<AppRoutes, string> = {
 };
 
 // Record специальный ТС класс, который указывает Ключ(строка) + Свойство (резерв)
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+// export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.MAIN]: {
 		path: RoutePath.main,
 		element: <MainPage/>,
@@ -35,6 +40,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.PROFILE]: {
 		path: RoutePath.profile,
 		element: <ProfilePage/>,
+		authOnly: true,
 	},
 
 	// Несуществующие маршрут: * / 404

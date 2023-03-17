@@ -58,6 +58,7 @@ export const profileSlice = createSlice({
 				state.isLoading = false;
 				state.data = action.payload; // записываем ответ от сервера
 				state.form = action.payload; // записываем ответ от сервера
+				state.readonly = true; // обнуление редактирования
 			})
 			.addCase(updateProfileData.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;
