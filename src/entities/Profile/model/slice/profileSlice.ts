@@ -2,6 +2,8 @@ import { type Profile, type ProfileSchema } from '../types/profile';
 
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: ProfileSchema = {
@@ -31,6 +33,8 @@ export const profileSlice = createSlice({
 	},
 	extraReducers: (builder) => { // хэндлер для AsyncThunk
 		builder // state = initialState
+
+			// GET
 			.addCase(fetchProfileData.pending, (state) => { // идёт запрос // ожидание
 				state.error = undefined; // обнуление ошибки
 				state.isLoading = true;
@@ -42,7 +46,22 @@ export const profileSlice = createSlice({
 			})
 			.addCase(fetchProfileData.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;
-				state.error = action.payload;
+				state.error = action.payload; // записываем информацию об ошибке
+			})
+
+			// PUT
+			.addCase(updateProfileData.pending, (state) => { // идёт запрос // ожидание
+				state.error = undefined; // обнуление ошибки
+				state.isLoading = true;
+			})
+			.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => { // запрос выполнен
+				state.isLoading = false;
+				state.data = action.payload; // записываем ответ от сервера
+				state.form = action.payload; // записываем ответ от сервера
+			})
+			.addCase(updateProfileData.rejected, (state, action) => { // вернулась ошибка
+				state.isLoading = false;
+				state.error = action.payload; // записываем информацию об ошибке
 			});
 	},
 });

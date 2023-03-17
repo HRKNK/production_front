@@ -38,11 +38,21 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 		dispatch(profileActions.updateProfileData({ lastname: value || '' }));
 	}, [dispatch]);
 
+	const onChangeCity = useCallback((value?: string) => {
+		dispatch(profileActions.updateProfileData({ city: value || '' }));
+	}, [dispatch]);
+
+	const onChangeAge = useCallback((value?: string) => {
+		dispatch(profileActions.updateProfileData({ age: Number(value.match(/^\d{0,2}$/)) }));
+	}, [dispatch]);
+
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames('', {}, [className])}>
 				<ProfilePageHeader></ProfilePageHeader>
 				<ProfileCard
+					onChangeCity={onChangeCity}
+					onChangeAge={onChangeAge}
 					onChangeFirstname={onChangeFirstname}
 					onChangeLastname={onChangeLastname}
 					data={formData}

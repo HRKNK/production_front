@@ -7,7 +7,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import classNames from 'shared/lib/classNames/classNames';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/public';
-import { getProfileReadonly, profileActions } from 'entities/Profile/public';
+import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile/public';
 
 interface ProfilePageHeaderProps {
 	className?: string;
@@ -32,7 +32,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 	}, [dispatch]);
 
 	const onSave = useCallback(() => {
-		dispatch(updateProfileData());
+		void dispatch(updateProfileData());
 	}, [dispatch]);
 
 	return (

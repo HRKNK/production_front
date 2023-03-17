@@ -35,4 +35,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> { // T = тип извне = пример: ThunkConfig<string>>
 	rejectValue: T;
 	extra: ThunkExtraArg;
+	state?: StateSchema; // ThunkState
 }
