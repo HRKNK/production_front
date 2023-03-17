@@ -1,9 +1,9 @@
 import { Country } from '../../model/types/country';
 
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'shared/ui/Select/Select';
 import { memo, useCallback } from 'react';
+import classNames from 'shared/lib/classNames/classNames';
+import { Select } from 'shared/ui/Select/public';
 
 interface CountrySelectProps {
 	className?: string;
@@ -21,9 +21,7 @@ const options = [
 ];
 
 // eslint-disable-next-line react/display-name
-export const CountrySelect = memo(({
-	className, value, onChange, readonly,
-}: CountrySelectProps) => {
+export const CountrySelect = memo(({ className, value, onChange, readonly }: CountrySelectProps) => {
 	const { t } = useTranslation();
 
 	const onChangeHandler = useCallback((value: string) => {

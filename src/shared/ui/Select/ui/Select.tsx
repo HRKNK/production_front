@@ -11,10 +11,10 @@ export interface SelectOption {
 
 interface SelectProps {
 	className?: string;
-	label?: string;
-	options?: SelectOption[];
-	value?: string;
-	onChange?: (value: string) => void;
+	label?: string; // титульник перед селектором
+	options?: SelectOption[]; // массив селекторов
+	value?: string; // отображение выбранного value
+	onChange?: (value: string) => void; // связывание с value
 	readonly?: boolean;
 }
 
@@ -27,12 +27,8 @@ export const Select = memo((props: SelectProps) => {
 		}
 	};
 
-	const optionsList = useMemo(() => options?.map((opt) => (
-		<option
-			className={cls.option}
-			value={opt.value}
-			key={opt.value}
-		>
+	const optionsList = useMemo(() => options?.map((opt) => ( // список селекторов
+		<option className={cls.option} value={opt.value} key={opt.value}>
 			{opt.content}
 		</option>
 	)), [options]);
@@ -41,17 +37,11 @@ export const Select = memo((props: SelectProps) => {
 
 	return (
 		<div className={classNames(cls.Wrapper, mods, [className])}>
-			{label && (
-				<span className={cls.label}>
-					{`${label}>`}
-				</span>
+			{label && ( // титульник перед селектором?
+				<span className={cls.label}>{`${label}>`}</span>
 			)}
-			<select
-				disabled={readonly}
-				className={cls.select}
-				value={value}
-				onChange={onChangeHandler}
-			>
+			{/* опции селектора */}
+			<select disabled={readonly} className={cls.select} value={value} onChange={onChangeHandler}>
 				{optionsList}
 			</select>
 		</div>
