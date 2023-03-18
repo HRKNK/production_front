@@ -2,7 +2,11 @@ import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions, ProfileCard, profileReducer } from 'entities/Profile/public';
+import {
+	fetchProfileData, getProfileError, getProfileForm,
+	getProfileIsLoading, getProfileReadonly, getValidateProfileErrors,
+	profileActions, ProfileCard, profileReducer, ValidateProfileError,
+} from 'entities/Profile/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -10,6 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { type Currency } from 'entities/Currency/public';
 import { type Country } from 'entities/Country/public';
+import { Text, TextTheme } from 'shared/ui/Text/public';
 
 const reducers: ReducersList = {
 	profile: profileReducer,
@@ -20,13 +25,24 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-	const { t } = useTranslation();
+	const { t } = useTranslation('profile');
 	const dispatch = useAppDispatch();
 
 	const formData = useSelector(getProfileForm);
 	const isLoading = useSelector(getProfileIsLoading);
 	const error = useSelector(getProfileError);
 	const readOnly = useSelector(getProfileReadonly);
+	const validateErrors = useSelector(getValidateProfileErrors);
+
+	const validateErrorsTranslate = {
+		[ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
+		[ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+		[ValidateProfileError.INCORRECT_CURRENCY]: t('Некорректная валюта'),
+		[ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
+		[ValidateProfileError.INCORRECT_PASSWORD]: t('Некорректный пароль'),
+		[ValidateProfileError.INCORRECT_USER_DATA]: t('Некорректные данные о пользователе'),
+		[ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+	};
 
 	useEffect(() => {
 		void dispatch(fetchProfileData());
@@ -68,6 +84,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames('', {}, [className])}>
 				<ProfilePageHeader></ProfilePageHeader>
+				{ validateErrors?.length && validateErrors.map((error, id) => {
+					return <Text key={id} theme={TextTheme.ERROR} text={validateErrorsTranslate[error]}></Text>;
+				}) }
 				<ProfileCard
 					onChangeUserName={onChangeUserName}
 					onChangeAvatar={onChangeAvatar}

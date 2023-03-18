@@ -23,6 +23,7 @@ export const profileSlice = createSlice({
 		cancelEdit: (state) => {
 			state.readonly = true;
 			state.form = state.data;
+			state.validateError = undefined; // очищает массив ошибок валидации
 		},
 		updateProfileData: (state, action: PayloadAction<Profile>) => {
 			state.form = {
@@ -51,7 +52,8 @@ export const profileSlice = createSlice({
 
 			// PUT
 			.addCase(updateProfileData.pending, (state) => { // идёт запрос // ожидание
-				state.error = undefined; // обнуление ошибки
+				// state.error = undefined; // обнуление ошибки
+				state.validateError = undefined; // обнуление ошибки
 				state.isLoading = true;
 			})
 			.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => { // запрос выполнен
@@ -59,10 +61,12 @@ export const profileSlice = createSlice({
 				state.data = action.payload; // записываем ответ от сервера
 				state.form = action.payload; // записываем ответ от сервера
 				state.readonly = true; // обнуление редактирования
+				state.validateError = undefined; // обнуление ошибки
 			})
 			.addCase(updateProfileData.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;
-				state.error = action.payload; // записываем информацию об ошибке
+				// state.error = action.payload; // записываем информацию об ошибке
+				state.validateError = action.payload; // записываем информацию об ошибке
 			});
 	},
 });
