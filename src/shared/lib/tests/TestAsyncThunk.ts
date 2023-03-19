@@ -17,10 +17,10 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
 	actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
-	constructor (actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+	constructor (actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) { // state is default (initial state)
 		this.actionCreator = actionCreator; // action извне
 		this.dispatch = jest.fn(); // мок функции dispatch (any тип)
-		this.getState = jest.fn(); // мок функции getState (вернет StateSchema)
+		this.getState = jest.fn(() => state as StateSchema); // мок функции getState (вернет StateSchema)
 
 		this.api = mockedAxios;
 		this.navigate = jest.fn();
