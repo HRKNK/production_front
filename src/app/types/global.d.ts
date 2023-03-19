@@ -20,6 +20,7 @@ declare module '*.jpeg';
 
 declare const _IS_DEV: boolean;
 declare const _API: string;
+declare const _PROJECT: 'storybook' | 'frontend' | 'jest';
 
 // https://stackoverflow.com/questions/61132262/typescript-deep-partial
 type DeepPartial<T> = T extends object ? {

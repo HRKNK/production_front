@@ -26,6 +26,7 @@ export default {
 	globals: {
 		_IS_DEV: true,
 		_API: '',
+		_PROJECT: 'jest',
 	},
 
 	modulePaths: [

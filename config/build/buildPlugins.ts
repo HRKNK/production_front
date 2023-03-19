@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 // import { ReactRefreshPlugin } from '@pmmmwh/react-refresh-webpack-plugin';
 
-export function buildPlugins ({ paths, isDev, apiUrl }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
+export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
 	const plugins = [
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({ template: paths.html }), // файл используется как шаблон (куда подключать сборку/файлы)
@@ -17,6 +17,7 @@ export function buildPlugins ({ paths, isDev, apiUrl }: BuildOptions): webpack.W
 		new webpack.DefinePlugin({ // переменные окружения
 			_IS_DEV: JSON.stringify(isDev),
 			_API: JSON.stringify(apiUrl),
+			_PROJECT: JSON.stringify(project),
 		}),
 		// new ReactRefreshPlugin(), // апдейты для реакт компонентов
 	];
