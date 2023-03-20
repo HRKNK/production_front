@@ -87,8 +87,10 @@
 // Стейт-менеджер REDUX // https://redux.js.org/introduction/getting-started
 // npm i @reduxjs/toolkit react-redux @types/react-redux
 
-
 // Pre-commit github | Husky // https://typicode.github.io/husky/#/
 // npm install husky --save-dev
 // npx husky install
 // npx husky add .husky/pre-commit "npm test"
+
+// React Refresh (HOT REFRESH | SERVER) // https://github.com/pmmmwh/react-refresh-webpack-plugin
+// npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh

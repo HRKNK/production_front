@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// import { ReactRefreshPlugin } from '@pmmmwh/react-refresh-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
 	const plugins = [
@@ -19,11 +19,11 @@ export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): 
 			_API: JSON.stringify(apiUrl),
 			_PROJECT: JSON.stringify(project),
 		}),
-		// new ReactRefreshPlugin(), // апдейты для реакт компонентов
 	];
 
 	if (isDev) {
 		plugins.push(new webpack.HotModuleReplacementPlugin()); // апдейты изменений без перезагрузок страницы
+		plugins.push(new ReactRefreshWebpackPlugin()); // апдейты для реакт компонентов
 		plugins.push(new BundleAnalyzerPlugin({
 			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
 		}));

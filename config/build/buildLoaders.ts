@@ -58,7 +58,8 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 						locales: ['ru', 'en'],
 						keyAsDefaultValue: true,
 					}],
-				],
+					options.isDev && require.resolve('react-refresh/babel'), // !isDev вернет false
+				].filter(Boolean), // избавляемся от false
 			},
 		},
 	};
