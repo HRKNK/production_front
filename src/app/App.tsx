@@ -8,12 +8,13 @@ import { useTheme } from 'app/providers/ThemeProvider/public';
 import { AppRouter } from 'app/providers/router/public';
 import { NavBar } from 'widgets/NavBar/public';
 import { SideBar } from 'widgets/SideBar/public';
-import { useDispatch } from 'react-redux';
-import { userActions } from 'entities/User/public';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInited, userActions } from 'entities/User/public';
 
 const App = () => {
 	const { theme } = useTheme();
 	const dispatch = useDispatch();
+	const inited = useSelector(getUserInited); // проверка на авторизацию
 
 	useEffect(() => {
 		dispatch(userActions.initAuthData());
@@ -28,7 +29,7 @@ const App = () => {
 				<NavBar></NavBar>
 				<div className='content-page'>
 					<SideBar/>
-					<AppRouter/> {/* маршрутизация */}
+					{inited && <AppRouter/>} {/* маршрутизация */}
 				</div>
 			</Suspense>
 			{/* <Counter/> */}
