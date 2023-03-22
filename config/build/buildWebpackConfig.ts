@@ -27,6 +27,7 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
 			filename: '[name].[contenthash].js', // шаблон динамического имени entry[key=name=bundle].[random_hash]
 			path: paths.build,
 			clean: true, // подчищает папку build
+			publicPath: '/', // базовый путь // https://webpack.js.org/guides/public-path/
 		},
 		plugins: buildPlugins(options),
 	};
