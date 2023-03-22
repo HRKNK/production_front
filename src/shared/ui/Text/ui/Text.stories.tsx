@@ -1,4 +1,4 @@
-import Text, { TextTheme } from './Text';
+import Text, { TextSize, TextTheme } from './Text';
 
 import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
@@ -60,3 +60,9 @@ OnlyTextDark.decorators = [themeDecorator(Theme.DARK)];
 function ThemeDecorator (DARK: any) {
 	throw new Error('Function not implemented.');
 }
+export const SizeL = Template.bind({});
+SizeL.args = {
+	title: 'Title lorem ipsun',
+	text: 'Description Description Description Description',
+	size: TextSize.L,
+};

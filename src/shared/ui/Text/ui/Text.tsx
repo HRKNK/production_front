@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import cls from './Text.module.scss';
 
-import classNames from 'shared/lib/classNames/classNames';
+import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 
 export enum TextTheme {
@@ -39,8 +39,14 @@ const Text = memo((props: TextProps) => {
 		size = TextSize.M,
 	} = props;
 
+	const mods: Mods = {
+		[cls[theme]]: true,
+		[cls[align]]: true,
+		[cls[size]]: true,
+	};
+
 	return (
-		<div className={classNames(cls.Text, { [cls[theme]]: true, [cls[align]]: true }, [className])}>
+		<div className={classNames(cls.Text, mods, [className])}>
 			{title && <p className={cls.title}>{title}</p>}
 			{text && <p className={cls.text}>{text}</p>}
 		</div>
