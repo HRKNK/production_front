@@ -21,6 +21,12 @@ interface TextProps {
 	text?: string;
 	theme?: TextTheme;
 	align?: TextAlign;
+	size?: TextSize;
+}
+
+export enum TextSize {
+	M = 'size_m',
+	L = 'size_l',
 }
 
 const Text = memo((props: TextProps) => {
@@ -30,6 +36,7 @@ const Text = memo((props: TextProps) => {
 		title,
 		align = TextAlign.LEFT,
 		theme = TextTheme.PRIMARY,
+		size = TextSize.M,
 	} = props;
 
 	return (

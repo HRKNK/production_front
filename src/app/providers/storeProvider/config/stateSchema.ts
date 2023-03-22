@@ -5,6 +5,7 @@ import { type UserSchema } from 'entities/User/public';
 import { type LoginSchema } from 'features/AuthByUserName/public';
 import { type To, type NavigateOptions } from 'react-router-dom';
 import { type AxiosInstance } from 'axios';
+import { type ArticleDetailsSchema } from 'entities/Article/public';
 
 export interface StateSchema {
 	counter: counterSchema;
@@ -13,6 +14,7 @@ export interface StateSchema {
 	// Асинк редьюсеры
 	loginForm?: LoginSchema;
 	profile?: ProfileSchema;
+	articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
