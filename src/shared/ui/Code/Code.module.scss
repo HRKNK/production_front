@@ -3,7 +3,7 @@
 	padding: 20px;
 	position: relative;
 	background: var(--code-bg);
-	overflow: auto;
+	overflow: auto; // внутренний скролл
 }
 
 .copyBtn {
@@ -12,6 +12,6 @@
 	top: 20px;
 }
 
-.copyIcon path {
+.copyIcon path { // явное переопределение stroke (background) у svg
 	stroke: var(--primary-color);
 }

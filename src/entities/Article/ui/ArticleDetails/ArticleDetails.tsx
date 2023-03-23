@@ -39,7 +39,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	const article = useSelector(getArticleDetailsData);
 	const error = useSelector(getArticleDetailsError);
 
-	const renderBlock = useCallback((block: ArticleBlock) => {
+	const renderBlock = useCallback((block: ArticleBlock) => { // В зависимости от типа статьи рендерится соответствующий компонент
 		switch (block.type) {
 			case ArticleBlockType.CODE:
 				return (
@@ -98,6 +98,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	} else {
 		content = (
 			<>
+				{/* Изображение темы / Аватар */}
 				<div className={cls.avatarWrapper}>
 					<Avatar
 						size={200}
@@ -105,26 +106,31 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 						className={cls.avatar}
 					/>
 				</div>
+				{/* Заголовок/Подзаголовок */}
 				<Text
 					className={cls.title}
 					title={article?.title}
 					text={article?.subtitle}
 					size={TextSize.L}
 				/>
+				{/* Просмотры */}
 				<div className={cls.articleInfo}>
 					<Icon className={cls.icon} Svg={EyeIcon} />
 					<Text text={String(article?.views)} />
 				</div>
+				{/* Дата создания */}
 				<div className={cls.articleInfo}>
 					<Icon className={cls.icon} Svg={CalendarIcon} />
 					<Text text={article?.createdAt} />
 				</div>
+				{/* Содержимое статей */}
 				{article?.blocks.map(renderBlock)}
 			</>
 		);
 	}
 
 	return (
+		// динамически-удаляемый редьюсер
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames(cls.ArticleDetails, {}, [className])}>
 				{content}

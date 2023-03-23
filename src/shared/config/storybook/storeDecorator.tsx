@@ -2,13 +2,17 @@
 import { type Story } from '@storybook/react';
 // import { type ReducersMapObject, type DeepPartial } from '@reduxjs/toolkit';
 import { StoreProvider } from 'app/providers/storeProvider/public';
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { type StateSchema } from 'entities/Counter/public';
+import { profileReducer } from 'entities/Profile/public';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 // const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 const defaultAsyncReducers: ReducersList = {
 	loginForm: loginReducer,
+	profile: profileReducer,
+	articleDetails: articleDetailsReducer,
 };
 
 // asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>

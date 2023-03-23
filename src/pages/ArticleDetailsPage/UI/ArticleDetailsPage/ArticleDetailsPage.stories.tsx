@@ -6,7 +6,7 @@ import { type ComponentStory, type ComponentMeta } from '@storybook/react';
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
-	title: 'shared/ArticleDetailsPage',
+	title: 'pages/ArticleDetailsPage',
 	component: ArticleDetailsPage,
 	argTypes: {
 		backgroundColor: { control: 'color' },

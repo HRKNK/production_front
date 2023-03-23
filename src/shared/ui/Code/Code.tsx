@@ -15,15 +15,16 @@ export const Code = memo((props: CodeProps) => {
 	const { className, text } = props;
 
 	const onCopy = useCallback(() => {
-		void navigator.clipboard.writeText(text);
+		void navigator.clipboard.writeText(text); // запись текста в буфер (копирование)
 	}, [text]);
 
 	return (
+		// тег pre сохраняет исходные отступы
 		<pre className={classNames(cls.Code, {}, [className])}>
 			<Button onClick={onCopy} className={cls.copyBtn} theme={ThemeButton.CLEAR}>
 				<CopyIcon className={cls.copyIcon} />
 			</Button>
-			<code>
+			<code> {/* HTML5 тег для кода */}
 				{text}
 			</code>
 		</pre>
