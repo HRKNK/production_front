@@ -107,13 +107,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
     }
   ],
   "profile": {
