@@ -21,7 +21,7 @@ describe('fetchProfileData.test', () => {
 	test('success fetch', async () => {
 		const thunk = new TestAsyncThunk(fetchProfileData); // закидываем action
 		thunk.api.get.mockReturnValue(Promise.resolve({ data })); // мок ответ от сервера
-		const result = await thunk.callThunk();
+		const result = await thunk.callThunk('1');
 		expect(thunk.api.get).toHaveBeenCalled(); // запрос был отправлен ? // or mockedAxios.post
 		expect(result.meta.requestStatus).toBe('fulfilled'); // запрос вернул статус fulfilled?
 		expect(result.payload).toEqual(data); // возвращает данные о пользователе
@@ -30,7 +30,7 @@ describe('fetchProfileData.test', () => {
 	test('error fetch', async () => {
 		const thunk = new TestAsyncThunk(fetchProfileData); // закидываем action
 		thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 })); // ответ от сервера 403
-		const result = await thunk.callThunk();
+		const result = await thunk.callThunk('1');
 		expect(result.meta.requestStatus).toBe('rejected'); // запрос вернул статус rejected?
 	});
 });

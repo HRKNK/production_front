@@ -25,7 +25,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
-	[AppRoutes.PROFILE]: '/profile',
+	[AppRoutes.PROFILE]: '/profile/', // profile/10 ( id динамический путь )
 	[AppRoutes.ARTICLES]: '/articles',
 	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // articles/10 ( id динамический путь )
 	// Несуществующие маршруты: *
@@ -44,7 +44,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 		element: <AboutPage/>,
 	},
 	[AppRoutes.PROFILE]: {
-		path: RoutePath.profile,
+		path: `${RoutePath.profile}:id`, // динамический путь
 		element: <ProfilePage/>,
 		authOnly: true, // только для авторизованных
 	},

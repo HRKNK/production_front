@@ -108,24 +108,38 @@
       "username": "admin",
       "password": "123",
       "role": "ADMIN",
-      "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
+      "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
       "role": "USER",
-      "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
+      "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
     }
   ],
-  "profile": {
-    "first": "Pups",
-    "lastname": "Ups",
-    "age": 27,
-    "currency": "USD",
-    "country": "Armenia",
-    "city": "Москва",
-    "username": "admin",
-    "avatar": "http://pm1.narvii.com/6908/75d94a0c89c40be79fcab7393a02cc59969e0490r1-704-564v2_uhq.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Pups",
+      "lastname": "Ups",
+      "age": 27,
+      "currency": "USD",
+      "country": "Armenia",
+      "city": "Москва",
+      "username": "admin",
+      "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Lupa",
+      "lastname": "Pupa",
+      "age": 25,
+      "currency": "RUB",
+      "country": "Armenia",
+      "city": "Балашиха",
+      "username": "user",
+      "avatar": "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51404593-stock-illustration-male-avatar-profile-picture-use.jpg"
+    }
+  ]
 }

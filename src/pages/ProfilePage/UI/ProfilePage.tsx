@@ -8,13 +8,15 @@ import {
 	profileActions, ProfileCard, profileReducer, ValidateProfileError,
 } from 'entities/Profile/public';
 import classNames from 'shared/lib/classNames/classNames';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { useSelector } from 'react-redux';
 import { type Currency } from 'entities/Currency/public';
 import { type Country } from 'entities/Country/public';
 import { Text, TextTheme } from 'shared/ui/Text/public';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
 	profile: profileReducer,
@@ -27,6 +29,7 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
 	const { t } = useTranslation('profile');
 	const dispatch = useAppDispatch();
+	const { id } = useParams<{ id: string, }>(); // Обработчик возвращает объект из пар ключ-значение динамических параметров из текущего URL-адреса
 
 	const formData = useSelector(getProfileForm);
 	const isLoading = useSelector(getProfileIsLoading);
@@ -44,11 +47,11 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 		[ValidateProfileError.NO_DATA]: t('Данные не указаны'),
 	};
 
-	useEffect(() => {
-		if (_PROJECT !== 'storybook') {
-			void dispatch(fetchProfileData());
+	useInitialEffect(() => {
+		if (id) {
+			void dispatch(fetchProfileData(id));
 		}
-	}, [dispatch]);
+	});
 
 	const onChangeFirstname = useCallback((value?: string) => {
 		dispatch(profileActions.updateProfileData({ first: value || '' }));
