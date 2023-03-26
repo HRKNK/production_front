@@ -7,6 +7,8 @@ import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { Text } from 'shared/ui/Text/public';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import AppLink from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig';
 
 interface CommentCardProps {
 	className?: string;
@@ -35,11 +37,12 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
 	return (
 		<div className={classNames(cls.CommentCard, {}, [className])}>
-			<div className={cls.header}>
+			{/* to = переход в профиль по ид /profile/1 */}
+			<AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
 				{/* Аватар опционален */}
 				{comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
 				<Text className={cls.username} title={comment.user.username} />
-			</div>
+			</AppLink>
 			<Text className={cls.text} text={comment.text} />
 		</div>
 	);
