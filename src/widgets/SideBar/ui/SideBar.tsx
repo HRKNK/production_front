@@ -3,7 +3,7 @@ import cls from './SideBar.module.scss';
 
 import { SidebarItem } from './SidebarItem/SidebarItem';
 
-import { SidebarItemsList } from '../model/items';
+import { getSideBarItems } from '../model/selectors/getSideBarItems';
 
 import React, { memo, useMemo, useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/public';
@@ -17,6 +17,7 @@ import { RoutePath } from 'shared/config/routeConfig';
 
 import MainIcon from 'shared/assets/icons/main.svg';
 import AboutIcon from 'shared/assets/icons/about.svg';
+import { useSelector } from 'react-redux';
 
 interface SideBarProps {
 	className?: string;
@@ -24,6 +25,7 @@ interface SideBarProps {
 
 const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
+	const sideBarItemsList = useSelector(getSideBarItems); // список навигационных ссылок
 	const toggle = () => {
 		setCollapsed(prev => !prev);
 	};
@@ -59,7 +61,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 					<AboutIcon className={cls.icon}/>
 					<span className={cls.link}>О сайте</span>
 				</AppLink> */}
-				{SidebarItemsList.map((item, id) => <SidebarItem key={id} item={item} collapsed={collapsed}></SidebarItem>)}
+				{sideBarItemsList.map((item, id) => <SidebarItem key={id} item={item} collapsed={collapsed}></SidebarItem>)}
 			</div>
 
 			<div className={cls.switchers}>

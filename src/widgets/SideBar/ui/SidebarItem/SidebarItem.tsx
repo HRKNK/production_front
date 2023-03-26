@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import cls from './SidebarItem.module.scss';
 
-import { type SidebarItemType } from '../../model/items';
+import { type SidebarItemType } from '../../model/types/items';
 
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
