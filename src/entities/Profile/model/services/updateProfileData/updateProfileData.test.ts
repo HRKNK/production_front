@@ -13,6 +13,7 @@ jest.mock('axios');
 const mockedAxios = jest.mocked(axios); // модуль мока с глубоким копированием полей
 
 const data = {
+	id: '1',
 	username: 'Admin',
 	age: 25,
 	country: Country.Ukraine,
