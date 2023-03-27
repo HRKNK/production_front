@@ -3,6 +3,7 @@ import cls from './ArticlesPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
+import { ArticleList } from 'entities/Article/public';
 
 interface ArticlesPageProps {
 	className?: string;
@@ -14,7 +15,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
 	return (
 		<div className={classNames(cls.ArticlesPage, {}, [className])}>
-			{t('ARTICLES PAGE')}
+			<ArticleList articles={[]}></ArticleList>
 		</div>
 	);
 };

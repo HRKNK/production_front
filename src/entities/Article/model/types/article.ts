@@ -1,3 +1,5 @@
+import { type User } from 'entities/User/public';
+
 export enum ArticleBlockType {
 	CODE = 'CODE',
 	IMAGE = 'IMAGE',
@@ -32,10 +34,16 @@ export enum ArticleType { // тема статей
 	ECONOMICS = 'ECONOMICS',
 }
 
+export enum ArticleView { // Вид страниц
+	BIG = 'BIG',
+	SMALL = 'SMALL',
+}
+
 export interface Article {
 	id: string;
 	title: string;
 	subtitle: string;
+	user: User;
 	img: string;
 	views: number;
 	createdAt: string;
