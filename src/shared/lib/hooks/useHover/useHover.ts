@@ -5,6 +5,8 @@ interface UseHoverBind {
 	onMouseLeave: () => void;
 }
 
+// Mouse Event
+
 type UseHoverResult = [boolean, UseHoverBind];
 
 export const useHover = (): UseHoverResult => {
@@ -13,7 +15,7 @@ export const useHover = (): UseHoverResult => {
 	const onMouseEnter = useCallback(() => {
 		setIsHover(true);
 	}, []);
-sdgdfszgzxf gstumje67jb4awmesldt7uioQWT6'LK
+
 	const onMouseLeave = useCallback(() => {
 		setIsHover(false);
 	}, []);

@@ -5,7 +5,7 @@ import { type HTMLAttributes, memo, type ReactNode } from 'react';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string;
-	children: ReactNode;
+	children: ReactNode; // реакт компонент
 }
 
 // eslint-disable-next-line react/display-name
