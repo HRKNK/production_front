@@ -4,9 +4,7 @@ interface UseHoverBind {
 	onMouseEnter: () => void;
 	onMouseLeave: () => void;
 }
-
 // Mouse Event
-
 type UseHoverResult = [boolean, UseHoverBind];
 
 export const useHover = (): UseHoverResult => {
