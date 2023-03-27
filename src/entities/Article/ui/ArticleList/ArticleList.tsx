@@ -17,9 +17,9 @@ interface ArticleListProps {
 	view?: ArticleView; // вид отображения списка
 }
 
-const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
-	.fill(0) // заполнение массива
-	.map((item, index) => (
+const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3) // кол-во скелетонов SMALL/BIG
+	.fill(0) // заполнение массива пустым содержимым
+	.map((item, index) => ( // отрисовываем скелетоны
 		<ArticleListItemSkeleton className={cls.card} key={index} view={view} />
 	));
 
