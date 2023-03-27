@@ -4,6 +4,7 @@
 
 // GIT CI
 // https://docs.github.com/ru/actions
+// https://www.githubstatus.com/ // статус сервиса
 
 // https://webpack.js.org/guides/environment-variables/ // ENV окружение
 

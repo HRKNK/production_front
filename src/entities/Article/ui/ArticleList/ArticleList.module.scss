@@ -6,7 +6,7 @@
 
 .SMALL {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: wrap; // перенос на другую линию
 
 	.card {
 		margin-right: 30px;

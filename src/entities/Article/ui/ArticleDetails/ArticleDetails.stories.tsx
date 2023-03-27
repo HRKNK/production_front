@@ -52,6 +52,7 @@ const article: Article = {
 			],
 		},
 	],
+	user: undefined
 };
 
 export const Normal = Template.bind({});
