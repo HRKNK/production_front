@@ -8,6 +8,7 @@ import { type AxiosInstance } from 'axios';
 import { type ArticleDetailsSchema } from 'entities/Article/public';
 import { type ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage/public';
 import { type AddCommentFormSchema } from 'features/addCommentForm/public';
+import { type ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 
 export interface StateSchema {
 	counter: counterSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
 	articleDetails?: ArticleDetailsSchema;
 	articleDetailsComments?: ArticleDetailsCommentsSchema;
 	addCommentForm?: AddCommentFormSchema;
+	articlesPage?: ArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
