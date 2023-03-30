@@ -24,22 +24,22 @@ const AppRouter = () => {
 	}, []);
 
 	return (
-		<div className='page-wrapper'>
-			<Suspense fallback={<PageLoader></PageLoader>}>
-				{/* компоненты с ленивой подгрузкой // https://ru.reactjs.org/docs/code-splitting.html */}
-				{/* маршрутизация */}
-				<Routes>
-					{/* путь(браузер), элемент(ссылка на компонент) */}
-					{/* <Route path={'/about'} element={<AboutPage/>}></Route> */}
+		// <div className='page-wrapper'>
+		<Suspense fallback={<PageLoader></PageLoader>}>
+			{/* компоненты с ленивой подгрузкой // https://ru.reactjs.org/docs/code-splitting.html */}
+			{/* маршрутизация */}
+			<Routes>
+				{/* путь(браузер), элемент(ссылка на компонент) */}
+				{/* <Route path={'/about'} element={<AboutPage/>}></Route> */}
 
-					{/* {Object.values(routeConfig).map(({ element, path }) => (
+				{/* {Object.values(routeConfig).map(({ element, path }) => (
 						<Route key={path} path={path} element={element}></Route>
 					))} */}
 
-					{Object.values(routeConfig).map(renderWithWrapper)}
-				</Routes>
-			</Suspense>
-		</div>
+				{Object.values(routeConfig).map(renderWithWrapper)}
+			</Routes>
+		</Suspense>
+		// </div>
 	);
 };
 
