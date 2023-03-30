@@ -28,6 +28,9 @@ const articlesPageSlice = createSlice({
 		ids: [],
 		entities: {},
 		view: ArticleView.SMALL,
+		// pagination
+		page: 1,
+		hasMore: true,
 	}),
 	reducers: { // state = initialState
 		setView: (state, action: PayloadAction<ArticleView>) => {
@@ -35,7 +38,12 @@ const articlesPageSlice = createSlice({
 			localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload); // сохраняем вид статей в локал
 		},
 		initState: (state) => {
-			state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView; // получаем вид статей из локал
+			const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView; // получаем вид статей из локал
+			state.view = view;
+			state.limit = view === ArticleView.BIG ? 4 : 9; // кол-во подгружаемых статей (в зависимости от вида статей)
+		},
+		setPage: (state, action: PayloadAction<number>) => { // текущая страница
+			state.page = action.payload;
 		},
 	},
 	extraReducers: (builder) => { // хэндлер для AsyncThunk
@@ -46,7 +54,9 @@ const articlesPageSlice = createSlice({
 			})
 			.addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<Article[]>) => { // запрос выполнен
 				state.isLoading = false;
-				articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
+				// articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
+				articlesAdapter.addMany(state, action.payload); // addMany - добавляет данные
+				state.hasMore = action.payload.length > 0; // есть ли ещё данные?
 			})
 			.addCase(fetchArticlesList.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;
