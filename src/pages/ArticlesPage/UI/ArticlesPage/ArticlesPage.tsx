@@ -4,9 +4,9 @@ import { articlesPageActions, articlesPageReducer, getArticles } from '../../mod
 
 import { getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelectors';
 
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
@@ -49,8 +49,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	useInitialEffect(() => {
-		dispatch(articlesPageActions.initState()); // достаем текущий вид отображения страницы
-		void dispatch(fetchArticlesList({ page: 1 })); // запрос на статьи | номер страницы
+		void dispatch(initArticlesPage());
 	});
 
 	return (

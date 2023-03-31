@@ -31,6 +31,8 @@ const articlesPageSlice = createSlice({
 		// pagination
 		page: 1,
 		hasMore: true,
+		// init state
+		_inited: false,
 	}),
 	reducers: { // state = initialState
 		setView: (state, action: PayloadAction<ArticleView>) => {
@@ -41,6 +43,7 @@ const articlesPageSlice = createSlice({
 			const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView; // получаем вид статей из локал
 			state.view = view;
 			state.limit = view === ArticleView.BIG ? 4 : 9; // кол-во подгружаемых статей (в зависимости от вида статей)
+			state._inited = true;
 		},
 		setPage: (state, action: PayloadAction<number>) => { // текущая страница
 			state.page = action.payload;
