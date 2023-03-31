@@ -9,8 +9,7 @@ import { $api } from 'shared/api/api';
 import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
-export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>,
-	navigate?: (to: To, options?: NavigateOptions) => void) {
+export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		counter: counterReducer,
@@ -23,7 +22,6 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 	// типизируем extraArgument
 	const extraArg: ThunkExtraArg = {
 		api: $api,
-		navigate,
 	};
 
 	const store = configureStore<StateSchema>({

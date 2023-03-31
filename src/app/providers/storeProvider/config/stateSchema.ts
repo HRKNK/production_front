@@ -38,7 +38,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> { // E
 
 export interface ThunkExtraArg {
 	api: AxiosInstance;
-	navigate?: (to: To, options?: NavigateOptions) => void;
 }
 export interface ThunkConfig<T> { // T = тип извне = пример: ThunkConfig<string>>
 	rejectValue: T;
