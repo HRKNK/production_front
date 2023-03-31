@@ -17,7 +17,8 @@ void i18n
 	// for all options read: https://www.i18next.com/overview/configuration-options
 	.init({
 		fallbackLng: 'en',
-		debug: !!_IS_DEV,
+		debug: false,
+		// debug: !!_IS_DEV, // console.log
 
 		interpolation: {
 			escapeValue: false, // not needed for react as it escapes by default

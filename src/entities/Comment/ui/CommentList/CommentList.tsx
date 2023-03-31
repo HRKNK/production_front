@@ -23,9 +23,9 @@ export const CommentList = memo((props: CommentListProps) => {
 	return (
 		<div className={classNames(cls.CommentList, {}, [className])}>
 			{comments?.length // Есть массив комментариев / Массива нет
-				? comments.map((comment, id) => (
+				? comments.map((comment) => (
 					<CommentCard
-						key={id}
+						key={comment.id}
 						isLoading={isLoading}
 						className={cls.comment}
 						comment={comment}
