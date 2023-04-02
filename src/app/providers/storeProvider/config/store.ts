@@ -6,14 +6,17 @@ import { type CombinedState, configureStore, type Reducer, type ReducersMapObjec
 import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
 import { $api } from 'shared/api/api';
-import { type NavigateOptions, type To } from 'react-router-dom';
+import { scrollSaveReducer } from 'features/ScrollSave/public';
+// import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
+// createReduxStore - store-провайдер поверх App
 export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
-	const rootReducers: ReducersMapObject<StateSchema> = {
+	const rootReducers: ReducersMapObject<StateSchema> = { // понимать как: combineReducers
 		...asyncReducers,
 		counter: counterReducer,
 		user: userReducer,
+		scrollSave: scrollSaveReducer,
 		// loginForm: loginReducer,
 	};
 
