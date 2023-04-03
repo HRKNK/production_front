@@ -20,7 +20,7 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<st
 		const isLoading = getArticlesPageIsLoading(getState() as StateSchema);
 		if (hasMore && !isLoading) {
 			dispatch(articlesPageActions.setPage(page + 1)); // изменяем номер страницы
-			void dispatch(fetchArticlesList({ page: page + 1 })); // запрос на статьи | номер страницы
+			void dispatch(fetchArticlesList({})); // запрос на статьи | номер страницы { page: page + 1 }
 		}
 	},
 );

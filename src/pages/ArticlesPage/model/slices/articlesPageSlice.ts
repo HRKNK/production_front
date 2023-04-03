@@ -6,6 +6,8 @@ import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/t
 import { type Article, ArticleView } from 'entities/Article/public';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { type StateSchema } from 'app/providers/storeProvider/public';
+import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
+import { type SortOrder } from 'shared/types';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter
 // https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
@@ -33,6 +35,12 @@ const articlesPageSlice = createSlice({
 		hasMore: true,
 		// init state
 		_inited: false,
+		// sort
+		limit: 9,
+		order: 'asc',
+		search: '',
+		sort: ArticleSortField.CREATED,
+		type: ArticleType.ALL,
 	}),
 	reducers: { // state = initialState
 		setView: (state, action: PayloadAction<ArticleView>) => {
@@ -42,24 +50,45 @@ const articlesPageSlice = createSlice({
 		initState: (state) => {
 			const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView; // получаем вид статей из локал
 			state.view = view;
-			state.limit = view === ArticleView.BIG ? 4 : 9; // кол-во подгружаемых статей (в зависимости от вида статей)
+			state.limit = view === ArticleView.BIG ? 3 : 9; // кол-во подгружаемых статей (в зависимости от вида статей)
 			state._inited = true;
 		},
 		setPage: (state, action: PayloadAction<number>) => { // текущая страница
 			state.page = action.payload;
 		},
+		// сортировка
+		setOrder: (state, action: PayloadAction<SortOrder>) => {
+			state.order = action.payload;
+		},
+		setSort: (state, action: PayloadAction<ArticleSortField>) => {
+			state.sort = action.payload;
+		},
+		setSearch: (state, action: PayloadAction<string>) => {
+			state.search = action.payload;
+		},
+		setType: (state, action: PayloadAction<ArticleType>) => {
+			state.type = action.payload;
+		},
 	},
 	extraReducers: (builder) => { // хэндлер для AsyncThunk
 		builder // state = initialState
-			.addCase(fetchArticlesList.pending, (state) => { // идёт запрос // ожидание
+			.addCase(fetchArticlesList.pending, (state, action) => { // идёт запрос // ожидание
 				state.error = undefined;
 				state.isLoading = true;
+				if (action.meta.arg.replace) { // обнуляем массив статей
+					articlesAdapter.removeAll(state);
+				}
 			})
-			.addCase(fetchArticlesList.fulfilled, (state, action: PayloadAction<Article[]>) => { // запрос выполнен
+			.addCase(fetchArticlesList.fulfilled, (state, action) => { // action: PayloadAction<Article[]> // запрос выполнен
 				state.isLoading = false;
 				// articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
-				articlesAdapter.addMany(state, action.payload); // addMany - добавляет данные
 				state.hasMore = action.payload.length > 0; // есть ли ещё данные?
+
+				if (action.meta.arg.replace) { // аргументы из action // под сортировку
+					articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
+				} else { // под пагинацию
+					articlesAdapter.addMany(state, action.payload); // addMany - добавляет данные
+				}
 			})
 			.addCase(fetchArticlesList.rejected, (state, action) => { // вернулась ошибка
 				state.isLoading = false;

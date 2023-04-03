@@ -15,7 +15,7 @@ export const initArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>
 		const inited = getArticlesPageInited(getState() as StateSchema);
 		if (!inited) {
 			dispatch(articlesPageActions.initState()); // достаем текущий вид отображения страницы
-			void dispatch(fetchArticlesList({ page: 1 })); // запрос на статьи | номер страницы
+			void dispatch(fetchArticlesList({})); // запрос на статьи | номер страницы  page: 1
 		}
 	},
 );
