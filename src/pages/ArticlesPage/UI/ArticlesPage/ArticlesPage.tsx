@@ -10,6 +10,8 @@ import { initArticlesPage } from '../../model/services/initArticlesPage/initArti
 
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
@@ -59,8 +61,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
 			<Page onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
 				<div className={classNames(cls.ArticlesPage, {}, [className])}>
-					{/* Селектор вида отображения статей */}
-					<ArticleViewSelector view={view} onViewClick={onChangeView} />
+					{/* Селектор вида отображения статей
+					<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
+					{/* Фильтры */}
+					<ArticlesPageFilters></ArticlesPageFilters>
+					{/* Список статей */}
 					<ArticleList isLoading={isLoading} view={view} articles={articles}/>
 				</div>
 			</Page>
