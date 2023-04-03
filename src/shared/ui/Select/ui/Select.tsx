@@ -9,21 +9,22 @@ export interface SelectOption {
 	content: string;
 }
 
-interface SelectProps {
+interface SelectProps<T extends string> { // делаем дженерик (расширяет строку)
 	className?: string;
 	label?: string; // титульник перед селектором
 	options?: SelectOption[]; // массив селекторов
-	value?: string; // отображение выбранного value
-	onChange?: (value: string) => void; // связывание с value
+	value?: T; // отображение выбранного value
+	onChange?: (value: T) => void; // связывание с value
 	readonly?: boolean;
 }
 
-export const Select = memo((props: SelectProps) => {
+const typedMemo: <T>(c: T) => T = memo; // обертка-мемоизация для пропс-дженерика
+export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 	const { className, label, options, onChange, value, readonly } = props;
 
 	const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
 		if (onChange) {
-			onChange(e.target.value);
+			onChange(e.target.value as T);
 		}
 	};
 
