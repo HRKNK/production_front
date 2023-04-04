@@ -6,6 +6,12 @@ export enum ArticleBlockType {
 	TEXT = 'TEXT',
 }
 
+export enum ArticleSortField {
+	VIEWS = 'views',
+	TITLE = 'title',
+	CREATED = 'createdAt',
+}
+
 export interface ArticleBlockBase { // одинаковые поля в статьях
 	id: string;
 	type: ArticleBlockType; // перечисление типов статей
@@ -29,6 +35,7 @@ export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlo
 //
 
 export enum ArticleType { // тема статей
+	ALL = 'ALL',
 	IT = 'IT',
 	SCIENCE = 'SCIENCE',
 	ECONOMICS = 'ECONOMICS',
