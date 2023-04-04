@@ -10,6 +10,7 @@ import { type StateSchema } from 'entities/Counter/public';
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
+	// createAsyncThunk<(что возвращаем), (что ожидаем на вход), { переопределение типа }
 	'articlesPage/fetchNextArticlesPage',
 	async (_, thunkApi) => {
 		const { getState, dispatch } = thunkApi;

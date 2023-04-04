@@ -18,6 +18,7 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
 		// const { page = 1 } = props;
 		const limit = getArticlesPageLimit(getState() as StateSchema); // getState - передать актуальный стейт в селектор
 
+		// селекторы
 		const page = getArticlesPageNumber(getState() as StateSchema);
 		const sort = getArticlesPageSort(getState() as StateSchema);
 		const order = getArticlesPageOrder(getState() as StateSchema);

@@ -23,6 +23,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from 'widgets/Page/Page';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArticlesPageProps {
 	className?: string;
@@ -52,8 +53,9 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 		void dispatch(fetchNextArticlesPage());
 	}, [dispatch]);
 
+	const [searchParams, setSearchParams] = useSearchParams();
 	useInitialEffect(() => {
-		void dispatch(initArticlesPage());
+		void dispatch(initArticlesPage(searchParams));
 	});
 
 	return (

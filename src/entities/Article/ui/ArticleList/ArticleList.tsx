@@ -9,6 +9,7 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { Text, TextSize } from 'shared/ui/Text/public';
 
 interface ArticleListProps {
 	className?: string;
@@ -44,6 +45,14 @@ export const ArticleList = memo((props: ArticleListProps) => {
 			key={article.id}
 		/>
 	);
+
+	if (!isLoading && !articles.length) {
+		return (
+			<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+				<Text size={TextSize.L} title={t('Статьи не найдены')}></Text>
+			</div>
+		);
+	}
 
 	return (
 		<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>

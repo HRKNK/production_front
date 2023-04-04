@@ -82,7 +82,7 @@ const articlesPageSlice = createSlice({
 			.addCase(fetchArticlesList.fulfilled, (state, action) => { // action: PayloadAction<Article[]> // запрос выполнен
 				state.isLoading = false;
 				// articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
-				state.hasMore = action.payload.length > 0; // есть ли ещё данные?
+				state.hasMore = action.payload.length >= state.limit; // есть ли ещё данные?
 
 				if (action.meta.arg.replace) { // аргументы из action // под сортировку
 					articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
