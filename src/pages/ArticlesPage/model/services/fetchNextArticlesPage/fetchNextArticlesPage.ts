@@ -5,7 +5,7 @@ import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { type ThunkConfig } from 'app/providers/StoreProvider/public';
+import { type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type StateSchema } from 'entities/Counter/public';
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type

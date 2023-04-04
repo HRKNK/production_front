@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { type FC, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
+
 import { type Reducer } from '@reduxjs/toolkit';
+import { type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/storeProvider/config/stateSchema';
 
 export type ReducersList = {
 	[name in StateSchemaKey]?: Reducer;

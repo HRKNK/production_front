@@ -5,7 +5,7 @@ import { articlesPageActions } from '../../slices/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { type StateSchema, type ThunkConfig } from 'app/providers/StoreProvider/public';
+import { type StateSchema, type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type ArticleType, type ArticleSortField } from 'entities/Article/public';
 import { type SortOrder } from 'shared/types';
 
