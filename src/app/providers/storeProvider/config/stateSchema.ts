@@ -5,21 +5,21 @@ import { type UserSchema } from 'entities/User/public';
 import { type LoginSchema } from 'features/AuthByUserName/public';
 import { type AxiosInstance } from 'axios';
 import { type ArticleDetailsSchema } from 'entities/Article/public';
-import { type ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage/public';
 import { type AddCommentFormSchema } from 'features/addCommentForm/public';
 import { type ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { type ScrollSaveSchema } from 'features/ScrollSave/public';
+import { type ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types/public';
 
 export interface StateSchema {
 	counter: counterSchema;
 	user: UserSchema;
 	scrollSave: ScrollSaveSchema;
 
-	// Асинк редьюсеры
+	// Асинк редьюсеры // inject редьюса происходит через компоненты с последующим пробросом в DynamicModuleLoader
 	loginForm?: LoginSchema;
 	profile?: ProfileSchema;
 	articleDetails?: ArticleDetailsSchema;
-	articleDetailsComments?: ArticleDetailsCommentsSchema;
+	articleDetailsPage?: ArticleDetailsPageSchema; // сгруппированная схема
 	addCommentForm?: AddCommentFormSchema;
 	articlesPage?: ArticlesPageSchema;
 }
