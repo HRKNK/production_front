@@ -16,6 +16,8 @@ import { getArticleRecommendations } from '../../model/slices/articleDetailsPage
 
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
@@ -54,9 +56,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const onBackToList = useCallback(() => { // возврат обратно к списку
-		navigate(RoutePath.articles);
-	}, [navigate]);
+	// const onBackToList = useCallback(() => { // возврат обратно к списку
+	// 	navigate(RoutePath.articles);
+	// }, [navigate]);
 
 	const onSendComment = useCallback((text: string) => {
 		void dispatch(addCommentForArticle(text));
@@ -78,9 +80,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-				<Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
+				{/* <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
 					{t('Назад к списку')}
-				</Button>
+				</Button> */}
+
+				{/* Шапка статей */}
+				<ArticleDetailsPageHeader></ArticleDetailsPageHeader>
 
 				{/* Список статей */}
 				<ArticleDetails id={id}></ArticleDetails>
