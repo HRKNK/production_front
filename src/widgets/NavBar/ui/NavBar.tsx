@@ -10,6 +10,9 @@ import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUserName/public';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User/public';
+import { Text } from 'shared/ui/Text/public';
+import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig';
 // import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 
 interface NavBarProps {
@@ -38,6 +41,10 @@ const NavBar = memo(({ className }: NavBarProps) => {
 	if (authData) {
 		return (
 			<header className={classNames(cls.navbar, {}, [className])}>
+				<Text className={cls.appName} title='APP'></Text>
+				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
+					{t('Создать статью')}
+				</AppLink>
 				<Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onLogout}>
 					{t('Выйти')}
 				</Button>
