@@ -6,6 +6,7 @@ import { NotFoundPage } from 'pages/NotFoundPage/public';
 import { ProfilePage } from 'pages/ProfilePage/public';
 import { ArticlesPage } from 'pages/ArticlesPage/public';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage/public';
+import { ArticleEditPage } from 'pages/ArticleEditPage/public';
 
 export type AppRouteProps = RouteProps & { // Route properties
 	authOnly?: boolean,
@@ -17,6 +18,8 @@ export enum AppRoutes {
 	PROFILE = 'profile',
 	ARTICLES = 'articles',
 	ARTICLES_DETAILS = 'articles_details',
+	ARTICLES_EDIT = 'articles_edit',
+	ARTICLES_CREATE = 'articles_create',
 	//
 	NOT_FOUND = 'not_found',
 }
@@ -28,6 +31,8 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.PROFILE]: '/profile/', // profile/10 ( id динамический путь )
 	[AppRoutes.ARTICLES]: '/articles',
 	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // articles/10 ( id динамический путь )
+	[AppRoutes.ARTICLES_EDIT]: '/articles/:id/edit', // редактирование статьи ( id динамический путь )
+	[AppRoutes.ARTICLES_CREATE]: '/articles/new', // новая статья
 	// Несуществующие маршруты: *
 	[AppRoutes.NOT_FOUND]: '*',
 };
@@ -56,6 +61,18 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.ARTICLES_DETAILS]: {
 		path: `${RoutePath.articles_details}:id`, // динамический путь
 		element: <ArticleDetailsPage/>,
+		authOnly: true, // только для авторизованных
+	},
+
+	// страница редактирования
+	[AppRoutes.ARTICLES_EDIT]: {
+		path: `${RoutePath.articles_edit}`,
+		element: <ArticleEditPage/>,
+		authOnly: true, // только для авторизованных
+	},
+	[AppRoutes.ARTICLES_CREATE]: {
+		path: `${RoutePath.articles_create}`,
+		element: <ArticleEditPage/>,
 		authOnly: true, // только для авторизованных
 	},
 
