@@ -3,10 +3,11 @@ import { type FC, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
 import { type Reducer } from '@reduxjs/toolkit';
-import { type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/storeProvider/config/stateSchema';
+import { type StateSchema, type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/storeProvider/config/stateSchema';
 
 export type ReducersList = {
-	[name in StateSchemaKey]?: Reducer;
+	[name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>; // забираем конкретное поле/название редьюса из StateSchema в качестве типа
+	// без типизации ?: Reducer; // выглядит как any
 };
 
 type ReducersListEntry = [StateSchemaKey, Reducer]; // строка типа StateSchemaKey, сам Reducer

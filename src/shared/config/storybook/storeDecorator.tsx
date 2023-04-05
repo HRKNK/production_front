@@ -7,7 +7,7 @@ import { type StateSchema } from 'entities/Counter/public';
 import { profileReducer } from 'entities/Profile/public';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices/public';
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 // const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
@@ -16,7 +16,7 @@ const defaultAsyncReducers: ReducersList = {
 	profile: profileReducer,
 	articleDetails: articleDetailsReducer,
 	addCommentForm: addCommentFormReducer,
-	articleDetailsComments: articleDetailsCommentsReducer,
+	articleDetailsPage: articleDetailsPageReducer,
 };
 
 // asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
