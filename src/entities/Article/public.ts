@@ -1,3 +1,5 @@
+export { getArticleDetailsData } from './model/selectors/articleDetails';
+
 export { ArticleList } from './ui/ArticleList/ArticleList';
 
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
