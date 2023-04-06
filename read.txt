@@ -85,6 +85,10 @@
 // Плагин для ESLINT по REACT хукам // https://www.npmjs.com/package/eslint-plugin-react-hooks
 // npm install eslint-plugin-react-hooks --save-dev
 
+// Плагин под копирование переводов i18n 
+// (Копирует отдельные файлы или целые каталоги, которые уже существуют, в каталог сборки.) // https://webpack.js.org/plugins/copy-webpack-plugin/
+// npm install copy-webpack-plugin --save-dev
+
 // Стейт-менеджер REDUX // https://redux.js.org/introduction/getting-started
 // npm i @reduxjs/toolkit react-redux @types/react-redux
 

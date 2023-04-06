@@ -5,6 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
 	const plugins = [
@@ -18,6 +19,11 @@ export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): 
 			_IS_DEV: JSON.stringify(isDev),
 			_API: JSON.stringify(apiUrl),
 			_PROJECT: JSON.stringify(project),
+		}),
+		new CopyPlugin({ // Копирует отдельные файлы или целые каталоги, которые уже существуют, в каталог сборки.
+			patterns: [
+				{ from: paths.locales, to: paths.buildLocales }, // откуда / куда
+			],
 		}),
 	];
 
