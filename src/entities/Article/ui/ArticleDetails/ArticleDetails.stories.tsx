@@ -1,10 +1,10 @@
 import { ArticleDetails } from './ArticleDetails';
 
+import { type Article, ArticleBlockType, ArticleType } from '../../model/types/article';
+
 import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { type Article } from 'entities/Article/public';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -52,7 +52,7 @@ const article: Article = {
 			],
 		},
 	],
-	user: undefined
+	user: undefined,
 };
 
 export const Normal = Template.bind({});

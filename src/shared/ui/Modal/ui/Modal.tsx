@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import cls from './Modal.module.scss';
 
+import Portal from '../../Portal/Portal';
+
 import React, { type MutableRefObject, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import Portal from 'shared/ui/Portal/Portal';
 import { useTheme } from 'app/providers/ThemeProvider/public';
 
 interface ModalProps {

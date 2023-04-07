@@ -1,6 +1,8 @@
 /* eslint-disable react/display-name */
 import cls from './ThemeSwitcher.module.scss';
 
+import Button, { ThemeButton } from '../../Button/Button';
+
 import { Theme, useTheme } from 'app/providers/ThemeProvider/public';
 import React, { memo } from 'react';
 
@@ -8,7 +10,6 @@ import classNames from 'shared/lib/classNames/classNames';
 
 import LightIcon from 'shared/assets/icons/theme-light.svg'; // реакт преобразовывает svg в реакт компонент = компонент наследует пропс-атрибуты характерные для svg
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
 
 interface ThemeSwitcherProps {
 	className?: string;

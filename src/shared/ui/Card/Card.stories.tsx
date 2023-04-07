@@ -1,9 +1,9 @@
 import { Card } from './Card';
 
+import Text from '../Text/ui/Text';
+
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-
-import { Text } from 'shared/ui/Text/public';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

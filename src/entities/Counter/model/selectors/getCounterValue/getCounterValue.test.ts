@@ -1,7 +1,8 @@
 import { getCounterValue } from './getCounterValue';
 
+import { type StateSchema } from 'app/providers/storeProvider/public';
+
 // import { type DeepPartial } from '@reduxjs/toolkit';
-import { type StateSchema } from 'entities/Counter/public';
 
 describe('getCounterValue', () => {
 	test('return counter value (number)', () => {

@@ -1,9 +1,10 @@
 import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
 
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+
 import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import { type Comment } from 'entities/Comment/public';
-import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { type StateSchema } from 'app/providers/storeProvider/public';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter

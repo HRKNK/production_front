@@ -1,9 +1,10 @@
 /* eslint-disable react/display-name */
 import cls from './Code.module.scss';
 
+import Button, { ThemeButton } from '../Button/Button';
+
 import classNames from 'shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import CopyIcon from 'shared/assets/icons/copy.svg';
 
 interface CodeProps {

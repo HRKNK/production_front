@@ -1,4 +1,4 @@
-import { type Article } from 'entities/Article/public';
+import { type Article } from './article';
 
 export interface ArticleDetailsSchema { // для slice
 	isLoading: boolean;

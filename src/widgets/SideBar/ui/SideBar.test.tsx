@@ -1,8 +1,8 @@
+import SideBar from '../ui/SideBar';
+
 import { fireEvent, render, screen } from '@testing-library/react';
 import componentRender from 'shared/lib/tests/componentRender';
 // import { withTranslation } from 'react-i18next';
-
-import SideBar from 'widgets/SideBar/ui/SideBar';
 
 describe('SideBar', () => { // коллекция тестов
 	test('sidebar render', () => {
