@@ -26,7 +26,7 @@ module.exports = {
 		sourceType: 'module',
 		project: ['./tsconfig.json'],
 	},
-	plugins: ['react', 'i18next', 'react-hooks'],
+	plugins: ['react', 'i18next', 'react-hooks', 'custom-plugin'],
 	rules: {
 		'no-console': 'warn', // варнинги на консоль в коде
 
@@ -82,6 +82,8 @@ module.exports = {
 					},
 				},
 			}],
+
+		'custom-plugin/path-checker': 'error',
 		//
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
