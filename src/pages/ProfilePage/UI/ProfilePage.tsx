@@ -18,6 +18,7 @@ import { Text, TextTheme } from 'shared/ui/Text/public';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack/public';
 
 const reducers: ReducersList = {
 	profile: profileReducer,
@@ -89,24 +90,26 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<Page className={classNames('', {}, [className])}>
-				<ProfilePageHeader></ProfilePageHeader>
-				{ validateErrors?.length && validateErrors.map((error, id) => {
-					return <Text key={id} theme={TextTheme.ERROR} text={validateErrorsTranslate[error]}></Text>;
-				}) }
-				<ProfileCard
-					onChangeUserName={onChangeUserName}
-					onChangeAvatar={onChangeAvatar}
-					onChangeCity={onChangeCity}
-					onChangeAge={onChangeAge}
-					onChangeFirstname={onChangeFirstname}
-					onChangeLastname={onChangeLastname}
-					onChangeCurrency={onChangeCurrency}
-					onChangeCountry={onChangeCountry}
-					data={formData}
-					isLoading={isLoading}
-					error={error}
-					readonly={readOnly}
-				/>
+				<VStack max gap={'16'}>
+					<ProfilePageHeader></ProfilePageHeader>
+					{ validateErrors?.length && validateErrors.map((error, id) => {
+						return <Text key={id} theme={TextTheme.ERROR} text={validateErrorsTranslate[error]}></Text>;
+					}) }
+					<ProfileCard
+						onChangeUserName={onChangeUserName}
+						onChangeAvatar={onChangeAvatar}
+						onChangeCity={onChangeCity}
+						onChangeAge={onChangeAge}
+						onChangeFirstname={onChangeFirstname}
+						onChangeLastname={onChangeLastname}
+						onChangeCurrency={onChangeCurrency}
+						onChangeCountry={onChangeCountry}
+						data={formData}
+						isLoading={isLoading}
+						error={error}
+						readonly={readOnly}
+					/>
+				</VStack>
 			</Page>
 		</DynamicModuleLoader>
 	);

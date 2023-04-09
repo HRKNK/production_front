@@ -7,18 +7,20 @@
 
 .icon {
 	fill: var(--primary-color);
+	width: 100%;
 }
 
 .link {
 	opacity: 0;
 	transition: 0.2s opacity;
 	width: 0;
+	white-space: nowrap;
 }
 
 .collapsed {
 	.link {
 		width: 100%;
-		margin-left: 10px;
+		margin-left: 15px;
 		opacity: 1;
 	}
 }

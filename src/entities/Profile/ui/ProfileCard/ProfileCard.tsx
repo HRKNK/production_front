@@ -11,6 +11,7 @@ import { Loader } from 'shared/ui/Loader/public';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { type Currency, CurrencySelect } from 'entities/Currency/public';
 import { CountrySelect, type Country } from 'entities/Country/public';
+import { HStack, VStack } from 'shared/ui/Stack/public';
 
 interface ProfileCardProps {
 	className?: string;
@@ -38,23 +39,23 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
 	if (isLoading) {
 		return (
-			<div className={classNames(cls.ProfileCard, { [cls.isLoading]: true }, [className])}>
+			<HStack gap={'8'} justify='center' max className={classNames(cls.ProfileCard, { [cls.isLoading]: true }, [className])}>
 				{/* <div className={classNames(cls.profileCard__loader, {}, [className])}/> */}
 				<Loader></Loader>
-			</div>
+			</HStack>
 		);
 	}
 
 	if (error) {
 		return (
-			<div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+			<HStack gap={'8'} justify='center' max className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
 				<Text
 					theme={TextTheme.ERROR}
 					title={t('Произошла ошибка')}
 					text={t('Попробуйте обновить страницу')}
 					align={TextAlign.CENTER}
 				/>
-			</div>
+			</HStack>
 		);
 	}
 
@@ -63,7 +64,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
 	};
 
 	return (
-		<div className={classNames(cls.ProfileCard, mods, [className])}>
+		<VStack gap={'8'} max className={classNames(cls.ProfileCard, mods, [className])}>
 			{/* <div className={cls.header}> // Перенесено в ProfilePageHeader.tsx
 				<Text title={t('Профиль')} />
 				<Button
@@ -73,7 +74,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
 					{t('Редактировать')}
 				</Button>
 			</div> */}
-			{data?.avatar && <div className={cls.avatarWrapper}><Avatar src={data?.avatar}/></div>}
+			{data?.avatar && <HStack max gap='8' justify='center'><Avatar src={data?.avatar}/></HStack>}
 			<div className={cls.data}>
 				<Input
 					value={data?.first}
@@ -120,6 +121,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
 				<CurrencySelect className={cls.input} onChange={onChangeCurrency} readonly={readonly} value={data?.currency}/>
 				<CountrySelect className={cls.input} onChange={onChangeCountry} readonly={readonly} value={data?.country}/>
 			</div>
-		</div>
+		</VStack>
 	);
 };

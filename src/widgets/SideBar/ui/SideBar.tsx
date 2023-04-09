@@ -18,6 +18,7 @@ import { RoutePath } from 'shared/config/routeConfig';
 import MainIcon from 'shared/assets/icons/main.svg';
 import AboutIcon from 'shared/assets/icons/about.svg';
 import { useSelector } from 'react-redux';
+import { VStack } from 'shared/ui/Stack/public';
 
 interface SideBarProps {
 	className?: string;
@@ -49,7 +50,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 			>{collapsed ? '<' : '>'}
 			</Button>
 
-			<div className={cls.items}>
+			<VStack gap={'8'} className={cls.items}>
 				{/* переходы по страницам(отменяет явление перезагрузки)
 				<Link to={'/'} className={cls.link}>Главная</Link>
 				<Link to={'/about'} className={cls.link}>О сайте</Link> */}
@@ -62,7 +63,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 					<span className={cls.link}>О сайте</span>
 				</AppLink> */}
 				{sideBarItemsList.map((item, id) => <SidebarItem key={id} item={item} collapsed={collapsed}></SidebarItem>)}
-			</div>
+			</VStack>
 
 			<div className={cls.switchers}>
 				<ThemeSwitcher></ThemeSwitcher>
