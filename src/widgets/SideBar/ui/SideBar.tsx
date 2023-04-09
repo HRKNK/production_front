@@ -36,7 +36,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 	// }, [collapsed]);
 
 	return (
-		<menu data-testid='sidebar' className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
+		<section data-testid='sidebar' className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
 
 			<BugButton></BugButton>
 
@@ -50,7 +50,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 			>{collapsed ? '<' : '>'}
 			</Button>
 
-			<VStack gap={'8'} className={cls.items}>
+			<VStack role='navigation' gap={'8'} className={cls.items}>
 				{/* переходы по страницам(отменяет явление перезагрузки)
 				<Link to={'/'} className={cls.link}>Главная</Link>
 				<Link to={'/about'} className={cls.link}>О сайте</Link> */}
@@ -70,7 +70,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
 				<LangSwither short={collapsed} className={cls.lang}></LangSwither>
 			</div>
 
-		</menu>
+		</section>
 	);
 });
 
