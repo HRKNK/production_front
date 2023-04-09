@@ -25,9 +25,17 @@ interface TextProps {
 }
 
 export enum TextSize {
+	S = 'size_s',
 	M = 'size_m',
 	L = 'size_l',
 }
+
+type HeaderTagType = 'h1' | 'h2' | 'h3'; // мапер тегов
+const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
+	[TextSize.S]: 'h3',
+	[TextSize.M]: 'h2',
+	[TextSize.L]: 'h1',
+};
 
 const Text = memo((props: TextProps) => {
 	const {
@@ -45,9 +53,11 @@ const Text = memo((props: TextProps) => {
 		[cls[size]]: true,
 	};
 
+	const HeaderTag = mapSizeToHeaderTag[size]; // по размеру достаем текущий тэг // h1 | h2 | h3
+
 	return (
 		<div className={classNames(cls.Text, mods, [className])}>
-			{title && <p className={cls.title}>{title}</p>}
+			{title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
 			{text && <p className={cls.text}>{text}</p>}
 		</div>
 	);
