@@ -118,8 +118,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
 					onChange={onChangeUserName}
 					readonly={readonly}
 				/>
-				<CurrencySelect className={cls.input} onChange={onChangeCurrency} readonly={readonly} value={data?.currency}/>
-				<CountrySelect className={cls.input} onChange={onChangeCountry} readonly={readonly} value={data?.country}/>
+				<HStack gap='16'>
+					<CurrencySelect className={cls.input} onChange={onChangeCurrency} readonly={readonly} value={data?.currency}/>
+					<CountrySelect className={cls.input} onChange={onChangeCountry} readonly={readonly} value={data?.country}/>
+				</HStack>
 			</div>
 		</VStack>
 	);

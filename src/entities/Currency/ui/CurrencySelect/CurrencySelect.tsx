@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui/Select/public';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
 
 interface CurrencySelectProps {
 	className?: string;
@@ -19,15 +20,25 @@ const options = [
 ];
 
 // eslint-disable-next-line react/display-name
-export const CurrencySelect = memo(({
-	className, value, onChange, readonly,
-}: CurrencySelectProps) => {
+export const CurrencySelect = memo(({ className, value, onChange, readonly }: CurrencySelectProps) => {
 	const { t } = useTranslation();
 
 	const onChangeHandler = useCallback((value: string) => {
 		onChange?.(value as Currency);
 	}, [onChange]);
 
+	return (
+		<ListBox
+			className={className}
+			value={value}
+			defaultValue={t('Укажите валюту')}
+			items={options}
+			onChange={onChangeHandler}
+			readonly={readonly}
+		></ListBox>
+	);
+
+	/*
 	return (
 		<Select
 			className={classNames('', {}, [className])}
@@ -38,4 +49,5 @@ export const CurrencySelect = memo(({
 			readonly={readonly}
 		/>
 	);
+	*/
 });

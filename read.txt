@@ -99,3 +99,14 @@
 
 // React Refresh (HOT REFRESH | SERVER) // https://github.com/pmmmwh/react-refresh-webpack-plugin
 // npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+
+// UI Библиотеки
+// UI Headless имеет маленький вес пакета
+// https://headlessui.com/
+
+// Альтернатива
+// https://mui.com/core/
+// https://react-spectrum.adobe.com/react-aria/
+
+// Библиотека вычислений позиций
+// https://floating-ui.com/
