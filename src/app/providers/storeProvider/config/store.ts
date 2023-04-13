@@ -7,6 +7,7 @@ import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
 import { $api } from 'shared/api/api';
 import { scrollSaveReducer } from 'features/ScrollSave/public';
+import { rtkApi } from 'shared/api/rtkApi';
 // import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
@@ -18,6 +19,9 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 		user: userReducer,
 		scrollSave: scrollSaveReducer,
 		// loginForm: loginReducer,
+
+		// Регистрация РТК
+		[rtkApi.reducerPath]: rtkApi.reducer,
 	};
 
 	const reducerManager = createReducerManager(rootReducers);
@@ -35,11 +39,11 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 		devTools: _IS_DEV,
 		preloadedState: initialState,
 		// @ts-expect-error
-		middleware: getDefaultMiddleware => getDefaultMiddleware({
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 			thunk: {
 				extraArgument: extraArg,
 			},
-		}),
+		}).concat(rtkApi.middleware),
 	});
 
 	// @ts-expect-error

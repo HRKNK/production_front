@@ -9,11 +9,14 @@ import { type AddCommentFormSchema } from 'features/addCommentForm/public';
 import { type ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageSchema';
 import { type ScrollSaveSchema } from 'features/ScrollSave/public';
 import { type ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types/public';
+import { type rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
 	counter: counterSchema;
 	user: UserSchema;
 	scrollSave: ScrollSaveSchema;
+	// РТК // Путь до редьюса : динамически-возвращаемое значение
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
 	// Асинк редьюсеры // inject редьюса происходит через компоненты с последующим пробросом в DynamicModuleLoader
 	loginForm?: LoginSchema;
