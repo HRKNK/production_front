@@ -4,9 +4,9 @@ import { type Story } from '@storybook/react';
 import { StoreProvider } from 'app/providers/storeProvider/public';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { type StateSchema } from 'entities/Counter/public';
-import { profileReducer } from 'entities/Profile/public';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
+import { profileReducer } from 'features/editableProfileCard/model/slice/profileSlice';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices/public';
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 

@@ -1,6 +1,5 @@
 import { type CombinedState, type AnyAction, type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type counterSchema } from 'entities/Counter/public';
-import { type ProfileSchema } from 'entities/Profile/public';
 import { type UserSchema } from 'entities/User/public';
 import { type LoginSchema } from 'features/AuthByUserName/public';
 import { type AxiosInstance } from 'axios';
@@ -10,6 +9,7 @@ import { type ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articles
 import { type ScrollSaveSchema } from 'features/ScrollSave/public';
 import { type ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types/public';
 import { type rtkApi } from 'shared/api/rtkApi';
+import { type ProfileSchema } from 'features/editableProfileCard/public';
 
 export interface StateSchema {
 	counter: counterSchema;
