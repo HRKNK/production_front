@@ -2,6 +2,7 @@
 node_modules
 .loki
 /storybook-static
+reports
 
 # webStorm
 .idea

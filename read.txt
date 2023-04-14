@@ -66,6 +66,9 @@
 // npm i --save-dev @types/jest // типы для JEST
 // npm i --save-dev @babel/preset-typescript
 
+// HTML report для тестов
+// npm install jest-html-reporters --save-dev
+
 // Библиотека теста реакт-компонентов // https://testing-library.com/docs/react-testing-library/intro/
 // npm install --save-dev @testing-library/react@12.1.3 (работает на 17-ой версии реакта)
 // npm install --save-dev @testing-library/jest-dom

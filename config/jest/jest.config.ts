@@ -6,6 +6,7 @@
 import path from 'path';
 
 export default {
+
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
 
@@ -44,6 +45,17 @@ export default {
 
 	// The root directory that Jest should scan for tests and modules within
 	rootDir: '../../',
+
+	// https://www.npmjs.com/package/jest-html-reporters
+	reporters: [
+		'default',
+		['jest-html-reporters', {
+			publicPath: '<rootDir>/reports/unit',
+			filename: 'report.html',
+			openReport: true,
+			inlineSource: true,
+		}],
+	],
 
 	// Automatically clear mock calls, instances, contexts and results before every test
 	clearMocks: true,
