@@ -1,21 +1,20 @@
 import cls from './ArticlesPage.module.scss';
 
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import { articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
 
-import { getArticlesPageError, getArticlesPageInited, getArticlesPageIsLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelectors';
+import { getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelectors';
 
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+
+import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import { ArticleList, ArticleViewSelector, type ArticleView } from 'entities/Article/public';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
@@ -43,16 +42,17 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 	const view = useSelector(getArticlesPageView);
 	const error = useSelector(getArticlesPageError);
 
-	// Смена вида отображения статей (достается из слайса > локал)
-	const onChangeView = useCallback((view: ArticleView) => {
-		dispatch(articlesPageActions.setView(view));
-	}, [dispatch]);
+	// // Смена вида отображения статей (достается из слайса > локал)
+	// const onChangeView = useCallback((view: ArticleView) => {
+	// 	dispatch(articlesPageActions.setView(view));
+	// }, [dispatch]);
 
 	// Pagination
 	const onLoadNextPart = useCallback(() => {
 		void dispatch(fetchNextArticlesPage());
 	}, [dispatch]);
 
+	// init query params
 	const [searchParams, setSearchParams] = useSearchParams();
 	useInitialEffect(() => {
 		void dispatch(initArticlesPage(searchParams));
@@ -62,14 +62,13 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 		// Удаление редьюса
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
 			<Page onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
-				<div className={classNames(cls.ArticlesPage, {}, [className])}>
-					{/* Селектор вида отображения статей
-					<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
-					{/* Фильтры */}
-					<ArticlesPageFilters></ArticlesPageFilters>
-					{/* Список статей */}
-					<ArticleList isLoading={isLoading} view={view} articles={articles}/>
-				</div>
+				{/* Селектор вида отображения статей. UPD: Перенесено в ArticlesPageFilters
+				<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
+				{/* Фильтры */}
+				<ArticlesPageFilters></ArticlesPageFilters>
+				{/* Список статей. UPD: Перенесено в UI сегмент */}
+				<ArticleInfiniteList></ArticleInfiniteList>
+				{/* <ArticleList isLoading={isLoading} view={view} articles={articles}/> */}
 			</Page>
 		</DynamicModuleLoader>
 	);
