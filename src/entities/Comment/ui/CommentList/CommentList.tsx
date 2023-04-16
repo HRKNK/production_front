@@ -8,6 +8,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Text } from 'shared/ui/Text/public';
 import { useTranslation } from 'react-i18next';
+import { VStack } from 'shared/ui/Stack/public';
 
 interface CommentListProps {
 	className?: string;
@@ -21,7 +22,7 @@ export const CommentList = memo((props: CommentListProps) => {
 	const { t } = useTranslation();
 
 	return (
-		<div className={classNames(cls.CommentList, {}, [className])}>
+		<VStack gap='16' max className={classNames(cls.CommentList, {}, [className])}>
 			{comments?.length // Есть массив комментариев / Массива нет
 				? comments.map((comment) => (
 					<CommentCard
@@ -32,6 +33,6 @@ export const CommentList = memo((props: CommentListProps) => {
 					/>
 				))
 				: <Text text={t('Комментарии отсутствуют')} />}
-		</div>
+		</VStack>
 	);
 });

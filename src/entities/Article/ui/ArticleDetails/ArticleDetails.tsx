@@ -24,6 +24,7 @@ import { Avatar } from 'shared/ui/Avatar/public';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { VStack } from 'shared/ui/Stack/public';
 
 interface ArticleDetailsProps {
 	className?: string;
@@ -135,9 +136,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	return (
 		// динамически-удаляемый редьюсер
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-			<div className={classNames(cls.ArticleDetails, {}, [className])}>
+			<VStack gap='16' max className={classNames(cls.ArticleDetails, {}, [className])}>
 				{content}
-			</div>
+			</VStack>
 		</DynamicModuleLoader>
 	);
 });

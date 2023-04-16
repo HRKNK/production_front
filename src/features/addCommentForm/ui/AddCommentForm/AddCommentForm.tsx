@@ -11,6 +11,7 @@ import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from 'shared/ui/Stack/public';
 
 export interface AddCommentFormProps {
 	className?: string;
@@ -40,22 +41,24 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 	}, [onCommentTextChange, onSendComment, text]);
 
 	return (
-		<DynamicModuleLoader reducers={reducers}>
-			<div className={classNames(cls.AddCommentForm, {}, [className])}>
-				<Input
-					className={cls.input}
-					placeholder={t('Введите текст комментария')}
-					value={text}
-					onChange={onCommentTextChange}
-				/>
-				<Button
-					theme={ThemeButton.OUTLINE}
-					onClick={onSendHandler}
-				>
-					{t('Отправить')}
-				</Button>
-			</div>
-		</DynamicModuleLoader>
+		<VStack gap='8' max>
+			<DynamicModuleLoader reducers={reducers}>
+				<div className={classNames(cls.AddCommentForm, {}, [className])}>
+					<Input
+						className={cls.input}
+						placeholder={t('Введите текст комментария')}
+						value={text}
+						onChange={onCommentTextChange}
+					/>
+					<Button
+						theme={ThemeButton.OUTLINE}
+						onClick={onSendHandler}
+					>
+						{t('Отправить')}
+					</Button>
+				</div>
+			</DynamicModuleLoader>
+		</VStack>
 	);
 });
 
