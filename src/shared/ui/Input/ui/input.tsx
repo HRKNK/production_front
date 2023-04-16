@@ -58,6 +58,7 @@ const Input = memo((props: InputProps) => {
 					onChange={onChangeHandler}
 					className={cls.input}
 					readOnly={readonly}
+					{...otherProps}
 				/>
 				{isCaretVisible && <span style={{ left: `${caretPosition * 9}px` }} className={cls.caret}></span>}
 				{/* {isFocus && <span style={{ left: `${caretPosition * 9}px` }} className={cls.caret}></span>} */}
