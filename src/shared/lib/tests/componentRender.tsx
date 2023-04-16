@@ -1,6 +1,7 @@
 // https://react.i18next.com/misc/testing
 
 // import { type DeepPartial } from '@reduxjs/toolkit';
+import { type ReducersMapObject } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
 import { StoreProvider } from 'app/providers/storeProvider/public';
 import { type StateSchema } from 'entities/Counter/public';
@@ -13,13 +14,14 @@ import i18nft from 'shared/config/I18n/i18n-for-test';
 export interface renderWithRouterOption {
 	route?: string;
 	initialState?: DeepPartial<StateSchema>;
+	asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
 }
 
 const componentRender = (component: ReactNode, option: renderWithRouterOption = {}) => {
-	const { route = '/', initialState } = option;
+	const { route = '/', initialState, asyncReducers } = option;
 	return render(
 		<MemoryRouter initialEntries={[route]}>
-			<StoreProvider initialState={initialState}>
+			<StoreProvider asyncReducers={asyncReducers} initialState={initialState}>
 				<I18nextProvider i18n={i18nft}>
 					{component}
 				</I18nextProvider>
