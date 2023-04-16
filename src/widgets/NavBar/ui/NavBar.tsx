@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUserName/public';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User/public';
+import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User/public';
 import { Text } from 'shared/ui/Text/public';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig';
@@ -24,6 +24,8 @@ interface NavBarProps {
 const NavBar = memo(({ className }: NavBarProps) => {
 	const [isAuthModal, setisAuthModal] = useState(false);
 	const { t } = useTranslation();
+	const isAdmin = useSelector(isUserAdmin);
+	const isManager = useSelector(isUserManager);
 
 	const authData = useSelector(getUserAuthData);
 	const dispatch = useDispatch();
@@ -40,6 +42,8 @@ const NavBar = memo(({ className }: NavBarProps) => {
 		dispatch(userActions.logout());
 	}, [dispatch]);
 
+	const isAdminPanelAvailable = isAdmin || isManager;
+
 	if (authData) {
 		return (
 			<header className={classNames(cls.navbar, {}, [className])}>
@@ -50,7 +54,13 @@ const NavBar = memo(({ className }: NavBarProps) => {
 
 				{/* Выпадающий список ссылок */}
 				<Dropdown className={cls.dropdown} direction={'bottom left'}
-					items={[
+					items={[ // ссылки
+						...(isAdminPanelAvailable
+							? [{
+								content: t('Админка'),
+								href: RoutePath.admin_panel,
+							}]
+							: []),
 						{
 							content: t('Выйти'),
 							onClick: onLogout,

@@ -560,15 +560,22 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
-      "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
+      "roles": ["USER"],
+      "avatar": "https://cdn-icons-png.flaticon.com/512/206/206864.png"
+    },
+    {
+      "id": "3",
+      "username": "manager",
+      "password": "123",
+      "roles": ["MANAGER"],
+      "avatar": "https://cdn-icons-png.flaticon.com/512/345/345636.png"
     }
   ],
   "profile": [
