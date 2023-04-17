@@ -1,8 +1,9 @@
-import { styleDecorator } from '../../src/shared/config/storybook/styleDecorator';
-import { themeDecorator } from '../../src/shared/config/storybook/themeDecorator';
-import { Theme } from '../../src/app/providers/ThemeProvider/public';
-import { routeDecorator } from '../../src/shared/config/storybook/routeDecorator';
-import { translationDecorator } from '../../src/shared/config/storybook/translationDecorator';
+import { styleDecorator } from 'shared/config/storybook/styleDecorator';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+import { Theme } from 'app/providers/ThemeProvider/public';
+import { routeDecorator } from 'shared/config/storybook/routeDecorator';
+import { translationDecorator } from 'shared/config/storybook/translationDecorator';
+import { suspenseDecorator } from 'shared/config/storybook/SuspenseDecorator';
 
 import { addDecorator } from '@storybook/react';
 
@@ -21,3 +22,4 @@ addDecorator(routeDecorator);
 addDecorator(styleDecorator);
 addDecorator(themeDecorator(Theme.DARK));
 addDecorator(translationDecorator);
+addDecorator(suspenseDecorator);
