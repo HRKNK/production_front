@@ -32,7 +32,7 @@ import { ProfileCard } from 'entities/Profile/public';
 
 interface EditableProfileCardProps {
 	className?: string;
-	id: string;
+	id?: string;
 }
 
 const reducers: ReducersList = {
