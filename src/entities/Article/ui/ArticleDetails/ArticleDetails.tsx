@@ -28,7 +28,7 @@ import { VStack } from 'shared/ui/Stack/public';
 
 interface ArticleDetailsProps {
 	className?: string;
-	id: string;
+	id?: string;
 }
 
 const reducers: ReducersList = { // передается в DynamicModuleLoader

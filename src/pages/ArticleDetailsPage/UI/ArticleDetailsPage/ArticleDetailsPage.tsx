@@ -73,13 +73,13 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	// 	void dispatch(fetchArticleRecommendations()); // статьи с рекомендациями (ограничение внутри)
 	// });
 
-	if (!id) {
-		return (
-			<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-				{t('Статья не найдена')}
-			</div>
-		);
-	}
+	// if (!id) { // заколхозил в запрос fetchArticleById
+	// 	return (
+	// 		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+	// 			{t('Статья не найдена')}
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>

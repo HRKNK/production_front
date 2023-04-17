@@ -2,6 +2,7 @@ import { ArticleDetailsComments } from './ArticleDetailsComments';
 
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -15,4 +16,7 @@ export default {
 const Template: ComponentStory<typeof ArticleDetailsComments> = (args) => <ArticleDetailsComments {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+	id: '1',
+};
+Normal.decorators = [StoreDecorator({})];

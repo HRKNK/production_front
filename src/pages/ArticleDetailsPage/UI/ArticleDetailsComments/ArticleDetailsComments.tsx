@@ -19,7 +19,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface ArticleDetailsCommentsProps {
 	className?: string;
-	id: string;
+	id?: string;
 }
 
 // eslint-disable-next-line react/display-name

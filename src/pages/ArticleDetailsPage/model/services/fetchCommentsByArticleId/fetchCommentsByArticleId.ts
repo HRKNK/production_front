@@ -8,7 +8,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<Comment[], string | und
 	async (articleId, thunkApi) => { // articleId: string = принят на вход createAsyncThunk
 		const { extra, rejectWithValue } = thunkApi;
 
-		if (!articleId) {
+		if (!articleId) { // если undefined
 			return rejectWithValue('error');
 		}
 
