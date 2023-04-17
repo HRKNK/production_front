@@ -1,9 +1,8 @@
 import App from './app/App';
 
 import React from 'react';
-import { render } from 'react-dom';
 // npm i react react-dom
-
+import { createRoot } from 'react-dom/client';
 import 'app/styles/index.scss';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +12,9 @@ import 'shared/config/I18n/i18n';
 import { ErrorBoundary } from 'app/providers/ErrorBoundary/public';
 import StoreProvider from 'app/providers/storeProvider/ui/storeProvider';
 
-render(
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
 	<BrowserRouter>
 		<StoreProvider>
 			<ErrorBoundary>
@@ -22,6 +23,5 @@ render(
 				</ThemeProvider>
 			</ErrorBoundary>
 		</StoreProvider>
-	</BrowserRouter>
-	, document.getElementById('root'),
+	</BrowserRouter>,
 );

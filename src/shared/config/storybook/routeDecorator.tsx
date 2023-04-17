@@ -2,10 +2,10 @@ import { type Story } from '@storybook/react';
 import 'app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 
-export const routeDecorator = (story: () => Story) => {
+export const routeDecorator = (StoryComponent: Story) => {
 	return (
 		<BrowserRouter>
-			{story()}
+			<StoryComponent />
 		</BrowserRouter>
 	);
 };

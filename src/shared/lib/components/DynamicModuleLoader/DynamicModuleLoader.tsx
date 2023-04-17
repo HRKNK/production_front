@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import { type FC, useEffect } from 'react';
+import { type FC, useEffect, type ReactNode } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
 import { type Reducer } from '@reduxjs/toolkit';
@@ -15,6 +15,7 @@ type ReducersListEntry = [StateSchemaKey, Reducer]; // строка типа Sta
 interface DynamicModuleLoaderProps {
 	reducers: ReducersList;
 	removeAfterUnmount?: boolean;
+	children?: ReactNode;
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
