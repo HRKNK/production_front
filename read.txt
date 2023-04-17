@@ -77,6 +77,9 @@
 // Библиотека тестирования компонентов Storybook // https://storybook.js.org/blog/storybook-for-webpack-5/
 // npx sb init --builder webpack5 // установка с флагом для вэбпака 5-ой версии
 
+// Мок-аддон для Storybook https://storybook-addon-mock.vercel.app/?path=/docs/docs-installation--docs
+// npm install storybook-addon-mock
+
 // Скриншотное тестирование LOKI // https://loki.js.org/getting-started.html (работает в связке со Storybook)
 // npm i loki --save-dev
 // npx loki init --config ./config/storybook/
@@ -113,3 +116,7 @@
 
 // Библиотека вычислений позиций
 // https://floating-ui.com/
+
+// Для виртуализации
+// https://www.npmjs.com/package/react-window
+// https://www.npmjs.com/package/react-virtuoso

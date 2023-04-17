@@ -3,7 +3,7 @@ import { themeDecorator } from 'shared/config/storybook/themeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/public';
 import { routeDecorator } from 'shared/config/storybook/routeDecorator';
 import { translationDecorator } from 'shared/config/storybook/translationDecorator';
-import { suspenseDecorator } from 'shared/config/storybook/SuspenseDecorator';
+import { suspenseDecorator } from 'shared/config/storybook/suspenseDecorator';
 
 import { addDecorator } from '@storybook/react';
 
