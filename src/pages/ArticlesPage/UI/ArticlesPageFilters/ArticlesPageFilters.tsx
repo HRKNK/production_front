@@ -11,14 +11,13 @@ import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useMemo } from 'react';
-import { type ArticleSortField, ArticleSortSelector, ArticleTypeTabs, type ArticleView, ArticleViewSelector } from 'entities/Article/public';
+import { type ArticleSortField, ArticleSortSelector, ArticleTypeTabs, type ArticleView, ArticleViewSelector, type ArticleType } from 'entities/Article/public';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/public';
 import { type SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { type ArticleType } from 'entities/Article/model/types/article';
 
 interface ArticlesPageFiltersProps {
 	className?: string;

@@ -12,9 +12,9 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 
-import { ValidateProfileError } from '../../model/types/editableProfileCardSchema';
-
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+
+import { ValidateProfileError } from '../../model/consts/consts';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';

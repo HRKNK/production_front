@@ -1,6 +1,6 @@
 import { getValidateProfileErrors } from './getValidateProfileErrors';
 
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../../consts/consts';
 
 import { type StateSchema } from 'app/providers/storeProvider/public';
 

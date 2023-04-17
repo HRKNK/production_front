@@ -1,10 +1,10 @@
 import cls from './ArticleListItem.module.scss';
 
-import {
-	type Article, ArticleBlockType, type ArticleTextBlock, ArticleView,
-} from '../../model/types/article';
+import { type Article, type ArticleTextBlock } from '../../model/types/article';
 
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';

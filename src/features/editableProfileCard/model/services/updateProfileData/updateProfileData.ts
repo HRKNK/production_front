@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
 
 import { validateProfileData } from '../validateProfileData/validateProfileData';
+
+import { ValidateProfileError } from '../../consts/consts';
 
 import { type Profile } from 'entities/Profile/public';
 

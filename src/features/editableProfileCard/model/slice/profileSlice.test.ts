@@ -2,7 +2,9 @@ import { profileActions, profileReducer } from './profileSlice';
 
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
-import { type ProfileSchema, ValidateProfileError } from '../types/editableProfileCardSchema';
+import { type ProfileSchema } from '../types/editableProfileCardSchema';
+
+import { ValidateProfileError } from '../consts/consts';
 
 import { Country } from 'entities/Country/model/types/country';
 import { Currency } from 'entities/Currency/model/types/currency';

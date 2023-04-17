@@ -1,4 +1,4 @@
-import { UserRole } from '../../types/user';
+import { UserRole } from '../../consts/consts';
 
 import { createSelector } from '@reduxjs/toolkit';
 import { type StateSchema } from 'app/providers/storeProvider/public';

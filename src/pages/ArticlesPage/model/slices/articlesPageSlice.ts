@@ -3,10 +3,9 @@ import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchA
 import { type ArticlesPageSchema } from '../types/articlesPageSchema';
 
 import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { type Article, ArticleView } from 'entities/Article/public';
+import { type Article, ArticleView, ArticleSortField, ArticleType } from 'entities/Article/public';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { type StateSchema } from 'app/providers/storeProvider/public';
-import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import { type SortOrder } from 'shared/types';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter

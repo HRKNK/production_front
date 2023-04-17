@@ -1,6 +1,8 @@
 import { ArticleListItem } from './ArticleListItem';
 
-import { type Article, ArticleView } from '../../model/types/article';
+import { type Article } from '../../model/types/article';
+
+import { ArticleView } from '../../model/consts/consts';
 
 import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';

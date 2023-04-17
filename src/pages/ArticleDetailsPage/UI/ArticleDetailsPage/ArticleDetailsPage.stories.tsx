@@ -3,7 +3,8 @@ import ArticleDetailsPage from './ArticleDetailsPage';
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
-import { type Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { type Article } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleType } from 'entities/Article/model/consts/consts';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

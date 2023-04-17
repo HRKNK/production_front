@@ -1,4 +1,5 @@
-import { ArticleType } from '../../model/types/article';
+
+import { ArticleType } from '../../model/consts/consts';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';

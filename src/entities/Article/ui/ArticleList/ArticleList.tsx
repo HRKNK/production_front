@@ -2,9 +2,11 @@ import cls from './ArticleList.module.scss';
 
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 
-import { type Article, ArticleView } from '../../model/types/article';
+import { type Article } from '../../model/types/article';
 
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+
+import { ArticleView } from '../../model/consts/consts';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';

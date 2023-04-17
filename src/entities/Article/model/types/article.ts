@@ -1,16 +1,6 @@
+import { type ArticleBlockType, type ArticleType } from '../consts/consts';
+
 import { type User } from 'entities/User/public';
-
-export enum ArticleBlockType {
-	CODE = 'CODE',
-	IMAGE = 'IMAGE',
-	TEXT = 'TEXT',
-}
-
-export enum ArticleSortField {
-	VIEWS = 'views',
-	TITLE = 'title',
-	CREATED = 'createdAt',
-}
 
 export interface ArticleBlockBase { // одинаковые поля в статьях
 	id: string;
@@ -32,19 +22,6 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 	title?: string;
 }
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock; // объединяющий тип
-//
-
-export enum ArticleType { // тема статей
-	ALL = 'ALL',
-	IT = 'IT',
-	SCIENCE = 'SCIENCE',
-	ECONOMICS = 'ECONOMICS',
-}
-
-export enum ArticleView { // Вид страниц
-	BIG = 'BIG',
-	SMALL = 'SMALL',
-}
 
 export interface Article {
 	id: string;

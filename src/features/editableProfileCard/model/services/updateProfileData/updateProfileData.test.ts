@@ -1,6 +1,6 @@
 import { updateProfileData } from './updateProfileData';
 
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../../consts/consts';
 
 import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';

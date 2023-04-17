@@ -1,4 +1,4 @@
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../../consts/consts';
 
 import { type Profile } from 'entities/Profile/public';
 
