@@ -18,6 +18,9 @@
     // Для default import,
     // import * as React from 'react'; => import React from 'react';
     "allowSyntheticDefaultImports": true,
+
+    // https://www.typescriptlang.org/tsconfig#isolatedModules
+    "isolatedModules": true,
     
     // Все пути/экспорты идут из папки src
     "baseUrl": ".",

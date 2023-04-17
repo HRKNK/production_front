@@ -120,3 +120,7 @@
 // Для виртуализации
 // https://www.npmjs.com/package/react-window
 // https://www.npmjs.com/package/react-virtuoso
+
+
+// Изоляция модуля (типов) для Babel (Упрощает сборку. Создание файлов только из типов/интерфейсов)
+// https://www.typescriptlang.org/tsconfig#isolatedModules
