@@ -1,15 +1,39 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { type BuildOptions } from './types/config';
+
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import type webpack from 'webpack';
 
 export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { // специальный TS тип для лоадеров|правил
-	const typescriptLoaders = {
-		test: /\.tsx?$/,
-		use: 'ts-loader',
-		exclude: /node_modules/, // исключение
-	};
+	const jts_BabelLoader = buildBabelLoader({ ...options, isTSX: false });
+	const jtsx_BabelLoader = buildBabelLoader({ ...options, isTSX: true });
+
+	// const typescriptLoaders = {
+	// 	test: /\.tsx?$/,
+	// 	use: 'ts-loader',
+	// 	exclude: /node_modules/, // исключение
+	// };
+
+	// const babelLoader = {
+	// 	test: /\.[jt]?sx?$/, // /\.m?js$/
+	// 	exclude: /node_modules/,
+	// 	use: {
+	// 		loader: 'babel-loader',
+	// 		options: {
+	// 			presets: ['@babel/preset-env'],
+	// 			plugins: [ // для плагина i18n
+	// 				['i18next-extract', {
+	// 					locales: ['ru', 'en'],
+	// 					keyAsDefaultValue: true,
+	// 				}],
+	// 				options.isDev && require.resolve('react-refresh/babel'), // !isDev вернет false
+	// 			].filter(Boolean), // избавляемся от false
+	// 		},
+	// 	},
+	// };
 
 	const scssLoader = {
 		test: /\.s[ac]ss$/i,
@@ -46,23 +70,5 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 		],
 	};
 
-	const babelLoader = {
-		test: /\.[jt]?sx?$/, // /\.m?js$/
-		exclude: /node_modules/,
-		use: {
-			loader: 'babel-loader',
-			options: {
-				presets: ['@babel/preset-env'],
-				plugins: [ // для плагина i18n
-					['i18next-extract', {
-						locales: ['ru', 'en'],
-						keyAsDefaultValue: true,
-					}],
-					options.isDev && require.resolve('react-refresh/babel'), // !isDev вернет false
-				].filter(Boolean), // избавляемся от false
-			},
-		},
-	};
-
-	return [fileLoader, svgLoader, babelLoader, typescriptLoaders, scssLoader]; // создание порядка возвращаемых лоадеров (выполняются в обратном порядке?) // https://webpack.js.org/concepts/loaders/
+	return [fileLoader, svgLoader, jts_BabelLoader, jtsx_BabelLoader, scssLoader]; // создание порядка возвращаемых лоадеров (выполняются в обратном порядке?) // https://webpack.js.org/concepts/loaders/
 }

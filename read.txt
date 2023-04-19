@@ -46,6 +46,12 @@
 // npm install @babel/preset-env --save-dev
 // npm install --save-dev @babel/preset-typescript
 
+// Плагины BABEL для миграции с TS
+// npm install --save-dev @babel/plugin-transform-typescript // https://babeljs.io/docs/babel-plugin-transform-typescript
+
+// npm install --save-dev @babel/plugin-transform-runtime // https://babeljs.io/docs/babel-plugin-transform-runtime // Для изменения кода в рантайме
+// https://www.npmjs.com/package/fork-ts-checker-webpack-plugin // Плагин паралельной проверки Типизации
+
 // STYLELINT
 // npm install --save-dev stylelint stylelint-config-standard-scss
 
@@ -128,3 +134,6 @@
 
 // Изоляция модуля (типов) для Babel (Упрощает сборку. Создание файлов только из типов/интерфейсов)
 // https://www.typescriptlang.org/tsconfig#isolatedModules
+
+// AST (Абстрактное синтаксическое дерево)
+// https://astexplorer.net/
