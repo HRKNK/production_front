@@ -6,6 +6,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): webpack.WebpackPluginInstance[] { // специальный TS тип для плагинов
 	const plugins = [
@@ -24,6 +25,10 @@ export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): 
 			patterns: [
 				{ from: paths.locales, to: paths.buildLocales }, // откуда / куда
 			],
+		}),
+		new CircularDependencyPlugin({ // Циркулярная/Кольцевая зависимость
+			exclude: /node_modules/, // RegExp
+			failOnError: true, // пробросить ошибку при наличии кольцевых зависимостях
 		}),
 	];
 
