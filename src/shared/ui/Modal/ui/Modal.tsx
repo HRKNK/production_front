@@ -3,6 +3,8 @@ import cls from './Modal.module.scss';
 
 import Portal from '../../Portal/Portal';
 
+import { Overlay } from '../../Overlay/Overlay';
+
 import React, { type MutableRefObject, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider/public';
@@ -62,9 +64,9 @@ const Modal = (props: ModalProps) => {
 		};
 	}, [isOpen, onKeyDown]);
 
-	const onContentClick = (event: React.MouseEvent) => {
-		event.stopPropagation();
-	};
+	// const onContentClick = (event: React.MouseEvent) => {
+	// 	event.stopPropagation();
+	// };
 
 	if (lazy && !isMounted) {
 		return null;
@@ -73,10 +75,9 @@ const Modal = (props: ModalProps) => {
 	return (
 		<Portal>
 			<div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
-				<div className={cls.overlay} onClick={closeHandler}>
-					<div className={cls.content} onClick={onContentClick}>
-						{children}
-					</div>
+				<Overlay className={cls.overlay} onClick={closeHandler}/>
+				<div className={cls.content}> {/* onClick={onContentClick} */}
+					{children}
 				</div>
 			</div>
 		</Portal>
