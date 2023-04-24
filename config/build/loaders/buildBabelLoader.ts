@@ -22,7 +22,7 @@ export function buildBabelLoader ({ isDev, isTSX }: BuildBabelLoaderProps) {
 						isTSX, // TRUE = .tsx
 					}],
 					'@babel/plugin-transform-runtime',
-					isTSX && [
+					isTSX && [ // плагин запускается только для TSX файлов
 						babelRemovePropsPlugin,
 						{
 							props: ['data-testid'],
