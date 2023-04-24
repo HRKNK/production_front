@@ -15,6 +15,10 @@ import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/public';
+import { HStack } from 'shared/ui/Stack/public';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { NotificationButton } from 'features/notificationButton/ui/NotificationButton/NotificationButton';
+import { AvatarDropdown } from 'features/avatarDropdown/public';
 // import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 
 interface NavBarProps {
@@ -24,11 +28,7 @@ interface NavBarProps {
 const NavBar = memo(({ className }: NavBarProps) => {
 	const [isAuthModal, setisAuthModal] = useState(false);
 	const { t } = useTranslation();
-	const isAdmin = useSelector(isUserAdmin);
-	const isManager = useSelector(isUserManager);
-
 	const authData = useSelector(getUserAuthData);
-	const dispatch = useDispatch();
 
 	const onCloseModal = useCallback(() => {
 		setisAuthModal(false);
@@ -38,12 +38,6 @@ const NavBar = memo(({ className }: NavBarProps) => {
 		setisAuthModal(true);
 	}, []);
 
-	const onLogout = useCallback(() => {
-		dispatch(userActions.logout());
-	}, [dispatch]);
-
-	const isAdminPanelAvailable = isAdmin || isManager;
-
 	if (authData) {
 		return (
 			<header className={classNames(cls.navbar, {}, [className])}>
@@ -51,27 +45,12 @@ const NavBar = memo(({ className }: NavBarProps) => {
 				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
 					{t('Создать статью')}
 				</AppLink>
-
-				{/* Выпадающий список ссылок */}
-				<Dropdown className={cls.dropdown} direction={'bottom left'}
-					items={[ // ссылки
-						...(isAdminPanelAvailable
-							? [{
-								content: t('Админка'),
-								href: RoutePath.admin_panel,
-							}]
-							: []),
-						{
-							content: t('Выйти'),
-							onClick: onLogout,
-						},
-						{
-							content: t('Профиль'),
-							href: RoutePath.profile + authData.id,
-						},
-					]} trigger={<Avatar size={30} src={authData.avatar}/>}
-				/>
-
+				<HStack gap='16'className={cls.dropdown}>
+					{/* Список уведомлений */}
+					<NotificationButton/>
+					{/* Выпадающий список ссылок */}
+					<AvatarDropdown/>
+				</HStack>
 				{/* <Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onLogout}>
 					{t('Выйти')}
 				</Button> */}
