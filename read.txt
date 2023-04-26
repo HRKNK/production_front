@@ -149,3 +149,9 @@
 
 // Полифил под браузеры browserslist
 // https://github.com/browserslist/browserslist
+
+// VITE сборщик // https://vitejs.dev/guide/
+// npm i @vitejs/plugin-react --save-dev
+// npm i vite --save-dev
+// npm i vite-plugin-svgr --save-dev
+// npm i vite-tsconfig-paths --save-dev // для путей от TS конфига
