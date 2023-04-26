@@ -9,6 +9,7 @@ import { NotificationList } from 'entities/Notification/public';
 import { Popover } from 'shared/ui/Popover/Popover';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider/public';
 
 interface NotificationButtonProps {
 	className?: string;
@@ -39,9 +40,12 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 		isMobileView
 			? <>
 				{trigger}
-				<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-					<NotificationList />
-				</Drawer>
+				<AnimationProvider>
+					{/* Контекст провайдер / Ленивая загрузка */}
+					<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+						<NotificationList />
+					</Drawer>
+				</AnimationProvider>
 			</>
 			: <Popover
 				className={classNames(cls.NotificationButton, {}, [className])}
