@@ -34,7 +34,7 @@ export default ({ config }: { config: webpack.Configuration, }) => {
 		locales: '',
 		buildLocales: '',
 	};
-	config.resolve.modules.push(paths.src);
+	config.resolve.modules.unshift(paths.src);
 	config.resolve.extensions.push('.tsx', '.ts');
 
 	config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
