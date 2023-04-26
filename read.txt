@@ -141,6 +141,8 @@
 // AST (Абстрактное синтаксическое дерево)
 // https://astexplorer.net/
 
-
 // Предварительный просмотр размера бандлов Bundlephobia 
 // https://bundlephobia.com/
+
+// Библиотека изменения TS // https://ts-morph.com/
+// npm install --save-dev ts-morph

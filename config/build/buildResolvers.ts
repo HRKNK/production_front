@@ -8,6 +8,8 @@ export function buildResolvers (options: BuildOptions): ResolveOptions { // TS t
 		preferAbsolute: true, // использование абсолютных путей
 		modules: [options.paths.src, 'node_modules'],
 		mainFiles: ['index'],
-		alias: {},
+		alias: {
+			// '@': options.paths.src, // + изменить корень в ts.config
+		},
 	};
 }
