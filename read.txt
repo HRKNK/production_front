@@ -146,3 +146,6 @@
 
 // Библиотека изменения TS // https://ts-morph.com/
 // npm install --save-dev ts-morph
+
+// Полифил под браузеры browserslist
+// https://github.com/browserslist/browserslist
