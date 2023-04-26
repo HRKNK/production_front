@@ -11,7 +11,7 @@ import { useTheme } from 'app/providers/ThemeProvider/public';
 
 import { useDrag } from '@use-gesture/react';
 import { a, useSpring, config } from '@react-spring/web';
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
+import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
 
 interface DrawerProps {
 	className?: string;
@@ -99,7 +99,7 @@ const DrawerContent = memo((props: DrawerProps) => {
 	);
 });
 
-export const Drawer = memo((props: DrawerProps) => { // Тут ждем загрузки библиотек
+const DrawerAsync = (props: DrawerProps) => { // Тут ждем загрузки библиотек
 	const { isLoaded } = useAnimationLibs();
 
 	if (!isLoaded) {
@@ -107,4 +107,12 @@ export const Drawer = memo((props: DrawerProps) => { // Тут ждем загр
 	}
 
 	return <DrawerContent {...props} />;
-});
+};
+
+export const Drawer = (props: DrawerProps) => { // Завернут в провайдер
+	return (
+		<AnimationProvider>
+			<DrawerAsync {...props} />
+		</AnimationProvider>
+	);
+};

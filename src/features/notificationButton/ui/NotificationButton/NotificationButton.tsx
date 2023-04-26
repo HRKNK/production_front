@@ -40,12 +40,10 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 		isMobileView
 			? <>
 				{trigger}
-				<AnimationProvider>
-					{/* Контекст провайдер / Ленивая загрузка */}
-					<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-						<NotificationList />
-					</Drawer>
-				</AnimationProvider>
+				{/* Контекст провайдер / Ленивая загрузка */}
+				<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+					<NotificationList />
+				</Drawer>
 			</>
 			: <Popover
 				className={classNames(cls.NotificationButton, {}, [className])}
