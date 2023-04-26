@@ -41,6 +41,7 @@ export default {
 		// '<rootDir>/__mocks__/fileMock.js',
 		'\\.s?css$': 'identity-obj-proxy',
 		'\\.svg': path.resolve(__dirname, 'jest-component.tsx'),
+		// '^@/(.*)$': '<rootDir>src/$1', // для алиасов
 	}, // импорты
 
 	// The root directory that Jest should scan for tests and modules within
