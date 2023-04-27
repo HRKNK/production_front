@@ -40,7 +40,7 @@ export function Dropdown (props: DropdownProps) {
 				{trigger}
 			</Menu.Button>
 			<Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
-				{items.map((item) => {
+				{items.map((item, index) => {
 					const content = ({ active }: { active: boolean, }) => (
 						<button type='button' disabled={item.disabled}
 							onClick={item.onClick}
@@ -52,14 +52,14 @@ export function Dropdown (props: DropdownProps) {
 
 					if (item.href) { // если пропс имеет ссылку -> заворачиваем в AppLink
 						return ( // as = во что обернуть
-							<Menu.Item key={item.href} as={AppLink} to={item.href} disabled={item.disabled}>
+							<Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
 								{content}
 							</Menu.Item>
 						);
 					}
 
 					return ( // as = во что обернуть
-						<Menu.Item key={item.href} as={Fragment} disabled={item.disabled}>
+						<Menu.Item key={index} as={Fragment} disabled={item.disabled}>
 							{content}
 						</Menu.Item>
 					);

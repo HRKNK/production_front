@@ -25,7 +25,8 @@ export function Popover (props: PopoverProps) {
 
 	return (
 		<HPopover className={classNames(cls.Popover, {}, [className, cls.popup])}>
-			<HPopover.Button className={cls.trigger}>
+			{/* as = как div (получалась вложенность кнопки в кнопке) <button> cannot appear as a descendant of <button>. */}
+			<HPopover.Button as='div' className={cls.trigger}>
 				{trigger}
 			</HPopover.Button>
 

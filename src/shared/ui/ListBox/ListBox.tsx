@@ -59,6 +59,8 @@ export function ListBox (props: ListBoxProps) {
 			>
 				{/* Кнопка поведения селектора */}
 				<HListBox.Button // disabled={readonly}
+					// as = как div (получалась вложенность кнопки в кнопке) <button> cannot appear as a descendant of <button>.
+					as='div'
 					className={cls.trigger}>
 					{/* Своя кнопка (кастомная) */}
 					<Button disabled={readonly}>
