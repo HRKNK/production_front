@@ -37,6 +37,7 @@ import { RoutePath } from 'shared/config/routeConfig';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Page } from 'widgets/Page/Page';
 import { ArticleRecommendationsList } from 'features/articleRecommendationsList/public';
+import { ArticleRating } from 'features/articleRating/public';
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -93,6 +94,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
 				{/* Список статей */}
 				<ArticleDetails id={id}></ArticleDetails>
+
+				{/* Блок с отзывами */}
+				<ArticleRating articleId={id}></ArticleRating>
 
 				{/* Блок с рекомендациями. UPD: Перенесено в фичи */}
 				<ArticleRecommendationsList></ArticleRecommendationsList>
