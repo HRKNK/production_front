@@ -19,14 +19,15 @@ interface RatingCardProps {
 	hasFeedback?: boolean; // оставить отзыв (фидбек)?
 	onCancel?: (starsCount: number) => void; // отмена отправки
 	onAccept?: (starsCount: number, feedback?: string) => void; // отправить отзыв
+	rate?: number; // сколько звезд выбрано?
 }
 
 // eslint-disable-next-line react/display-name
 export const RatingCard = memo((props: RatingCardProps) => {
-	const { className, onAccept, feedbackTitle, hasFeedback, onCancel, title } = props;
+	const { className, onAccept, feedbackTitle, hasFeedback, onCancel, title, rate = 0, } = props;
 	const { t } = useTranslation();
 	const [isModalOpen, setIsModalOpen] = useState(false); // состояние модалки
-	const [starsCount, setStarsCount] = useState(0);
+	const [starsCount, setStarsCount] = useState(rate); // установленные звезды
 	const [feedback, setFeedback] = useState(''); // связывание с инпутом
 
 	const onSelectStars = useCallback((selectedStarsCount: number) => {
@@ -58,11 +59,11 @@ export const RatingCard = memo((props: RatingCardProps) => {
 	);
 
 	return (
-		<Card className={classNames('', {}, [className])}>
+		<Card max className={classNames('', {}, [className])}>
 			<VStack align='center' gap='8'>
-				<Text title={title} />
+				<Text title={starsCount ? t('Спасибо за оценку!') : title} />
 				{/* Компонент звезд */}
-				<StarRating size={40} onSelect={onSelectStars} />
+				<StarRating size={40} onSelect={onSelectStars} selectedStars={starsCount}/>
 			</VStack>
 
 			{isMobileView
