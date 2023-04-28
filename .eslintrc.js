@@ -26,9 +26,10 @@ module.exports = {
 		sourceType: 'module',
 		project: ['./tsconfig.json'],
 	},
-	plugins: ['react', 'i18next', 'react-hooks', 'custom-plugin'],
+	plugins: ['react', 'i18next', 'react-hooks', 'custom-plugin', 'unused-imports'],
 	rules: {
 		'no-console': 'warn', // варнинги на консоль в коде
+		'unused-imports/no-unused-imports': 'warn', // варн на неиспользуемый импорт
 
 		quotes: ['warn', 'single'], // правило кавычек (single ? double)
 		'jsx-quotes': ['warn', 'prefer-single'], // правило кавычек для jsx (prefer-single ? prefer-single)
@@ -59,7 +60,7 @@ module.exports = {
 		'react-hooks/rules-of-hooks': 'error',
 
 		'import/order': [ // последовательность импорта // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
-			'error', {
+			'warn', {
 				groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
 				'newlines-between': 'always-and-inside-groups',
 			}],
@@ -84,8 +85,9 @@ module.exports = {
 				},
 			}],
 
-		'custom-plugin/path-checker': 'error',
-		//
+		'custom-plugin/path-checker': 'error', // свой плагин на проверку путей импорта
+
+		// Свалка
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
