@@ -5,7 +5,7 @@ import { type ComponentStory, type ComponentMeta } from '@storybook/react';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
-	title: 'shared/Page',
+	title: 'widgets/Page',
 	component: Page,
 	argTypes: {
 		backgroundColor: { control: 'color' },

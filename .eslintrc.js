@@ -63,6 +63,7 @@ module.exports = {
 				groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
 				'newlines-between': 'always-and-inside-groups',
 			}],
+		'@typescript-eslint/no-invalid-void-type': 'warn', // реакция на void операторы
 		'@typescript-eslint/member-delimiter-style': [ // правило для интерфейсов // https://typescript-eslint.io/rules/member-delimiter-style/
 			'warn', {
 				multiline: {
@@ -89,6 +90,7 @@ module.exports = {
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/no-dynamic-delete': 'off',
+		'react/display-name': 'off',
 	},
 
 	settings: {

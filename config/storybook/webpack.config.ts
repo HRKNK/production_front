@@ -36,7 +36,7 @@ export default ({ config }: { config: webpack.Configuration, }) => {
 	};
 	config.resolve.modules.unshift(paths.src);
 	config.resolve.extensions.push('.tsx', '.ts');
-	// config.resolve.alias = { '@': paths.src }; // Для алиасов
+	// config.resolve.alias = { ...config.resolve.alias, '@': paths.src }; // Для алиасов
 
 	config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
 		// eslint-disable-next-line @typescript-eslint/prefer-includes
