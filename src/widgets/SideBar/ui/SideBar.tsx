@@ -13,7 +13,7 @@ import LangSwither from 'features/LangSwither/LangSwither';
 import { BugButton } from 'app/providers/ErrorBoundary/public';
 import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routeConfig';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 
 import MainIcon from 'shared/assets/icons/main.svg';
 import AboutIcon from 'shared/assets/icons/about.svg';

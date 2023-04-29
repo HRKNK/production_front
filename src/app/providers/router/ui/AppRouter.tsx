@@ -1,15 +1,13 @@
 import { RequireAuth } from './RequireAuth';
 
-import { getUserAuthData } from 'entities/User/public';
-import React, { memo, Suspense, useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // npm i react-router-dom
 
 // import { AboutPage } from 'pages/AboutPage/public';
 // import { MainPage } from 'pages/MainPage/public';
 
-import { type AppRouteProps, routeConfig } from 'shared/config/routeConfig';
+import { type AppRouteProps, routeConfig } from 'app/providers/router/config/routeConfig';
 import PageLoader from 'widgets/PageLoader/ui/PageLoader';
 
 const AppRouter = () => {

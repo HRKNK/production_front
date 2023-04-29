@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User/public';
 import { Text } from 'shared/ui/Text/public';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routeConfig';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { HStack } from 'shared/ui/Stack/public';

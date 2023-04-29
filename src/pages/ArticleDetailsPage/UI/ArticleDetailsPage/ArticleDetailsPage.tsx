@@ -33,7 +33,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/addCommentForm/public';
 
-import { RoutePath } from 'shared/config/routeConfig';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
 import { Page } from 'widgets/Page/Page';
 import { ArticleRecommendationsList } from 'features/articleRecommendationsList/public';

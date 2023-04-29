@@ -6,7 +6,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routeConfig';
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { useSelector } from 'react-redux';
 // import { getUserAuthData } from 'entities/User/public';
 import Button, { ThemeButton } from 'shared/ui/Button/Button';
