@@ -85,7 +85,10 @@ module.exports = {
 				},
 			}],
 
-		'custom-plugin/path-checker': 'error', // свой плагин на проверку путей импорта
+		'custom-plugin/path-checker': 'error', // плагин на проверку путей импорта // ['error' , { alias: '@' }]
+		// 'custom-plugin/public-imports': ['error', {
+		// 	testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+		// }], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [] }]
 
 		// Свалка
 		'@typescript-eslint/explicit-function-return-type': 'off',
