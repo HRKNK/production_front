@@ -641,5 +641,36 @@
       "username": "user",
       "avatar": "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51404593-stock-illustration-male-avatar-profile-picture-use.jpg"
     }
+  ],
+  "article-ratings": [
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 4,
+      "id": "KkdQ7qR"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "rate": 4,
+      "feedback": "Тестовый ответ",
+      "id": "KqrCRSW"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
+    }
   ]
 }

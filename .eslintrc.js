@@ -86,9 +86,10 @@ module.exports = {
 			}],
 
 		'custom-plugin/path-checker': 'error', // плагин на проверку путей импорта // ['error' , { alias: '@' }]
-		// 'custom-plugin/public-imports': ['error', {
-		// 	testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-		// }], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [] }]
+		'custom-plugin/public-imports': ['error', {
+			testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+			publicFile: 'public',
+		}], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]
 
 		// Свалка
 		'@typescript-eslint/explicit-function-return-type': 'off',
