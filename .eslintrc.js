@@ -85,8 +85,13 @@ module.exports = {
 				},
 			}],
 
+		'custom-plugin/layer-imports': ['error', {
+			ignoreImportPatterns: [
+				'**/storeProvider.tsx', '**/styleDecorator.ts',
+			],
+		}],
 		'custom-plugin/path-checker': 'error', // плагин на проверку путей импорта // ['error' , { alias: '@' }]
-		'custom-plugin/public-imports': ['error', {
+		'custom-plugin/public-imports': ['warn', { // плагин арх-рных правил
 			testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
 			publicFile: 'public',
 		}], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]

@@ -1,3 +1,4 @@
+/* eslint-disable custom-plugin/public-imports */
 import { type CombinedState, type AnyAction, type EnhancedStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type counterSchema } from 'entities/Counter/public';
 import { type UserSchema } from 'entities/User/public';

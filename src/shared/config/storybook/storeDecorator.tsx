@@ -1,3 +1,4 @@
+/* eslint-disable custom-plugin/public-imports */
 /* eslint-disable react/display-name */
 import { type Story } from '@storybook/react';
 // import { type ReducersMapObject, type DeepPartial } from '@reduxjs/toolkit';
