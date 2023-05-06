@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { useSelector } from 'react-redux';
 // import { getUserAuthData } from 'entities/User/public';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { getArticleDetailsData } from 'entities/Article/public';
 
 interface ArticleDetailsPageHeaderProps {

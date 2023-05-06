@@ -14,7 +14,7 @@ import { memo, useCallback, useMemo } from 'react';
 import { type ArticleSortField, ArticleSortSelector, ArticleTypeTabs, type ArticleView, ArticleViewSelector, type ArticleType } from 'entities/Article/public';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Card } from 'shared/ui/Card/Card';
+import { Card } from 'shared/ui/Card/public';
 import { Input } from 'shared/ui/Input/public';
 import { type SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';

@@ -2,7 +2,7 @@ import { type ArticleRatingProps } from './ArticleRating';
 
 import { FC, lazy, Suspense } from 'react';
 
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton } from 'shared/ui/Skeleton/public';
 
 const ArticleRatingLazy = lazy(async () => await import('./ArticleRating'));
 

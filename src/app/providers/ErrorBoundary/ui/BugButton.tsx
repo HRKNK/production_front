@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import React, { useEffect, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/public';
 
 const BugButton = () => { // Компонент тестирования (Fake Error)
 	const [error, setError] = useState(false);

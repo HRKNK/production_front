@@ -5,18 +5,14 @@ import { SidebarItem } from './SidebarItem/SidebarItem';
 
 import { getSideBarItems } from '../model/selectors/getSideBarItems';
 
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/public';
 
 import classNames from 'shared/lib/classNames/classNames';
 import LangSwither from 'features/LangSwither/LangSwither';
 import { BugButton } from 'app/providers/ErrorBoundary/public';
-import Button, { ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
-import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/public';
 
-import MainIcon from 'shared/assets/icons/main.svg';
-import AboutIcon from 'shared/assets/icons/about.svg';
 import { useSelector } from 'react-redux';
 import { VStack } from 'shared/ui/Stack/public';
 

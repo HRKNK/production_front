@@ -2,7 +2,7 @@ import { Counter } from 'entities/Counter/public';
 import { RatingCard } from 'entities/Rating/public';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/ListBox/public';
 import { HStack } from 'shared/ui/Stack/public';
 import { Page } from 'widgets/Page/Page';
 

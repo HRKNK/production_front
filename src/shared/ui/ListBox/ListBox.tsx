@@ -2,7 +2,7 @@ import cls from './ListBox.module.scss';
 
 import { HStack } from '../Stack/public';
 
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 
 import { Fragment, type ReactNode, useState } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';

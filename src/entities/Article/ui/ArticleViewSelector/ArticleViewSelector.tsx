@@ -6,8 +6,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import ListIcon from 'shared/assets/icons/list.svg';
 import TiledIcon from 'shared/assets/icons/tiled.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Icon } from 'shared/ui/Icon/public';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 
 interface ArticleViewSelectorProps {
 	className?: string;

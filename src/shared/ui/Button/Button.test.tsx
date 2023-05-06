@@ -1,4 +1,4 @@
-import Button, { ThemeButton } from '../Button/Button';
+import { Button, ThemeButton } from '../Button/Button';
 
 import { render, screen } from '@testing-library/react';
 

@@ -15,11 +15,11 @@ import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLo
 import React, { memo, useCallback, useEffect } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { Input } from 'shared/ui/Input/public';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Text } from 'shared/ui/Text/public';
-import { TextTheme } from 'shared/ui/Text/ui/Text';
+import { TextTheme } from 'shared/ui/Text/public';
 import { type ReduxStoreWithManager } from 'app/providers/storeProvider/public';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';

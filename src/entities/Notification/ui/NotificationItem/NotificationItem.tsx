@@ -4,7 +4,7 @@ import { type Notification } from '../../model/types/notification';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
+import { Card, CardTheme } from 'shared/ui/Card/public';
 import { Text } from 'shared/ui/Text/public';
 
 interface NotificationItemProps {

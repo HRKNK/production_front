@@ -1,4 +1,4 @@
-import Button, { ButtonSize, ThemeButton } from './Button';
+import { Button, ButtonSize, ThemeButton } from './Button';
 
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';

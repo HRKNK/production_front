@@ -6,8 +6,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { Text } from 'shared/ui/Text/public';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import AppLink from 'shared/ui/AppLink/AppLink';
+import { Skeleton } from 'shared/ui/Skeleton/public';
+import { AppLink } from 'shared/ui/AppLink/public';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { VStack } from 'shared/ui/Stack/public';
 

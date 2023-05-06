@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import cls from './ThemeSwitcher.module.scss';
 
-import Button, { ThemeButton } from '../../Button/Button';
+import { Button, ThemeButton } from '../../Button/Button';
 
 import { Theme, useTheme } from 'app/providers/ThemeProvider/public';
 import React, { memo } from 'react';

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import classNames from 'shared/lib/classNames/classNames';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { Text } from 'shared/ui/Text/public';
 import { getUserAuthData } from 'entities/User/public';
 import { HStack } from 'shared/ui/Stack/public';

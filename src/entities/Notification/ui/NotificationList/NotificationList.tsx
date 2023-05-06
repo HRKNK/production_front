@@ -7,7 +7,7 @@ import { NotificationItem } from '../NotificationItem/NotificationItem';
 import classNames from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { VStack } from 'shared/ui/Stack/public';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton } from 'shared/ui/Skeleton/public';
 
 interface NotificationListProps {
 	className?: string;

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React, { memo, useCallback } from 'react';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { Avatar } from 'shared/ui/Avatar/public';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Dropdown } from 'shared/ui/Dropdown/public';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User/public';
 

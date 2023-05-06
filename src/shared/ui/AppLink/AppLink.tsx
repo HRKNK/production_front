@@ -20,7 +20,7 @@ interface AppLinkProps extends LinkProps { // расширяем типы про
 
 // FC позволяет вытащить children пропс + дженерик <AppLinkProps>
 // const AppLink: FC<AppLinkProps> = (props) => {
-const AppLink = memo((props: AppLinkProps) => {
+export const AppLink = memo((props: AppLinkProps) => {
 	const { to, className, children, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
 	return (
 		<Link to={to} {...otherProps} className={classNames(cls.applink, {}, [className, cls[theme]])}>
@@ -28,5 +28,3 @@ const AppLink = memo((props: AppLinkProps) => {
 		</Link>
 	);
 });
-
-export default AppLink;

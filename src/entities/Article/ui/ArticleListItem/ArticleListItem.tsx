@@ -10,14 +10,14 @@ import classNames from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { type HTMLAttributeAnchorTarget, HTMLAttributes, memo, useCallback } from 'react';
 import { Text } from 'shared/ui/Text/public';
-import { Icon } from 'shared/ui/Icon/Icon';
+import { Icon } from 'shared/ui/Icon/public';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import { Avatar } from 'shared/ui/Avatar/public';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
-import { Card } from 'shared/ui/Card/Card';
-import AppLink from 'shared/ui/AppLink/AppLink';
+import { Card } from 'shared/ui/Card/public';
+import { AppLink } from 'shared/ui/AppLink/public';
 
 interface ArticleListItemProps {
 	className?: string;

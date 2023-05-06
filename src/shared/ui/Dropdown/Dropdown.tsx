@@ -1,6 +1,6 @@
 import cls from './Dropdown.module.scss';
 
-import AppLink from '../AppLink/AppLink';
+import { AppLink } from '../AppLink/AppLink';
 
 import { Menu } from '@headlessui/react';
 import classNames from 'shared/lib/classNames/classNames';

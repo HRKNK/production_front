@@ -1,4 +1,4 @@
-import AppLink, { AppLinkTheme } from './AppLink';
+import { AppLink, AppLinkTheme } from './AppLink';
 
 import React from 'react';
 import { type ComponentStory, type ComponentMeta } from '@storybook/react';

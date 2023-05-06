@@ -4,7 +4,7 @@ import { type Profile } from '../../model/types/profile';
 
 import { useTranslation } from 'react-i18next';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import Button, { ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { Input } from 'shared/ui/Input/public';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/public';
 import { Loader } from 'shared/ui/Loader/public';

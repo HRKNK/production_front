@@ -21,11 +21,11 @@ import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/public';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Skeleton } from 'shared/ui/Skeleton/public';
 import { Avatar } from 'shared/ui/Avatar/public';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
+import { Icon } from 'shared/ui/Icon/public';
 import { VStack } from 'shared/ui/Stack/public';
 
 interface ArticleDetailsProps {
