@@ -15,6 +15,7 @@ export const parameters = {
 			date: /Date$/,
 		},
 	},
+	layout: 'fullscreen',
 };
 
 // декораторы или (дефолтное применение к сторибуку)
