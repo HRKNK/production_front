@@ -7,7 +7,7 @@ import { type StateSchema, type ReduxStoreWithManager, type StateSchemaKey } fro
 
 export type ReducersList = {
 	[name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>; // забираем конкретное поле/название редьюса из StateSchema в качестве типа
-	// без типизации ?: Reducer; // выглядит как any
+	// без типизации ?: Reducer; // выглядит как any // NonNullable исключит любой null, undefined
 };
 
 type ReducersListEntry = [StateSchemaKey, Reducer]; // строка типа StateSchemaKey, сам Reducer

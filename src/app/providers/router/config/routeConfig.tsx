@@ -30,6 +30,17 @@ export enum AppRoutes {
 	NOT_FOUND = 'not_found',
 }
 
+// Реализация путей через константу-функцию
+export const getRouteMain = () => '/';
+// export const getRouteAbout = () => '/about';
+// export const getRouteProfile = (id: string) => `/profile/${id}`;
+// export const getRouteArticles = () => '/articles';
+// export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
+// export const getRouteArticleCreate = () => '/articles/new';
+// export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
+// export const getRouteAdmin = () => '/admin';
+// export const getRouteForbidden = () => '/forbidden';
+
 // Record специальный ТС класс, который указывает Ключ(строка) + Свойство (строка)
 export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
