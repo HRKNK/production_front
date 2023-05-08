@@ -12,17 +12,14 @@ export function buildBabelLoader ({ isDev, isTSX }: BuildBabelLoaderProps) {
 		use: {
 			loader: 'babel-loader',
 			options: {
+				cacheDirectory: true, // кэширование
 				presets: ['@babel/preset-env'],
-				plugins: [ // для плагина i18n
-					['i18next-extract', {
-						locales: ['ru', 'en'],
-						keyAsDefaultValue: true,
-					}],
+				plugins: [
 					['@babel/plugin-transform-typescript', {
 						isTSX, // TRUE = .tsx
 					}],
 					'@babel/plugin-transform-runtime',
-					isTSX && [ // плагин запускается только для TSX файлов
+					isTSX && !isDev && [ // плагин запускается только для TSX файлов и прод сборки
 						babelRemovePropsPlugin,
 						{
 							props: ['data-testid'],

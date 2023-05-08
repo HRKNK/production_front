@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { type BuildOptions } from './types/config';
 
-import { buildBabelLoader } from './loaders/buildBabelLoader';
+// import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -13,22 +13,19 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 
 	const typescriptLoaders = {
 		test: /\.tsx?$/,
-		use: 'ts-loader',
+		loader: 'ts-loader',
 		exclude: /node_modules/, // исключение
 	};
 
 	const babelLoader = {
 		test: /\.[jt]?sx?$/, // /\.m?js$/
-		exclude: /node_modules/,
+		exclude: /node_modules/, // исключение
 		use: {
 			loader: 'babel-loader',
 			options: {
+				cacheDirectory: true, // кэширование
 				presets: ['@babel/preset-env'],
-				plugins: [ // для плагина i18n
-					['i18next-extract', {
-						locales: ['ru', 'en'],
-						keyAsDefaultValue: true,
-					}],
+				plugins: [
 					options.isDev && require.resolve('react-refresh/babel'), // !isDev вернет false
 				].filter(Boolean), // избавляемся от false
 			},
@@ -36,6 +33,7 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 	};
 
 	const scssLoader = {
+		exclude: /node_modules/, // исключение
 		test: /\.s[ac]ss$/i,
 		use: [
 			// Creates `style` nodes from JS strings
@@ -57,11 +55,13 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 	};
 
 	const svgLoader = {
+		exclude: /node_modules/, // исключение
 		test: /\.svg$/,
 		use: ['@svgr/webpack'],
 	};
 
 	const fileLoader = {
+		exclude: /node_modules/, // исключение
 		test: /\.(png|jpe?g|gif)$/i, // можно докинуть свои расширения типа шрифтов
 		use: [
 			{

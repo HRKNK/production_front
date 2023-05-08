@@ -6,7 +6,6 @@
       ["@babel/preset-react", {"runtime": "automatic"}] // автоимпорт React в файл теста
     ],
     "plugins": [
-        "i18next-extract"
         // […] your other plugins […]
       ]
 }

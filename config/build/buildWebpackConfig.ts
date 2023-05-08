@@ -17,7 +17,9 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
 		resolve: buildResolvers(options), // TS расширения импортируемых компонентов (снимает обязанность писать расширения при импортах)
 
 		devServer: buildDevServer(options),
-		devtool: isDev ? 'inline-source-map' : undefined, // карта исходного кода / упрощает поиск ошибок возникшие в одном из файлов
+
+		// Почитать тут: https://webpack.js.org/configuration/devtool/
+		devtool: isDev ? 'eval-cheap-module-source-map' : undefined, // карта исходного кода / упрощает поиск ошибок возникшие в одном из файлов
 
 		mode, // development | production
 		entry: { // входная точка приложения
