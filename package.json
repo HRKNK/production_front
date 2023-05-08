@@ -22,7 +22,8 @@
     "test:loki:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "postinstall": "rmdir /s /q .\\node_modules\\.cache"
   },
   "keywords": [],
   "author": "",
