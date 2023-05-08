@@ -8,6 +8,3 @@ export { ArticleView, ArticleSortField, ArticleType } from './model/consts/const
 export type { Article } from './model/types/article';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
-
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
