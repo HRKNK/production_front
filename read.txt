@@ -72,6 +72,17 @@
 // npm i eslint-plugin-import --save-dev
 
 
+// Prettier // https://prettier.io/docs/en/install.html
+// .prettierrc.json | .prettierignore // https://dev.to/eprikhodko/eslint-prettier-vs-code-create-react-app-airbnb-52bc
+// npm install --save-dev --save-exact prettier
+
+// Плагин сортировки импортов // https://github.com/trivago/prettier-plugin-sort-imports
+// npm install prettier @trivago/prettier-plugin-sort-imports --save-dev
+
+// Интеграция с ESLINT // https://github.com/prettier/eslint-config-prettier
+// npm install --save-dev eslint-config-prettier
+
+
 
 // webpack analyzer https://github.com/webpack-contrib/webpack-bundle-analyzer
 // npm install --save-dev webpack-bundle-analyzer

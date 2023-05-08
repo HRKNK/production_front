@@ -4,13 +4,7 @@ module.exports = {
 		es2021: true,
 		jest: true,
 	},
-	extends: [
-		'plugin:react/recommended',
-		'standard-with-typescript',
-		'plugin:i18next/recommended',
-		'plugin:storybook/recommended',
-		'plugin:react-hooks/recommended',
-	],
+	extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended', 'plugin:storybook/recommended', 'plugin:react-hooks/recommended', 'prettier'],
 	overrides: [
 		// исключение
 		{
@@ -19,7 +13,8 @@ module.exports = {
 				'i18next/no-literal-string': 'off', // отключить переводы внутри test.[j]tsx
 				'max-len': 'off',
 			},
-		}],
+		},
+	],
 
 	parserOptions: {
 		ecmaVersion: 'latest',
@@ -31,22 +26,22 @@ module.exports = {
 		'no-console': 'warn', // варнинги на консоль в коде
 		'unused-imports/no-unused-imports': 'warn', // варн на неиспользуемый импорт
 
-		quotes: ['warn', 'single'], // правило кавычек (single ? double)
-		'jsx-quotes': ['warn', 'prefer-single'], // правило кавычек для jsx (prefer-single ? prefer-single)
+		// quotes: ['warn', 'single'], // правило кавычек (single ? double)
+		// 'jsx-quotes': ['warn', 'prefer-single'], // правило кавычек для jsx (prefer-single ? prefer-single)
 
 		'prefer-const': 'error', // использование констант для неизменяемых переменных
 		'max-len': ['error', { code: 200, ignoreComments: true }], // максимальная длина строки + правило игнорирует комментарии
 
-		indent: ['warn', 'tab'], // отступы
-		'react/jsx-indent': ['warn', 'tab'],
-		'@typescript-eslint/indent': ['warn', 'tab'],
-		'no-tabs': ['warn', { allowIndentationTabs: true }],
+		// indent: ['warn', 'tab'], // отступы
+		// 'react/jsx-indent': ['warn', 'tab'],
+		// '@typescript-eslint/indent': ['warn', 'tab'],
+		// 'no-tabs': ['warn', { allowIndentationTabs: true }],
 
 		'comma-dangle': ['warn', 'always-multiline'], // висячая запятая
 		'@typescript-eslint/comma-dangle': ['warn', 'always-multiline'],
 
-		semi: ['warn', 'always'], // точки с запятой
-		'@typescript-eslint/semi': ['warn', 'always'],
+		// semi: ['warn', 'always'], // точки с запятой
+		// '@typescript-eslint/semi': ['warn', 'always'],
 
 		'i18next/no-literal-string': ['warn', { markupOnly: true }], // переводы внутри [j]tsx // ignoreAttribute: ['data-testid', 'to']
 
@@ -59,14 +54,28 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 'warn', // зависимости реакт-хуков
 		'react-hooks/rules-of-hooks': 'error',
 
-		'import/order': [ // последовательность импорта // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
-			'warn', {
-				groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
-				'newlines-between': 'always-and-inside-groups',
-			}],
+		// 'import/order': [
+		// 	// последовательность импорта // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
+		// 	'warn',
+		// 	{
+		// 		groups: [
+		// 			'index',
+		// 			'sibling',
+		// 			'parent',
+		// 			'internal',
+		// 			'external',
+		// 			'builtin',
+		// 			'object',
+		// 			'type',
+		// 		],
+		// 		'newlines-between': 'always-and-inside-groups',
+		// 	},
+		// ],
 		'@typescript-eslint/no-invalid-void-type': 'warn', // реакция на void операторы
-		'@typescript-eslint/member-delimiter-style': [ // правило для интерфейсов // https://typescript-eslint.io/rules/member-delimiter-style/
-			'warn', {
+		'@typescript-eslint/member-delimiter-style': [
+			// правило для интерфейсов // https://typescript-eslint.io/rules/member-delimiter-style/
+			'warn',
+			{
 				multiline: {
 					delimiter: 'comma',
 					requireLast: true,
@@ -83,18 +92,24 @@ module.exports = {
 						},
 					},
 				},
-			}],
+			},
+		],
 
-		'custom-plugin/layer-imports': ['error', {
-			ignoreImportPatterns: [
-				'**/storeProvider.tsx', '**/styleDecorator.ts',
-			],
-		}],
+		'custom-plugin/layer-imports': [
+			'error',
+			{
+				ignoreImportPatterns: ['**/storeProvider.tsx', '**/styleDecorator.ts'],
+			},
+		],
 		'custom-plugin/path-checker': 'error', // плагин на проверку путей импорта // ['error' , { alias: '@' }]
-		'custom-plugin/public-imports': ['warn', { // плагин арх-рных правил
-			testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-			publicFile: 'public',
-		}], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]
+		'custom-plugin/public-imports': [
+			'warn',
+			{
+				// плагин арх-рных правил
+				testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+				publicFile: 'public',
+			},
+		], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]
 
 		// Свалка
 		'@typescript-eslint/explicit-function-return-type': 'off',

@@ -1,23 +1,31 @@
-import { RequireAuth } from './RequireAuth';
-
-import React, { memo, Suspense, useCallback } from 'react';
+import React, { Suspense, memo, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// npm i react-router-dom
 
+// npm i react-router-dom
 // import { AboutPage } from 'pages/AboutPage/public';
 // import { MainPage } from 'pages/MainPage/public';
-
 import { type AppRouteProps, routeConfig } from 'app/providers/router/config/routeConfig';
-import PageLoader from 'widgets/PageLoader/ui/PageLoader';
+import { PageLoader } from 'widgets/PageLoader/public';
+
+import { RequireAuth } from './RequireAuth';
 
 const AppRouter = () => {
-	const renderWithWrapper = useCallback((route: AppRouteProps) => { // IS AUTH
+	const renderWithWrapper = useCallback((route: AppRouteProps) => {
+		// IS AUTH
 		return (
-			<Route key={route.path} path={route.path} element={
-				route.authOnly
-					? <RequireAuth roles={route.roles}><>{route.element}</></RequireAuth>
-					: route.element
-			}></Route>
+			<Route
+				key={route.path}
+				path={route.path}
+				element={
+					route.authOnly ? (
+						<RequireAuth roles={route.roles}>
+							<>{route.element}</>
+						</RequireAuth>
+					) : (
+						route.element
+					)
+				}
+			></Route>
 		);
 	}, []);
 
