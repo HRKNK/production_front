@@ -1,5 +1,4 @@
 import { styleDecorator } from 'shared/config/storybook/styleDecorator';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/public';
 import { routeDecorator } from 'shared/config/storybook/routeDecorator';
 import { translationDecorator } from 'shared/config/storybook/translationDecorator';
@@ -16,11 +15,19 @@ export const parameters = {
 		},
 	},
 	layout: 'fullscreen',
+	themes: {
+		default: 'green',
+		list: [
+			{ name: 'dark', class: ['app', Theme.DARK], color: '#000' }, // color - цвет интерфейса сторибука
+			{ name: 'green', class: ['app', Theme.GREEN], color: '#4caf50' },
+			{ name: 'light', class: ['app', Theme.LIGHT], color: '#fff' },
+		],
+	},
 };
 
 // декораторы или (дефолтное применение к сторибуку)
 addDecorator(routeDecorator);
 addDecorator(styleDecorator);
-addDecorator(themeDecorator(Theme.DARK));
+// addDecorator(themeDecorator(Theme.DARK)); // включен аддон тем
 addDecorator(translationDecorator);
 addDecorator(suspenseDecorator);

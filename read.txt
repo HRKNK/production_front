@@ -96,6 +96,9 @@
 // Библиотека тестирования компонентов Storybook // https://storybook.js.org/blog/storybook-for-webpack-5/
 // npx sb init --builder webpack5 // установка с флагом для вэбпака 5-ой версии
 
+// Storybook addon theme // https://storybook.js.org/addons/storybook-addon-themes
+// npm i -D storybook-addon-themes
+
 // Мок-аддон для Storybook https://storybook-addon-mock.vercel.app/?path=/docs/docs-installation--docs
 // npm install storybook-addon-mock
 

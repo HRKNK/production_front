@@ -4,8 +4,14 @@ module.exports = {
 	],
 	addons: [
 		'@storybook/addon-links',
-		'@storybook/addon-essentials',
+		{
+			name: '@storybook/addon-essentials',
+			options: {
+				backgrounds: false, // отключает стоковый аддон тем
+			},
+		},
 		'@storybook/addon-interactions',
+		'storybook-addon-themes',
 		'storybook-addon-mock',
 	],
 	framework: '@storybook/react',
