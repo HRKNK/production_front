@@ -1,11 +1,10 @@
-import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
+import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+
+import { type StateSchema } from 'app/providers/storeProvider/public';
+import { type Comment } from 'entities/Comment/public';
 
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-
-import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-
-import { type Comment } from 'entities/Comment/public';
-import { type StateSchema } from 'app/providers/storeProvider/public';
+import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter
 // https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
@@ -17,7 +16,7 @@ const commentsAdapter = createEntityAdapter<Comment>({
 
 // Может создать набор запоминающихся селекторов на основе местоположения этого состояния
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-	(state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState(),
+	(state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState()
 );
 
 const articleDetailsCommentsSlice = createSlice({
@@ -29,17 +28,21 @@ const articleDetailsCommentsSlice = createSlice({
 		entities: {},
 	}),
 	reducers: {},
-	extraReducers: (builder) => { // хэндлер для AsyncThunk
+	extraReducers: (builder) => {
+		// хэндлер для AsyncThunk
 		builder // state = initialState
-			.addCase(fetchCommentsByArticleId.pending, (state) => { // идёт запрос // ожидание
+			.addCase(fetchCommentsByArticleId.pending, (state) => {
+				// идёт запрос // ожидание
 				state.error = undefined;
 				state.isLoading = true;
 			})
-			.addCase(fetchCommentsByArticleId.fulfilled, (state, action: PayloadAction<Comment[]>) => { // запрос выполнен
+			.addCase(fetchCommentsByArticleId.fulfilled, (state, action: PayloadAction<Comment[]>) => {
+				// запрос выполнен
 				state.isLoading = false;
 				commentsAdapter.setAll(state, action.payload); // записываем ответ от сервера
 			})
-			.addCase(fetchCommentsByArticleId.rejected, (state, action) => { // вернулась ошибка
+			.addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+				// вернулась ошибка
 				state.isLoading = false;
 				state.error = action.payload; // записываем информацию об ошибке
 			});

@@ -1,6 +1,6 @@
-import { type ScrollSaveSchema } from '../types/ScrollSaveSchema';
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type ScrollSaveSchema } from '../types/ScrollSaveSchema';
 
 const initialState: ScrollSaveSchema = {
 	scroll: {},
@@ -9,8 +9,10 @@ const initialState: ScrollSaveSchema = {
 export const scrollSave = createSlice({
 	name: 'ScrollSave',
 	initialState,
-	reducers: { // state = initialState
-		setScrollPosition: (state, action: PayloadAction<{ path: string, position: number, }>) => { // Адрес(Путь) страницы, позиция скролла PX
+	reducers: {
+		// state = initialState
+		setScrollPosition: (state, action: PayloadAction<{ path: string; position: number }>) => {
+			// Адрес(Путь) страницы, позиция скролла PX
 			state.scroll[action.payload.path] = action.payload.position;
 		},
 	},

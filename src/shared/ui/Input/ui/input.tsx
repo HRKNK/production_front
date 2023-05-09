@@ -1,8 +1,9 @@
 /* eslint-disable react/display-name */
-import cls from './Input.module.scss';
+import React, { type InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 
-import React, { memo, useEffect, useRef, useState, type InputHTMLAttributes } from 'react';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
+
+import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>;
 // Omit позволяет забрать все типы исключив (value / onChange)
@@ -23,8 +24,12 @@ const Input = memo((props: InputProps) => {
 
 	const isCaretVisible = isFocus && !readonly;
 
-	const onBlur = () => { setIsFocus(false); };
-	const onFocus = () => { setIsFocus(true); };
+	const onBlur = () => {
+		setIsFocus(false);
+	};
+	const onFocus = () => {
+		setIsFocus(true);
+	};
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange?.(e.target.value);
 		setCaretPosition(e.target.value.length);

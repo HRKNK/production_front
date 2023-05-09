@@ -1,16 +1,16 @@
-import { type UserRole, getUserAuthData, getUserRoles } from 'entities/User/public';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-
 import { Navigate, useLocation } from 'react-router-dom';
+
 import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { type UserRole, getUserAuthData, getUserRoles } from 'entities/User/public';
 
 interface RequireAuthProps {
 	children: JSX.Element;
 	roles?: UserRole[];
 }
 
-export function RequireAuth ({ children, roles }: RequireAuthProps) {
+export function RequireAuth({ children, roles }: RequireAuthProps) {
 	const auth = useSelector(getUserAuthData);
 	const location = useLocation();
 
@@ -21,7 +21,8 @@ export function RequireAuth ({ children, roles }: RequireAuthProps) {
 			return true;
 		}
 
-		return roles.some((requiredRole) => { // some - хотя-бы один элемент
+		return roles.some((requiredRole) => {
+			// some - хотя-бы один элемент
 			const hasRole = userRoles?.includes(requiredRole);
 			return hasRole;
 		});

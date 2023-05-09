@@ -1,8 +1,9 @@
-import ArticleRating from './ArticleRating';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import ArticleRating from './ArticleRating';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -32,9 +33,7 @@ Normal.parameters = {
 			url: `${_API}/article-ratings?userId=1&articleId=1`,
 			method: 'GET',
 			status: 200,
-			response: [
-				{ rate: 4 },
-			],
+			response: [{ rate: 4 }],
 		},
 	],
 };

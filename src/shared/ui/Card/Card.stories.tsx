@@ -1,9 +1,8 @@
-import { Card } from './Card';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import Text from '../Text/ui/Text';
-
-import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+import { Card } from './Card';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -18,5 +17,5 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-	children: <Text title='test' text='text text' />,
+	children: <Text title="test" text="text text" />,
 };

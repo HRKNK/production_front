@@ -1,15 +1,17 @@
-import { fetchCommentsByArticleId } from '../../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type StateSchema, type ThunkConfig } from 'app/providers/storeProvider/public';
-import { type Comment } from 'entities/Comment/public';
 import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails';
+import { type Comment } from 'entities/Comment/public';
 import { getUserAuthData } from 'entities/User/public';
+
+import { fetchCommentsByArticleId } from '../../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 export const addCommentForArticle = createAsyncThunk<Comment, string | undefined, ThunkConfig<string>>(
 	// createAsyncThunk<(что возвращаем), (что ожидаем на вход), { переопределение типа }
 	'articleDetails/addCommentForArticle',
-	async (text, thunkApi) => { // text: string = принят на вход createAsyncThunk
+	async (text, thunkApi) => {
+		// text: string = принят на вход createAsyncThunk
 		const { extra, dispatch, rejectWithValue, getState } = thunkApi;
 
 		const userData = getUserAuthData(getState() as StateSchema);
@@ -36,5 +38,5 @@ export const addCommentForArticle = createAsyncThunk<Comment, string | undefined
 		} catch (e) {
 			return rejectWithValue('error');
 		}
-	},
+	}
 );

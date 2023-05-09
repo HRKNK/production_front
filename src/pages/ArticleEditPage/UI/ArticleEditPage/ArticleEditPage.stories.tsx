@@ -1,8 +1,7 @@
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import ArticleEditPage from './ArticleEditPage';
-
-import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

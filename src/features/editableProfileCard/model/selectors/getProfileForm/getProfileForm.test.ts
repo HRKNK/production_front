@@ -1,8 +1,8 @@
-import { getProfileForm } from './getProfileForm';
-
 import { type StateSchema } from 'app/providers/storeProvider/public';
 import { Country } from 'entities/Country/model/types/country';
 import { Currency } from 'entities/Currency/model/types/currency';
+
+import { getProfileForm } from './getProfileForm';
 
 describe('getProfileForm.test', () => {
 	test('should return error', () => {

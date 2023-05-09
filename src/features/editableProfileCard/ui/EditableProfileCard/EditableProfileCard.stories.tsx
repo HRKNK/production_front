@@ -1,8 +1,9 @@
-import { EditableProfileCard } from './EditableProfileCard';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import { EditableProfileCard } from './EditableProfileCard';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -16,7 +17,5 @@ export default {
 const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {
-
-};
+Normal.args = {};
 Normal.decorators = [StoreDecorator({})];

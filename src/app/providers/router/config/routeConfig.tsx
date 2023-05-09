@@ -1,19 +1,20 @@
 import { type RouteProps } from 'react-router-dom';
 
+import { UserRole } from 'entities/User/public';
 import { AboutPage } from 'pages/AboutPage/public';
+import { AdminPanelPage } from 'pages/AdminPanelPage/public';
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage/public';
+import { ArticleEditPage } from 'pages/ArticleEditPage/public';
+import { ArticlesPage } from 'pages/ArticlesPage/public';
+import { ForbiddenPage } from 'pages/ForbiddenPage/public';
 import { MainPage } from 'pages/MainPage/public';
 import { NotFoundPage } from 'pages/NotFoundPage/public';
 import { ProfilePage } from 'pages/ProfilePage/public';
-import { ArticlesPage } from 'pages/ArticlesPage/public';
-import { ArticleDetailsPage } from 'pages/ArticleDetailsPage/public';
-import { ArticleEditPage } from 'pages/ArticleEditPage/public';
-import { AdminPanelPage } from 'pages/AdminPanelPage/public';
-import { UserRole } from 'entities/User/public';
-import { ForbiddenPage } from 'pages/ForbiddenPage/public';
 
-export type AppRouteProps = RouteProps & { // Route properties
-	authOnly?: boolean,
-	roles?: UserRole[],
+export type AppRouteProps = RouteProps & {
+	// Route properties
+	authOnly?: boolean;
+	roles?: UserRole[];
 };
 
 export enum AppRoutes {

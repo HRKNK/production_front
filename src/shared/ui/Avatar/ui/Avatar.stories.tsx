@@ -1,9 +1,8 @@
-import AvatarImg from './storybook.jpg';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import { Avatar } from './Avatar';
-
-import React from 'react';
-import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import AvatarImg from './storybook.jpg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

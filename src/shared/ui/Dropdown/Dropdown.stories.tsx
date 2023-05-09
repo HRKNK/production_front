@@ -1,9 +1,8 @@
-import { Dropdown } from './Dropdown';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import { Button } from '../Button/Button';
-
-import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+import { Dropdown } from './Dropdown';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

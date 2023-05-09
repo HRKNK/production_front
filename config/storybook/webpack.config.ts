@@ -1,10 +1,8 @@
-import { type BuildPaths } from '../build/types/config';
-
-import { DefinePlugin, type RuleSetRule } from 'webpack';
-
 import path from 'path';
-
+import { DefinePlugin, type RuleSetRule } from 'webpack';
 import type webpack from 'webpack';
+
+import { type BuildPaths } from '../build/types/config';
 
 const cssLoaders = () => {
 	return {
@@ -13,7 +11,8 @@ const cssLoaders = () => {
 			'style-loader',
 			{
 				loader: 'css-loader',
-				options: { // modules: true, // поддержка модулей ('./Counter.module.scss') and use (global.d.ts)
+				options: {
+					// modules: true, // поддержка модулей ('./Counter.module.scss') and use (global.d.ts)
 					modules: {
 						auto: /\.module\.s[ac]ss$/i, // для каких файлов действует правило module
 						localIdentName: '[path][name]__[local]--[hash:base64:5]', // генерация имени стилей
@@ -25,7 +24,7 @@ const cssLoaders = () => {
 	};
 };
 
-export default ({ config }: { config: webpack.Configuration, }) => {
+export default ({ config }: { config: webpack.Configuration }) => {
 	const paths: BuildPaths = {
 		build: '',
 		html: '',
@@ -48,11 +47,13 @@ export default ({ config }: { config: webpack.Configuration, }) => {
 
 	config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] });
 	config.module.rules.push(cssLoaders());
-	config.plugins.push(new DefinePlugin({
-		_IS_DEV: true,
-		_API: JSON.stringify('https://testapi.ru'),
-		_PROJECT: JSON.stringify('storybook'),
-	}));
+	config.plugins.push(
+		new DefinePlugin({
+			_IS_DEV: true,
+			_API: JSON.stringify('https://testapi.ru'),
+			_PROJECT: JSON.stringify('storybook'),
+		})
+	);
 
 	return config;
 };

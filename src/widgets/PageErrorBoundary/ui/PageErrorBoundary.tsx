@@ -1,10 +1,10 @@
-import cls from './PageErrorBoundary.module.scss';
-
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/public';
+
+import cls from './PageErrorBoundary.module.scss';
 
 interface PageErrorBoundaryProps {
 	className?: string;
@@ -19,12 +19,8 @@ const PageErrorBoundary = ({ className }: PageErrorBoundaryProps) => {
 
 	return (
 		<div className={classNames(cls.PageErrorBoundary, {}, [className])}>
-			<p>
-				{t('Произошла непредвиденная ошибка')}
-			</p>
-			<Button onClick={reloadPage}>
-				{t('Обновить страницу')}
-			</Button>
+			<p>{t('Произошла непредвиденная ошибка')}</p>
+			<Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
 		</div>
 	);
 };

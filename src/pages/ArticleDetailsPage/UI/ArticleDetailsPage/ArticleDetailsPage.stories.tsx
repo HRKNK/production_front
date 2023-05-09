@@ -1,10 +1,11 @@
-import ArticleDetailsPage from './ArticleDetailsPage';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
-import { type Article } from 'entities/Article/model/types/article';
+
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/consts/consts';
+import { type Article } from 'entities/Article/model/types/article';
+import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import ArticleDetailsPage from './ArticleDetailsPage';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -60,8 +61,10 @@ const article: Article = {
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-	articleDetails: {
-		data: article,
-	},
-})];
+Normal.decorators = [
+	StoreDecorator({
+		articleDetails: {
+			data: article,
+		},
+	}),
+];

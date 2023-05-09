@@ -1,15 +1,15 @@
-import cls from './CommentCard.module.scss';
+import { memo } from 'react';
+
+import { RoutePath } from 'app/providers/router/config/routeConfig';
+import classNames from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/public';
+import { Avatar } from 'shared/ui/Avatar/public';
+import { Skeleton } from 'shared/ui/Skeleton/public';
+import { VStack } from 'shared/ui/Stack/public';
+import { Text } from 'shared/ui/Text/public';
 
 import { type Comment } from '../../model/types/comment';
-
-import classNames from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
-import { Avatar } from 'shared/ui/Avatar/public';
-import { Text } from 'shared/ui/Text/public';
-import { Skeleton } from 'shared/ui/Skeleton/public';
-import { AppLink } from 'shared/ui/AppLink/public';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
-import { VStack } from 'shared/ui/Stack/public';
+import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
 	className?: string;
@@ -23,21 +23,21 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
 	if (isLoading) {
 		return (
-			<VStack gap='8' max className={classNames(cls.CommentCard, {}, [className])}>
+			<VStack gap="8" max className={classNames(cls.CommentCard, {}, [className])}>
 				<div className={cls.header}>
 					{/* Аватар */}
-					<Skeleton width={30} height={30} border='50%' />
+					<Skeleton width={30} height={30} border="50%" />
 					{/* Юзернейм */}
 					<Skeleton height={16} width={100} className={cls.username} />
 				</div>
 				{/* Тело сообщения */}
-				<Skeleton className={cls.text} width='100%' height={50} />
+				<Skeleton className={cls.text} width="100%" height={50} />
 			</VStack>
 		);
 	}
 
 	return (
-		<VStack gap='8' max className={classNames(cls.CommentCard, {}, [className])}>
+		<VStack gap="8" max className={classNames(cls.CommentCard, {}, [className])}>
 			{/* to = переход в профиль по ид /profile/1 */}
 			<AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
 				{/* Аватар опционален */}

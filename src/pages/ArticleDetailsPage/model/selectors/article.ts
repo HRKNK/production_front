@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { getUserAuthData } from 'entities/User/public';
+
 import { getArticleDetailsData } from 'entities/Article/public';
+import { getUserAuthData } from 'entities/User/public';
 
 // вытащили данные по селекторам и сравнили их
 export const getCanEditArticle = createSelector(getArticleDetailsData, getUserAuthData, (article, user) => {
@@ -8,5 +9,4 @@ export const getCanEditArticle = createSelector(getArticleDetailsData, getUserAu
 		return false;
 	}
 	return article.user.id === user.id;
-},
-);
+});

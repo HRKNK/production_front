@@ -1,9 +1,8 @@
-import { Tabs } from './Tabs';
-
-import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-
 import { action } from '@storybook/addon-actions';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
+
+import { Tabs } from './Tabs';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

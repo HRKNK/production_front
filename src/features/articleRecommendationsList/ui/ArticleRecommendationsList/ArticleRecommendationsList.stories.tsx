@@ -1,11 +1,12 @@
-import { ArticleRecommendationsList } from './ArticleRecommendationsList';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
-import { type Article } from 'entities/Article/public';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { type Article } from 'entities/Article/public';
+import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 const article: Article = {
 	id: '1',
@@ -32,10 +33,7 @@ const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <A
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [
-	StoreDecorator({}),
-	themeDecorator(Theme.GREEN),
-];
+Normal.decorators = [StoreDecorator({}), themeDecorator(Theme.GREEN)];
 Normal.parameters = {
 	mockData: [
 		{

@@ -1,8 +1,9 @@
-import { Button, ThemeButton } from '../Button/Button';
-
 import { render, screen } from '@testing-library/react';
 
-describe('Button', () => { // коллекция тестов
+import { Button, ThemeButton } from '../Button/Button';
+
+describe('Button', () => {
+	// коллекция тестов
 	test('button render', () => {
 		// render - изолированный рендер
 		render(<Button>TEST</Button>);

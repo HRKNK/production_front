@@ -2,11 +2,9 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-
 import path from 'path';
 
 export default {
-
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
 
@@ -50,12 +48,15 @@ export default {
 	// https://www.npmjs.com/package/jest-html-reporters
 	reporters: [
 		'default',
-		['jest-html-reporters', {
-			publicPath: '<rootDir>/reports/unit',
-			filename: 'report.html',
-			openReport: true,
-			inlineSource: true,
-		}],
+		[
+			'jest-html-reporters',
+			{
+				publicPath: '<rootDir>/reports/unit',
+				filename: 'report.html',
+				openReport: true,
+				inlineSource: true,
+			},
+		],
 	],
 
 	// Automatically clear mock calls, instances, contexts and results before every test
@@ -65,26 +66,13 @@ export default {
 	testEnvironment: 'jsdom',
 
 	// An array of directory names to be searched recursively up from the requiring module's location
-	moduleDirectories: [
-		'node_modules',
-	],
+	moduleDirectories: ['node_modules'],
 
 	// An array of regexp pattern strings used to skip coverage collection
-	coveragePathIgnorePatterns: [
-		'\\\\node_modules\\\\',
-	],
+	coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
 	// An array of file extensions your modules use
-	moduleFileExtensions: [
-		'js',
-		'mjs',
-		'cjs',
-		'jsx',
-		'ts',
-		'tsx',
-		'json',
-		'node',
-	],
+	moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
 	// Indicates whether the coverage information should be collected while executing the test
 	// collectCoverage: false,

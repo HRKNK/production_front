@@ -1,21 +1,22 @@
 /* eslint-disable react/display-name */
+import React, { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { getUserAuthData } from 'entities/User/public';
+import { LoginModal } from 'features/AuthByUserName/public';
+import { AvatarDropdown } from 'features/avatarDropdown/public';
+import { NotificationButton } from 'features/notificationButton/ui/NotificationButton/NotificationButton';
+// import { Link } from 'react-router-dom';
+import classNames from 'shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
+import { HStack } from 'shared/ui/Stack/public';
+import { Text } from 'shared/ui/Text/public';
+
 import cls from './NavBar.module.scss';
 
-import React, { memo, useCallback, useState } from 'react';
-// import { Link } from 'react-router-dom';
-
-import classNames from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { LoginModal } from 'features/AuthByUserName/public';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User/public';
-import { Text } from 'shared/ui/Text/public';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
-import { HStack } from 'shared/ui/Stack/public';
-import { NotificationButton } from 'features/notificationButton/ui/NotificationButton/NotificationButton';
-import { AvatarDropdown } from 'features/avatarDropdown/public';
 // import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 
 interface NavBarProps {
@@ -38,15 +39,15 @@ const NavBar = memo(({ className }: NavBarProps) => {
 	if (authData) {
 		return (
 			<header className={classNames(cls.navbar, {}, [className])}>
-				<Text className={cls.appName} title='APP'></Text>
+				<Text className={cls.appName} title="APP"></Text>
 				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
 					{t('Создать статью')}
 				</AppLink>
-				<HStack gap='16'className={cls.dropdown}>
+				<HStack gap="16" className={cls.dropdown}>
 					{/* Список уведомлений */}
-					<NotificationButton/>
+					<NotificationButton />
 					{/* Выпадающий список ссылок */}
-					<AvatarDropdown/>
+					<AvatarDropdown />
 				</HStack>
 				{/* <Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onLogout}>
 					{t('Выйти')}
@@ -60,7 +61,7 @@ const NavBar = memo(({ className }: NavBarProps) => {
 			<Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onShowModal}>
 				{t('Войти')}
 			</Button>
-			{ isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>}
+			{isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal}></LoginModal>}
 		</header>
 	);
 });

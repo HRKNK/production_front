@@ -1,10 +1,11 @@
-import SideBar from './SideBar';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import SideBar from './SideBar';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -20,7 +21,8 @@ const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [ // применение отдельной темы
+Light.decorators = [
+	// применение отдельной темы
 	themeDecorator(Theme.LIGHT),
 	StoreDecorator({
 		user: { authData: {} },
@@ -40,6 +42,6 @@ export const NoAuth = Template.bind({});
 NoAuth.args = {};
 NoAuth.decorators = [
 	StoreDecorator({
-		user: { },
+		user: {},
 	}),
 ];

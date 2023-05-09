@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
-import cls from './Button.module.scss';
-
-import React, { type ReactNode, type ButtonHTMLAttributes, memo } from 'react';
+import React, { type ButtonHTMLAttributes, type ReactNode, memo } from 'react';
 
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
+
+import cls from './Button.module.scss';
 
 export enum ThemeButton {
 	CLEAR = 'clear',
@@ -19,7 +19,8 @@ export enum ButtonSize {
 	XL = 'size_xl',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { // наследуем атрибуты кнопки
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	// наследуем атрибуты кнопки
 	className?: string;
 	theme?: ThemeButton;
 	square?: boolean;
@@ -29,17 +30,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { // на�
 }
 
 export const Button = memo((props: ButtonProps) => {
-	const {
-		children,
-		className,
-		theme = ThemeButton.OUTLINE,
-		square,
-		size = ButtonSize.M,
-		disabled,
-		...otherProps
-	} = props;
+	const { children, className, theme = ThemeButton.OUTLINE, square, size = ButtonSize.M, disabled, ...otherProps } = props;
 
-	const mods: Mods = { // Record<string, boolean>
+	const mods: Mods = {
+		// Record<string, boolean>
 		[cls[theme]]: true,
 		[cls.square]: square,
 		[cls[size]]: true,

@@ -1,10 +1,10 @@
-import { Skeleton } from './Skeleton';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import { Skeleton } from './Skeleton';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

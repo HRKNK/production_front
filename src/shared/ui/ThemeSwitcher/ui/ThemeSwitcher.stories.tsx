@@ -1,9 +1,10 @@
-import ThemeSwitcher from './ThemeSwitcher';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import ThemeSwitcher from './ThemeSwitcher';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -21,14 +22,10 @@ export const Dark = Template.bind({});
 Dark.args = {
 	children: 'More word',
 };
-Dark.decorators = [
-	themeDecorator(Theme.DARK),
-];
+Dark.decorators = [themeDecorator(Theme.DARK)];
 
 export const Light = Template.bind({});
 Light.args = {
 	children: 'More word',
 };
-Light.decorators = [
-	themeDecorator(Theme.LIGHT),
-];
+Light.decorators = [themeDecorator(Theme.LIGHT)];

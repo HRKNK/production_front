@@ -1,13 +1,11 @@
-import { ArticleDetails } from './ArticleDetails';
-
-import { type Article } from '../../model/types/article';
-
-import { ArticleBlockType, ArticleType } from '../../model/consts/consts';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import { ArticleBlockType, ArticleType } from '../../model/consts/consts';
+import { type Article } from '../../model/types/article';
+import { ArticleDetails } from './ArticleDetails';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -59,24 +57,30 @@ const article: Article = {
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-	articleDetails: {
-		data: article,
-	},
-})];
+Normal.decorators = [
+	StoreDecorator({
+		articleDetails: {
+			data: article,
+		},
+	}),
+];
 
 export const Loading = Template.bind({});
 Loading.args = {};
-Loading.decorators = [StoreDecorator({
-	articleDetails: {
-		isLoading: true,
-	},
-})];
+Loading.decorators = [
+	StoreDecorator({
+		articleDetails: {
+			isLoading: true,
+		},
+	}),
+];
 
 export const Error = Template.bind({});
 Error.args = {};
-Error.decorators = [StoreDecorator({
-	articleDetails: {
-		error: 'error',
-	},
-})];
+Error.decorators = [
+	StoreDecorator({
+		articleDetails: {
+			error: 'error',
+		},
+	}),
+];

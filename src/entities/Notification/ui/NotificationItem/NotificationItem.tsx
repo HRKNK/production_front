@@ -1,11 +1,11 @@
-import cls from './NotificationItem.module.scss';
-
-import { type Notification } from '../../model/types/notification';
+import { memo } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
 import { Card, CardTheme } from 'shared/ui/Card/public';
 import { Text } from 'shared/ui/Text/public';
+
+import { type Notification } from '../../model/types/notification';
+import cls from './NotificationItem.module.scss';
 
 interface NotificationItemProps {
 	className?: string;
@@ -23,9 +23,10 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
 		</Card>
 	);
 
-	if (item.href) { // Если в уведомлении есть ссылка
+	if (item.href) {
+		// Если в уведомлении есть ссылка
 		return (
-			<a className={cls.link} target='_blank' href={item.href} rel='noreferrer'>
+			<a className={cls.link} target="_blank" href={item.href} rel="noreferrer">
 				{content}
 			</a>
 		);

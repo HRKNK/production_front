@@ -1,19 +1,21 @@
-import { type ThunkExtraArg, type StateSchema } from './stateSchema';
+import { type CombinedState, type Reducer, type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
-import { createReducerManager } from './reducerManager';
-
-import { type CombinedState, configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter/public';
 import { userReducer } from 'entities/User/public';
-import { $api } from 'shared/api/api';
 import { scrollSaveReducer } from 'features/ScrollSave/public';
+import { $api } from 'shared/api/api';
 import { rtkApi } from 'shared/api/rtkApi';
+
+import { createReducerManager } from './reducerManager';
+import { type StateSchema, type ThunkExtraArg } from './stateSchema';
+
 // import { type NavigateOptions, type To } from 'react-router-dom';
 // import { loginReducer } from 'features/AuthByUserName/public';
 
 // createReduxStore - store-провайдер поверх App
-export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
-	const rootReducers: ReducersMapObject<StateSchema> = { // понимать как: combineReducers
+export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
+	const rootReducers: ReducersMapObject<StateSchema> = {
+		// понимать как: combineReducers
 		...asyncReducers,
 		counter: counterReducer,
 		user: userReducer,
@@ -39,11 +41,12 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 		devTools: _IS_DEV,
 		preloadedState: initialState,
 		// @ts-expect-error
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {
-				extraArgument: extraArg,
-			},
-		}).concat(rtkApi.middleware),
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: extraArg,
+				},
+			}).concat(rtkApi.middleware),
 	});
 
 	// @ts-expect-error

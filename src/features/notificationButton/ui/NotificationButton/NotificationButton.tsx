@@ -1,15 +1,16 @@
-import cls from './NotificationButton.module.scss';
-
-import classNames from 'shared/lib/classNames/classNames';
 import React, { memo, useCallback, useState } from 'react';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Icon } from 'shared/ui/Icon/public';
-import NotificationIcon from 'shared/assets/icons/notification.svg';
+
 import { NotificationList } from 'entities/Notification/public';
-import { Popover } from 'shared/ui/Popover/public';
-import { Drawer } from 'shared/ui/Drawer/public';
-import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
+import NotificationIcon from 'shared/assets/icons/notification.svg';
+import classNames from 'shared/lib/classNames/classNames';
 import { AnimationProvider } from 'shared/lib/components/AnimationProvider/public';
+import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
+import { Drawer } from 'shared/ui/Drawer/public';
+import { Icon } from 'shared/ui/Icon/public';
+import { Popover } from 'shared/ui/Popover/public';
+
+import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
 	className?: string;
@@ -28,29 +29,26 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 		setIsOpen(false);
 	}, []);
 
-	const trigger = ( // Иконка-кнопка
-		<Button onClick={onOpenDrawer} theme={ThemeButton.CLEAR}>
-			<Icon Svg={NotificationIcon} inverted />
-		</Button>
-	);
+	const trigger = // Иконка-кнопка
+		(
+			<Button onClick={onOpenDrawer} theme={ThemeButton.CLEAR}>
+				<Icon Svg={NotificationIcon} inverted />
+			</Button>
+		);
 
 	const isMobileView = useDevice(); // вид мобильного варианта
 
-	return (
-		isMobileView
-			? <>
-				{trigger}
-				{/* Контекст провайдер / Ленивая загрузка */}
-				<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-					<NotificationList />
-				</Drawer>
-			</>
-			: <Popover
-				className={classNames(cls.NotificationButton, {}, [className])}
-				direction='bottom left'
-				trigger={trigger}
-			>
-				<NotificationList className={cls.notifications} />
-			</Popover>
+	return isMobileView ? (
+		<>
+			{trigger}
+			{/* Контекст провайдер / Ленивая загрузка */}
+			<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+				<NotificationList />
+			</Drawer>
+		</>
+	) : (
+		<Popover className={classNames(cls.NotificationButton, {}, [className])} direction="bottom left" trigger={trigger}>
+			<NotificationList className={cls.notifications} />
+		</Popover>
 	);
 });

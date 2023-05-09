@@ -23,6 +23,8 @@ declare const _API: string;
 declare const _PROJECT: 'storybook' | 'frontend' | 'jest';
 
 // https://stackoverflow.com/questions/61132262/typescript-deep-partial
-type DeepPartial<T> = T extends object ? {
-	[P in keyof T]?: DeepPartial<T[P]>;
-} : T;
+type DeepPartial<T> = T extends object
+	? {
+			[P in keyof T]?: DeepPartial<T[P]>;
+	  }
+	: T;

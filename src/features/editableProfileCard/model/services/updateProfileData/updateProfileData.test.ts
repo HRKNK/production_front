@@ -1,13 +1,13 @@
-import { updateProfileData } from './updateProfileData';
+import { Dispatch } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+import { Country } from 'entities/Country/model/types/country';
+import { Currency } from 'entities/Currency/model/types/currency';
+import { userActions } from 'entities/User/public';
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 
 import { ValidateProfileError } from '../../consts/consts';
-
-import axios from 'axios';
-import { Dispatch } from '@reduxjs/toolkit';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { userActions } from 'entities/User/public';
-import { Currency } from 'entities/Currency/model/types/currency';
-import { Country } from 'entities/Country/model/types/country';
+import { updateProfileData } from './updateProfileData';
 
 jest.mock('axios');
 const mockedAxios = jest.mocked(axios); // модуль мока с глубоким копированием полей

@@ -1,11 +1,10 @@
-import cls from './StarRating.module.scss';
-
-import { Icon } from '../Icon/Icon';
-
 import { memo, useState } from 'react';
 
-import classNames from 'shared/lib/classNames/classNames';
 import StarIcon from 'shared/assets/icons/star.svg';
+import classNames from 'shared/lib/classNames/classNames';
+
+import { Icon } from '../Icon/Icon';
+import cls from './StarRating.module.scss';
 
 interface StarRatingProps {
 	className?: string;
@@ -23,7 +22,8 @@ export const StarRating = memo((props: StarRatingProps) => {
 	const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
 	const [isSelected, setIsSelected] = useState(Boolean(selectedStars)); // если юзер уже выбрал
 
-	const onHover = (starsCount: number) => () => { // возвращаем функцию (замыкание)
+	const onHover = (starsCount: number) => () => {
+		// возвращаем функцию (замыкание)
 		if (!isSelected) {
 			setCurrentStarsCount(starsCount); // текущее кол-во звезд (по ховеру)
 		}
@@ -35,7 +35,8 @@ export const StarRating = memo((props: StarRatingProps) => {
 		}
 	};
 
-	const onClick = (starsCount: number) => () => { // возвращаем функцию (замыкание)
+	const onClick = (starsCount: number) => () => {
+		// возвращаем функцию (замыкание)
 		if (!isSelected) {
 			onSelect?.(starsCount);
 			setCurrentStarsCount(starsCount); // сохраняем выбранное кол-во звезд
@@ -45,20 +46,26 @@ export const StarRating = memo((props: StarRatingProps) => {
 
 	return (
 		<div className={classNames(cls.StarRating, {}, [className])}>
-			{stars.map((starNumber) => ( // отрисовываем иконки звезд
-				<Icon
-					className={classNames(cls.starIcon, { [cls.selected]: isSelected }, // мод на сброс курсора при выборе
-						[currentStarsCount >= starNumber ? cls.hovered : cls.normal], // перекрашивание звезд
-					)}
-					Svg={StarIcon}
-					key={starNumber}
-					width={size}
-					height={size}
-					onMouseLeave={onLeave}
-					onMouseEnter={onHover(starNumber)}
-					onClick={onClick(starNumber)}
-				/>
-			))}
+			{stars.map(
+				(
+					starNumber // отрисовываем иконки звезд
+				) => (
+					<Icon
+						className={classNames(
+							cls.starIcon,
+							{ [cls.selected]: isSelected }, // мод на сброс курсора при выборе
+							[currentStarsCount >= starNumber ? cls.hovered : cls.normal] // перекрашивание звезд
+						)}
+						Svg={StarIcon}
+						key={starNumber}
+						width={size}
+						height={size}
+						onMouseLeave={onLeave}
+						onMouseEnter={onHover(starNumber)}
+						onClick={onClick(starNumber)}
+					/>
+				)
+			)}
 		</div>
 	);
 });

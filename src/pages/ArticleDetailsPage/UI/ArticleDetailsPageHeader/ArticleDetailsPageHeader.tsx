@@ -1,16 +1,16 @@
-import cls from './ArticleDetailsPageHeader.module.scss';
-
-import { getCanEditArticle } from '../../model/selectors/article';
-
-import classNames from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { getArticleDetailsData } from 'entities/Article/public';
+import classNames from 'shared/lib/classNames/classNames';
 // import { getUserAuthData } from 'entities/User/public';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { getArticleDetailsData } from 'entities/Article/public';
+
+import { getCanEditArticle } from '../../model/selectors/article';
+import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
 	className?: string;
@@ -24,7 +24,8 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
 	const canEdit = useSelector(getCanEditArticle); // проверка на article.user.id === user.id
 	const article = useSelector(getArticleDetailsData);
 
-	const onBackToList = useCallback(() => { // возврат обратно к списку
+	const onBackToList = useCallback(() => {
+		// возврат обратно к списку
 		navigate(RoutePath.articles);
 	}, [navigate]);
 

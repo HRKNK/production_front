@@ -1,14 +1,14 @@
 /* eslint-disable react/display-name */
-import cls from './SidebarItem.module.scss';
-
-import { type SidebarItemType } from '../../model/types/items';
-
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { getUserAuthData } from 'entities/User/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User/public';
+
+import { type SidebarItemType } from '../../model/types/items';
+import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
 	item: SidebarItemType;
@@ -24,15 +24,9 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
 	}
 
 	return (
-		<AppLink
-			theme={AppLinkTheme.SECONDARY}
-			to={item.path}
-			className={classNames(cls.item, { [cls.collapsed]: collapsed })}
-		>
+		<AppLink theme={AppLinkTheme.SECONDARY} to={item.path} className={classNames(cls.item, { [cls.collapsed]: collapsed })}>
 			<item.Icon className={cls.icon} />
-			<span className={cls.link}>
-				{t(item.text)}
-			</span>
+			<span className={cls.link}>{t(item.text)}</span>
 		</AppLink>
 	);
 });

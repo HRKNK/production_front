@@ -1,12 +1,11 @@
-import cls from './ListBox.module.scss';
+import { Listbox as HListBox } from '@headlessui/react';
+import { Fragment, type ReactNode, useState } from 'react';
 
-import { HStack } from '../Stack/public';
+import classNames, { Mods } from 'shared/lib/classNames/classNames';
 
 import { Button } from '../Button/Button';
-
-import { Fragment, type ReactNode, useState } from 'react';
-import { Listbox as HListBox } from '@headlessui/react';
-import classNames, { Mods } from 'shared/lib/classNames/classNames';
+import { HStack } from '../Stack/public';
+import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
 	value: string;
@@ -37,22 +36,23 @@ interface ListBoxProps {
 	label?: string; // текст-заголовок перед селектом
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = { // маппер на пропс direction
+const mapDirectionClass: Record<DropdownDirection, string> = {
+	// маппер на пропс direction
 	bottom: cls.optionsBottom,
 	top: cls.optionsTop,
 };
 
-export function ListBox (props: ListBoxProps) {
+export function ListBox(props: ListBoxProps) {
 	const { className, items, value, defaultValue, onChange, readonly, direction = 'bottom', label } = props;
 	const optionsClasses = [mapDirectionClass[direction]]; // класс устанавливает пропс direction
 
 	return (
-		<HStack gap='4'>
+		<HStack gap="4">
 			{/* текст-заголовок перед селектом */}
 			{label && <span>{`${label}>`}</span>}
 			<HListBox
 				disabled={readonly}
-				as='div' // в какой тег будет обернут
+				as="div" // в какой тег будет обернут
 				className={classNames(cls.ListBox, {}, [className])}
 				value={value}
 				onChange={onChange}
@@ -60,12 +60,11 @@ export function ListBox (props: ListBoxProps) {
 				{/* Кнопка поведения селектора */}
 				<HListBox.Button // disabled={readonly}
 					// as = как div (получалась вложенность кнопки в кнопке) <button> cannot appear as a descendant of <button>.
-					as='div'
-					className={cls.trigger}>
+					as="div"
+					className={cls.trigger}
+				>
 					{/* Своя кнопка (кастомная) */}
-					<Button disabled={readonly}>
-						{value ?? defaultValue}
-					</Button>
+					<Button disabled={readonly}>{value ?? defaultValue}</Button>
 				</HListBox.Button>
 				<HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>
 					{items?.map((item) => (
@@ -75,8 +74,10 @@ export function ListBox (props: ListBoxProps) {
 							disabled={item.disabled} // отключение пунктов
 							as={Fragment} // <> </>
 						>
-							{({ active, selected }) => ( // active - ховер, selected - выбранный
-								<li className={classNames(cls.item, { [cls.active]: active, [cls.disabled]: item.disabled }) }>
+							{(
+								{ active, selected } // active - ховер, selected - выбранный
+							) => (
+								<li className={classNames(cls.item, { [cls.active]: active, [cls.disabled]: item.disabled })}>
 									{/* Для !!! можно добавить иконку галочки/селектед */}
 									{selected && '!!!'}
 									{item.content}

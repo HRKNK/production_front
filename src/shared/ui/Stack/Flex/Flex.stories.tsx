@@ -1,7 +1,7 @@
-import { Flex } from './Flex';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+
+import { Flex } from './Flex';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

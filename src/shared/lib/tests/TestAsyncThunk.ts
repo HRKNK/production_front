@@ -1,9 +1,9 @@
 import { type AsyncThunkAction } from '@reduxjs/toolkit';
-import { type StateSchema } from 'app/providers/storeProvider/public';
 import axios, { type AxiosStatic } from 'axios';
 
-type ActionCreatorType<Return, Arg, RejectedValue>
-    = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue, }>;
+import { type StateSchema } from 'app/providers/storeProvider/public';
+
+type ActionCreatorType<Return, Arg, RejectedValue> = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
 jest.mock('axios');
 const mockedAxios = jest.mocked(axios);
@@ -17,7 +17,8 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
 	actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
-	constructor (actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) { // state is default (initial state)
+	constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) {
+		// state is default (initial state)
 		this.actionCreator = actionCreator; // action извне
 		this.dispatch = jest.fn(); // мок функции dispatch (any тип)
 		this.getState = jest.fn(() => state as StateSchema); // мок функции getState (вернет StateSchema)
@@ -26,7 +27,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 		this.navigate = jest.fn();
 	}
 
-	async callThunk (arg: Arg) {
+	async callThunk(arg: Arg) {
 		const action = this.actionCreator(arg); // action извне
 		const result = await action(this.dispatch, this.getState, { api: this.api, navigate: this.navigate });
 		return result;

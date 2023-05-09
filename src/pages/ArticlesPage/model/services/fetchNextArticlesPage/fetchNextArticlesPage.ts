@@ -1,12 +1,11 @@
-import { getArticlesPageHasMore, getArticlesPageIsLoading, getArticlesPageNumber } from '../../selectors/articlesPageSelectors';
-
-import { articlesPageActions } from '../../slices/articlesPageSlice';
-
-import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type StateSchema } from 'entities/Counter/public';
+
+import { getArticlesPageHasMore, getArticlesPageIsLoading, getArticlesPageNumber } from '../../selectors/articlesPageSelectors';
+import { articlesPageActions } from '../../slices/articlesPageSlice';
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
@@ -23,5 +22,5 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<st
 			dispatch(articlesPageActions.setPage(page + 1)); // изменяем номер страницы
 			void dispatch(fetchArticlesList({})); // запрос на статьи | номер страницы { page: page + 1 }
 		}
-	},
+	}
 );

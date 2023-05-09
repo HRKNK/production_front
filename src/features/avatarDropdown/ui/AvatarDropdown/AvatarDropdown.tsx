@@ -1,11 +1,12 @@
 /* eslint-disable react/display-name */
-import { useTranslation } from 'react-i18next';
 import React, { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { RoutePath } from 'app/providers/router/config/routeConfig';
+import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User/public';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { Dropdown } from 'shared/ui/Dropdown/public';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, isUserAdmin, isUserManager, userActions } from 'entities/User/public';
 
 interface AvatarDropdownProps {
 	className?: string;
@@ -29,13 +30,17 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 	}
 
 	return (
-		<Dropdown direction={'bottom left'}
-			items={[ // ссылки
+		<Dropdown
+			direction={'bottom left'}
+			items={[
+				// ссылки
 				...(isAdminPanelAvailable
-					? [{
-						content: t('Админка'),
-						href: RoutePath.admin_panel,
-					}]
+					? [
+							{
+								content: t('Админка'),
+								href: RoutePath.admin_panel,
+							},
+					  ]
 					: []),
 				{
 					content: t('Выйти'),
@@ -45,7 +50,8 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 					content: t('Профиль'),
 					href: RoutePath.profile + authData.id,
 				},
-			]} trigger={<Avatar size={30} src={authData.avatar}/>}
+			]}
+			trigger={<Avatar size={30} src={authData.avatar} />}
 		/>
 	);
 });

@@ -1,20 +1,18 @@
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-
-import { profileActions } from '../../model/slice/profileSlice';
-
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-
-import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
-
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { memo, useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import classNames from 'shared/lib/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Text } from 'shared/ui/Text/public';
+
 import { getUserAuthData } from 'entities/User/public';
+import classNames from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { HStack } from 'shared/ui/Stack/public';
+import { Text } from 'shared/ui/Text/public';
+
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
+import { profileActions } from '../../model/slice/profileSlice';
 
 interface EditableProfileCardHeaderProps {
 	className?: string;
@@ -22,9 +20,7 @@ interface EditableProfileCardHeaderProps {
 
 // eslint-disable-next-line react/display-name
 export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderProps) => {
-	const {
-		className,
-	} = props;
+	const { className } = props;
 
 	const { t } = useTranslation('profile');
 
@@ -52,37 +48,35 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
 			<Text title={t('Профиль')} />
 			{canEdit && (
 				<>
-					{readonly
-						? (
+					{readonly ? (
+						<Button
+							// className={cls.editBtn}
+							theme={ThemeButton.OUTLINE}
+							onClick={onEdit}
+							data-testid={'EditableProfileCardHeader.EditButton'}
+						>
+							{t('Редактировать')}
+						</Button>
+					) : (
+						<HStack gap={'8'}>
 							<Button
 								// className={cls.editBtn}
-								theme={ThemeButton.OUTLINE}
-								onClick={onEdit}
-								data-testid={'EditableProfileCardHeader.EditButton'}
+								theme={ThemeButton.OUTLINE_RED}
+								onClick={onCancelEdit}
+								data-testid={'EditableProfileCardHeader.CancelButton'}
 							>
-								{t('Редактировать')}
+								{t('Отменить')}
 							</Button>
-						)
-						: (
-							<HStack gap={'8'}>
-								<Button
-									// className={cls.editBtn}
-									theme={ThemeButton.OUTLINE_RED}
-									onClick={onCancelEdit}
-									data-testid={'EditableProfileCardHeader.CancelButton'}
-								>
-									{t('Отменить')}
-								</Button>
-								<Button
-									// className={cls.saveBtn}
-									theme={ThemeButton.OUTLINE}
-									onClick={onSave}
-									data-testid={'EditableProfileCardHeader.SaveButton'}
-								>
-									{t('Сохранить')}
-								</Button>
-							</HStack>
-						)}
+							<Button
+								// className={cls.saveBtn}
+								theme={ThemeButton.OUTLINE}
+								onClick={onSave}
+								data-testid={'EditableProfileCardHeader.SaveButton'}
+							>
+								{t('Сохранить')}
+							</Button>
+						</HStack>
+					)}
 				</>
 			)}
 		</HStack>

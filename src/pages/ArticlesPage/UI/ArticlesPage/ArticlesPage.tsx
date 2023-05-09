@@ -1,28 +1,21 @@
-import cls from './ArticlesPage.module.scss';
+import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
-import { articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import classNames from 'shared/lib/classNames/classNames';
+import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Page } from 'widgets/Page/Page';
 
 import { getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView } from '../../model/selectors/articlesPageSelectors';
-
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
-
+import { articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
-
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-
-import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Page } from 'widgets/Page/Page';
-import { useSearchParams } from 'react-router-dom';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
 	className?: string;

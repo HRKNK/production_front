@@ -1,7 +1,7 @@
-import Input from './Input';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
+
+import Input from './Input';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

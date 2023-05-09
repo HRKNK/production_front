@@ -1,7 +1,8 @@
-import { Counter } from 'entities/Counter/public';
-import { RatingCard } from 'entities/Rating/public';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Counter } from 'entities/Counter/public';
+import { RatingCard } from 'entities/Rating/public';
 import { ListBox } from 'shared/ui/ListBox/public';
 import { HStack } from 'shared/ui/Stack/public';
 import { Page } from 'widgets/Page/Page';
@@ -22,10 +23,10 @@ const MainPage = () => {
 	return (
 		<Page>
 			{t('Главная')}
-			<HStack gap='32'>
+			<HStack gap="32">
 				<Counter></Counter>
-				<ListBox value={selectedPerson.value} defaultValue='Выберите значение' items={people} onChange={ () => null }></ListBox>
-				<RatingCard hasFeedback title='Как вам статья?' feedbackTitle='Оставьте отзыв'/>
+				<ListBox value={selectedPerson.value} defaultValue="Выберите значение" items={people} onChange={() => null}></ListBox>
+				<RatingCard hasFeedback title="Как вам статья?" feedbackTitle="Оставьте отзыв" />
 			</HStack>
 		</Page>
 	);

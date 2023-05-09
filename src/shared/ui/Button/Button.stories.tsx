@@ -1,9 +1,10 @@
-import { Button, ButtonSize, ThemeButton } from './Button';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import { Button, ButtonSize, ThemeButton } from './Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -21,7 +22,8 @@ export const Primary = Template.bind({});
 Primary.args = {
 	children: 'More word',
 };
-Primary.decorators = [ // применение отдельной темы
+Primary.decorators = [
+	// применение отдельной темы
 	themeDecorator(Theme.LIGHT),
 ];
 
@@ -30,9 +32,7 @@ Clear.args = {
 	children: 'More word',
 	theme: ThemeButton.CLEAR,
 };
-Clear.decorators = [
-	themeDecorator(Theme.LIGHT),
-];
+Clear.decorators = [themeDecorator(Theme.LIGHT)];
 
 export const Outline = Template.bind({});
 Outline.args = {

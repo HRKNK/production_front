@@ -1,10 +1,10 @@
-import AddCommentForm from './AddCommentForm';
-
-import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-
 import { action } from '@storybook/addon-actions';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
+
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import AddCommentForm from './AddCommentForm';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -21,6 +21,4 @@ export const Normal = Template.bind({});
 Normal.args = {
 	onSendComment: action('onSendComment'),
 };
-Normal.decorators = [
-	StoreDecorator({}),
-];
+Normal.decorators = [StoreDecorator({})];

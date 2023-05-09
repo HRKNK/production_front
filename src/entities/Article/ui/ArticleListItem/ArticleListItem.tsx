@@ -1,23 +1,21 @@
-import cls from './ArticleListItem.module.scss';
-
-import { type Article, type ArticleTextBlock } from '../../model/types/article';
-
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-
-import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
-
-import classNames from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { type HTMLAttributeAnchorTarget, HTMLAttributes, memo, useCallback } from 'react';
-import { Text } from 'shared/ui/Text/public';
-import { Icon } from 'shared/ui/Icon/public';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import EyeIcon from 'shared/assets/icons/eye.svg';
+import classNames from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/public';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { Card } from 'shared/ui/Card/public';
-import { AppLink } from 'shared/ui/AppLink/public';
+import { Icon } from 'shared/ui/Icon/public';
+import { Text } from 'shared/ui/Text/public';
+
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
+import { type Article, type ArticleTextBlock } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
 	className?: string;
@@ -37,12 +35,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 	// }, [article.id, navigate]);
 
 	const types = <Text text={article.type.join(', ')} className={cls.types} />; // ТИП статьи
-	const views = ( // Компонент просмотров
-		<>
-			<Text text={String(article.views)} className={cls.views} />
-			<Icon Svg={EyeIcon} />
-		</>
-	);
+	const views = // Компонент просмотров
+		(
+			<>
+				<Text text={String(article.views)} className={cls.views} />
+				<Icon Svg={EyeIcon} />
+			</>
+		);
 
 	// BIG view
 	if (view === ArticleView.BIG) {
@@ -58,13 +57,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 					<Text title={article.title} className={cls.title} />
 					{types}
 					<img src={article.img} className={cls.img} alt={article.title} />
-					{textBlock && (
-						<ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
-					)}
+					{textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />}
 					<div className={cls.footer}>
 						{/* для таргет бланка */}
 						<AppLink target={target} to={RoutePath.articles_details + article.id}>
-							<Button theme={ThemeButton.OUTLINE}> {/* onClick={onOpenArticle} */}
+							<Button theme={ThemeButton.OUTLINE}>
+								{' '}
+								{/* onClick={onOpenArticle} */}
 								{t('Читать далее...')}
 							</Button>
 						</AppLink>
@@ -78,7 +77,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 	// SMALL view
 	return (
 		<AppLink target={target} to={RoutePath.articles_details + article.id} className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-			<Card className={cls.card}> {/* onClick={onOpenArticle} */}
+			<Card className={cls.card}>
+				{' '}
+				{/* onClick={onOpenArticle} */}
 				{/* Карточка с аватаром / датой создания */}
 				<div className={cls.imageWrapper}>
 					<img alt={article.title} src={article.img} className={cls.img} />

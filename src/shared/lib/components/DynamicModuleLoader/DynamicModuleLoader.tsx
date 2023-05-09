@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import { type FC, useEffect, type ReactNode } from 'react';
+import { type Reducer } from '@reduxjs/toolkit';
+import { type FC, type ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
-import { type Reducer } from '@reduxjs/toolkit';
-import { type StateSchema, type ReduxStoreWithManager, type StateSchemaKey } from 'app/providers/storeProvider/config/stateSchema';
+import { type ReduxStoreWithManager, type StateSchema, type StateSchemaKey } from 'app/providers/storeProvider/config/stateSchema';
 
 export type ReducersList = {
 	[name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>; // забираем конкретное поле/название редьюса из StateSchema в качестве типа
@@ -26,7 +26,8 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 
 	useEffect(() => {
 		const mountedReducers = store.reducerManager.getReducerMap();
-		Object.entries(reducers).forEach(([name, reducer]) => { // ([name, reducer]: ReducersListEntry)
+		Object.entries(reducers).forEach(([name, reducer]) => {
+			// ([name, reducer]: ReducersListEntry)
 			const mounted = mountedReducers[name as StateSchemaKey];
 			if (!mounted) {
 				store.reducerManager.add(name as StateSchemaKey, reducer); // добавлено: as StateSchemaKey взамен типизации аргументов forEach
@@ -36,19 +37,18 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 
 		return () => {
 			if (removeAfterUnmount) {
-				Object.entries(reducers).forEach(([name, reducer]) => { // ([name, reducer]: ReducersListEntry)
+				Object.entries(reducers).forEach(([name, reducer]) => {
+					// ([name, reducer]: ReducersListEntry)
 					store.reducerManager.remove(name as StateSchemaKey); // добавлено: as StateSchemaKey взамен типизации аргументов forEach
 					dispatch({ type: `@DESTROY ${name} reducer` });
 				});
 			}
 		};
 		// eslint-disable-next-line
-    }, []);
+	}, []);
 
 	return (
-	// eslint-disable-next-line react/jsx-no-useless-fragment
-		<>
-			{children}
-		</>
+		// eslint-disable-next-line react/jsx-no-useless-fragment
+		<>{children}</>
 	);
 };

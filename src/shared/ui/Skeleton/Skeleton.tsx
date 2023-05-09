@@ -1,7 +1,8 @@
-import cls from './Skeleton.module.scss';
+import { type CSSProperties, memo } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { type CSSProperties, memo } from 'react';
+
+import cls from './Skeleton.module.scss';
 
 interface SkeletonProps {
 	className?: string;
@@ -12,12 +13,7 @@ interface SkeletonProps {
 
 // eslint-disable-next-line react/display-name
 export const Skeleton = memo((props: SkeletonProps) => {
-	const {
-		className,
-		height,
-		width,
-		border,
-	} = props;
+	const { className, height, width, border } = props;
 
 	const styles: CSSProperties = {
 		width,
@@ -25,10 +21,5 @@ export const Skeleton = memo((props: SkeletonProps) => {
 		borderRadius: border,
 	};
 
-	return (
-		<div
-			className={classNames(cls.Skeleton, {}, [className])}
-			style={styles}
-		/>
-	);
+	return <div className={classNames(cls.Skeleton, {}, [className])} style={styles} />;
 });

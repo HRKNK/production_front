@@ -1,9 +1,17 @@
-import { getArticlesPageLimit, getArticlesPageNumber, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType } from '../../selectors/articlesPageSelectors';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type StateSchema, type ThunkConfig } from 'app/providers/storeProvider/public';
-import { ArticleType, type Article } from 'entities/Article/public';
+import { type Article, ArticleType } from 'entities/Article/public';
 import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+
+import {
+	getArticlesPageLimit,
+	getArticlesPageNumber,
+	getArticlesPageOrder,
+	getArticlesPageSearch,
+	getArticlesPageSort,
+	getArticlesPageType,
+} from '../../selectors/articlesPageSelectors';
 
 interface FetchArticlesListProps {
 	page?: number;
@@ -13,7 +21,8 @@ interface FetchArticlesListProps {
 export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
 	// createAsyncThunk<(что возвращаем), (что ожидаем на вход), { переопределение типа }
 	'articlesPage/fetchArticlesList',
-	async (props, thunkApi) => { // props: FetchArticlesListProps = принят на вход createAsyncThunk
+	async (props, thunkApi) => {
+		// props: FetchArticlesListProps = принят на вход createAsyncThunk
 		const { extra, rejectWithValue, getState } = thunkApi;
 		// const { page = 1 } = props;
 		const limit = getArticlesPageLimit(getState() as StateSchema); // getState - передать актуальный стейт в селектор
@@ -28,7 +37,8 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
 		try {
 			addQueryParams({ sort, order, search }); // добавить квери параметры в url строку
 			const response = await extra.api.get<Article[]>('/articles', {
-				params: { // квэри параметры
+				params: {
+					// квэри параметры
 					_expand: 'user',
 					_limit: limit,
 					_page: page,
@@ -47,5 +57,5 @@ export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListPr
 		} catch (e) {
 			return rejectWithValue('error');
 		}
-	},
+	}
 );

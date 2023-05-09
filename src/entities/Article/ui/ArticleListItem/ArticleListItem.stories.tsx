@@ -1,11 +1,9 @@
-import { ArticleListItem } from './ArticleListItem';
-
-import { type Article } from '../../model/types/article';
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
 
 import { ArticleView } from '../../model/consts/consts';
-
-import React from 'react';
-import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import { type Article } from '../../model/types/article';
+import { ArticleListItem } from './ArticleListItem';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -31,12 +29,7 @@ const article = {
 		username: 'Lupa Pupa',
 		avatar: 'https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg',
 	},
-	type: [
-		'IT',
-		'SCIENCE',
-		'POLITICS',
-		'ECONOMICS',
-	],
+	type: ['IT', 'SCIENCE', 'POLITICS', 'ECONOMICS'],
 	blocks: [
 		{
 			id: '1',
@@ -71,7 +64,7 @@ const article = {
 		{
 			id: '3',
 			type: 'CODE',
-			code: 'const path = require(\'path\');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, \'db.json\'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);',
+			code: "const path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
 		},
 		{
 			id: '7',

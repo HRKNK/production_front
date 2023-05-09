@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type Profile } from 'entities/Profile/public';
 
@@ -19,5 +20,5 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
 			console.log(e);
 			return thunkApi.rejectWithValue('error');
 		}
-	},
+	}
 );

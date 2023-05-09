@@ -1,7 +1,7 @@
-import { CurrencySelect } from './CurrencySelect';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
+import React from 'react';
+
+import { CurrencySelect } from './CurrencySelect';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

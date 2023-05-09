@@ -1,8 +1,9 @@
-import { EditableProfileCardHeader } from './EditableProfileCardHeader';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

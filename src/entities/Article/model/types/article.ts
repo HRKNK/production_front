@@ -1,8 +1,9 @@
-import { type ArticleBlockType, type ArticleType } from '../consts/consts';
-
 import { type User } from 'entities/User/public';
 
-export interface ArticleBlockBase { // одинаковые поля в статьях
+import { type ArticleBlockType, type ArticleType } from '../consts/consts';
+
+export interface ArticleBlockBase {
+	// одинаковые поля в статьях
 	id: string;
 	type: ArticleBlockType; // перечисление типов статей
 }

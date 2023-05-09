@@ -1,6 +1,5 @@
-import { Project } from 'ts-morph';
-
 import path from 'path';
+import { Project } from 'ts-morph';
 
 const project = new Project({});
 
@@ -15,7 +14,7 @@ const sharedUiDirectory = project.getDirectory(path.resolve(__dirname, '..', 'sr
 const directories = sharedUiDirectory?.getDirectories(); // UI папки в виде массива
 
 // Проверка на абсолютные пути проекта
-function isAbsolute (value: string) {
+function isAbsolute(value: string) {
 	const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages']; // избавляемся от библиотечных путей
 	return layers.some((layer) => value.startsWith(layer));
 }
@@ -27,10 +26,13 @@ directories?.forEach((directory) => {
 	const isIndexFileExist = `${folderName}/${publicFileName}.ts`; // путь до Public API
 	const indexFile = directory.getSourceFile(isIndexFileExist);
 
-	if (!indexFile) { // если Public API нет
+	if (!indexFile) {
+		// если Public API нет
 		const sourceCode = `export * from './${directory.getBaseName()}';\n`; // код, который необходимо записать в файл (экспортировать всё из file.name)
 		const file = directory.createSourceFile(isIndexFileExist, sourceCode, { overwrite: false }); // путь до файла, внедрение, опции: перезапись файла
-		void file.save().then(() => { console.log(`${folderName} --> ${publicFileName}.ts created!`); });
+		void file.save().then(() => {
+			console.log(`${folderName} --> ${publicFileName}.ts created!`);
+		});
 	}
 });
 
@@ -56,4 +58,6 @@ files.forEach((sourceFile) => {
 	});
 });
 
-void project.save().then(() => { console.log('\n\nScript completed!'); });
+void project.save().then(() => {
+	console.log('\n\nScript completed!');
+});

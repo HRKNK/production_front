@@ -1,13 +1,10 @@
-import { profileActions, profileReducer } from './profileSlice';
-
-import { updateProfileData } from '../services/updateProfileData/updateProfileData';
-
-import { type ProfileSchema } from '../types/editableProfileCardSchema';
-
-import { ValidateProfileError } from '../consts/consts';
-
 import { Country } from 'entities/Country/model/types/country';
 import { Currency } from 'entities/Currency/model/types/currency';
+
+import { ValidateProfileError } from '../consts/consts';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { type ProfileSchema } from '../types/editableProfileCardSchema';
+import { profileActions, profileReducer } from './profileSlice';
 
 const data = {
 	username: 'Admin',
@@ -28,14 +25,19 @@ describe('profileSlice.test', () => {
 	test('test cancel edit', () => {
 		const state: DeepPartial<ProfileSchema> = { data, form: { username: '' } };
 
-		expect(profileReducer(state as ProfileSchema, profileActions.cancelEdit()))
-			.toEqual({ readonly: true, validateErrors: undefined, data, form: data });
+		expect(profileReducer(state as ProfileSchema, profileActions.cancelEdit())).toEqual({
+			readonly: true,
+			validateErrors: undefined,
+			data,
+			form: data,
+		});
 	});
 
 	test('test update profile', () => {
 		const state: DeepPartial<ProfileSchema> = { form: { username: '123' } };
-		expect(profileReducer(state as ProfileSchema, profileActions.updateProfileData({ username: '123456' })))
-			.toEqual({ form: { username: '123456' } });
+		expect(profileReducer(state as ProfileSchema, profileActions.updateProfileData({ username: '123456' }))).toEqual({
+			form: { username: '123456' },
+		});
 	});
 
 	/// service
@@ -46,7 +48,8 @@ describe('profileSlice.test', () => {
 			validateError: [ValidateProfileError.SERVER_ERROR],
 		};
 
-		expect(profileReducer(state as ProfileSchema, updateProfileData.pending)).toEqual({ // результат в момент updateProfileData.pending
+		expect(profileReducer(state as ProfileSchema, updateProfileData.pending)).toEqual({
+			// результат в момент updateProfileData.pending
 			isLoading: true,
 			validateErrors: undefined,
 		});

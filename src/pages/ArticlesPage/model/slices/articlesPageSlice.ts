@@ -1,12 +1,12 @@
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { type ArticlesPageSchema } from '../types/articlesPageSchema';
-
-import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { type Article, ArticleView, ArticleSortField, ArticleType } from 'entities/Article/public';
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { type StateSchema } from 'app/providers/storeProvider/public';
+import { type Article, ArticleSortField, ArticleType, ArticleView } from 'entities/Article/public';
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { type SortOrder } from 'shared/types';
+
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { type ArticlesPageSchema } from '../types/articlesPageSchema';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter
 // https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
@@ -17,9 +17,7 @@ const articlesAdapter = createEntityAdapter<Article>({
 });
 
 // Может создать набор запоминающихся селекторов на основе местоположения этого состояния
-export const getArticles = articlesAdapter.getSelectors<StateSchema>(
-	(state) => state.articlesPage || articlesAdapter.getInitialState(),
-);
+export const getArticles = articlesAdapter.getSelectors<StateSchema>((state) => state.articlesPage || articlesAdapter.getInitialState());
 
 const articlesPageSlice = createSlice({
 	name: 'articlesPageSlice',
@@ -41,7 +39,8 @@ const articlesPageSlice = createSlice({
 		sort: ArticleSortField.CREATED,
 		type: ArticleType.ALL,
 	}),
-	reducers: { // state = initialState
+	reducers: {
+		// state = initialState
 		setView: (state, action: PayloadAction<ArticleView>) => {
 			state.view = action.payload;
 			localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload); // сохраняем вид статей в локал
@@ -52,7 +51,8 @@ const articlesPageSlice = createSlice({
 			state.limit = view === ArticleView.BIG ? 3 : 9; // кол-во подгружаемых статей (в зависимости от вида статей)
 			state._inited = true;
 		},
-		setPage: (state, action: PayloadAction<number>) => { // текущая страница
+		setPage: (state, action: PayloadAction<number>) => {
+			// текущая страница
 			state.page = action.payload;
 		},
 		// сортировка
@@ -69,27 +69,34 @@ const articlesPageSlice = createSlice({
 			state.type = action.payload;
 		},
 	},
-	extraReducers: (builder) => { // хэндлер для AsyncThunk
+	extraReducers: (builder) => {
+		// хэндлер для AsyncThunk
 		builder // state = initialState
-			.addCase(fetchArticlesList.pending, (state, action) => { // идёт запрос // ожидание
+			.addCase(fetchArticlesList.pending, (state, action) => {
+				// идёт запрос // ожидание
 				state.error = undefined;
 				state.isLoading = true;
-				if (action.meta.arg.replace) { // обнуляем массив статей
+				if (action.meta.arg.replace) {
+					// обнуляем массив статей
 					articlesAdapter.removeAll(state);
 				}
 			})
-			.addCase(fetchArticlesList.fulfilled, (state, action) => { // action: PayloadAction<Article[]> // запрос выполнен
+			.addCase(fetchArticlesList.fulfilled, (state, action) => {
+				// action: PayloadAction<Article[]> // запрос выполнен
 				state.isLoading = false;
 				// articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
 				state.hasMore = action.payload.length >= state.limit; // есть ли ещё данные?
 
-				if (action.meta.arg.replace) { // аргументы из action // под сортировку
+				if (action.meta.arg.replace) {
+					// аргументы из action // под сортировку
 					articlesAdapter.setAll(state, action.payload); // записываем ответ от сервера // список статей
-				} else { // под пагинацию
+				} else {
+					// под пагинацию
 					articlesAdapter.addMany(state, action.payload); // addMany - добавляет данные
 				}
 			})
-			.addCase(fetchArticlesList.rejected, (state, action) => { // вернулась ошибка
+			.addCase(fetchArticlesList.rejected, (state, action) => {
+				// вернулась ошибка
 				state.isLoading = false;
 				state.error = action.payload; // записываем информацию об ошибке
 			});

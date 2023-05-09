@@ -1,9 +1,10 @@
-import Text, { TextSize, TextTheme } from './Text';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+import React from 'react';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import Text, { TextSize, TextTheme } from './Text';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -57,7 +58,7 @@ OnlyTextDark.args = {
 	text: 'Description Description Description Description',
 };
 OnlyTextDark.decorators = [themeDecorator(Theme.DARK)];
-function ThemeDecorator (DARK: any) {
+function ThemeDecorator(DARK: any) {
 	throw new Error('Function not implemented.');
 }
 export const SizeL = Template.bind({});

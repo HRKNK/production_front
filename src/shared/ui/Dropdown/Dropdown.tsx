@@ -1,11 +1,11 @@
-import cls from './Dropdown.module.scss';
+import { Menu } from '@headlessui/react';
+import { Fragment, type ReactNode } from 'react';
+
+import classNames from 'shared/lib/classNames/classNames';
+import { type DropdownDirection } from 'shared/types/ui';
 
 import { AppLink } from '../AppLink/AppLink';
-
-import { Menu } from '@headlessui/react';
-import classNames from 'shared/lib/classNames/classNames';
-import { Fragment, type ReactNode } from 'react';
-import { type DropdownDirection } from 'shared/types/ui';
+import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
 	disabled?: boolean;
@@ -21,50 +21,50 @@ interface DropdownProps {
 	trigger: ReactNode; // аватарка
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = { // маппер на пропс direction
+const mapDirectionClass: Record<DropdownDirection, string> = {
+	// маппер на пропс direction
 	'bottom left': cls.optionsBottomLeft,
 	'bottom right': cls.optionsBottomRight,
 	'top right': cls.optionsTopRight,
 	'top left': cls.optionsTopLeft,
 };
 
-export function Dropdown (props: DropdownProps) {
+export function Dropdown(props: DropdownProps) {
 	const { className, trigger, items, direction = 'bottom right' } = props;
 
 	const menuClasses = [mapDirectionClass[direction]]; // класс устанавливает пропс direction
 
 	return (
-		<Menu as='div' className={classNames(cls.Dropdown, {}, [className])}>
+		<Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
 			<Menu.Button className={cls.btn}>
 				{/* Аватарка */}
 				{trigger}
 			</Menu.Button>
 			<Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
 				{items.map((item, index) => {
-					const content = ({ active }: { active: boolean, }) => (
-						<button type='button' disabled={item.disabled}
-							onClick={item.onClick}
-							className={classNames(cls.item, { [cls.active]: active })}
-						>
+					const content = ({ active }: { active: boolean }) => (
+						<button type="button" disabled={item.disabled} onClick={item.onClick} className={classNames(cls.item, { [cls.active]: active })}>
 							{item.content}
 						</button>
 					);
 
-					if (item.href) { // если пропс имеет ссылку -> заворачиваем в AppLink
-						return ( // as = во что обернуть
+					if (item.href) {
+						// если пропс имеет ссылку -> заворачиваем в AppLink
+						return (
+							// as = во что обернуть
 							<Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
 								{content}
 							</Menu.Item>
 						);
 					}
 
-					return ( // as = во что обернуть
+					return (
+						// as = во что обернуть
 						<Menu.Item key={index} as={Fragment} disabled={item.disabled}>
 							{content}
 						</Menu.Item>
 					);
 				})}
-
 			</Menu.Items>
 		</Menu>
 	);

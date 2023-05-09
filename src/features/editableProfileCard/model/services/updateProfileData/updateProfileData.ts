@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { validateProfileData } from '../validateProfileData/validateProfileData';
-
-import { ValidateProfileError } from '../../consts/consts';
-
+import { type StateSchema, type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type Profile } from 'entities/Profile/public';
 
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { type StateSchema, type ThunkConfig } from 'app/providers/storeProvider/public';
+import { ValidateProfileError } from '../../consts/consts';
+import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
+import { validateProfileData } from '../validateProfileData/validateProfileData';
 
 export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileError[]>>( // ThunkConfig<string>>
 	'profile/updateProfileData',
@@ -30,5 +28,5 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
 			console.log(e);
 			return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
 		}
-	},
+	}
 );

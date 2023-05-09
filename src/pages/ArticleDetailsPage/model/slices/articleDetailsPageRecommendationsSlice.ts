@@ -1,10 +1,10 @@
-import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
-
-import { type ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema';
-
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+
 import { type StateSchema } from 'app/providers/storeProvider/public';
 import { type Article } from 'entities/Article/public';
+
+import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { type ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema';
 
 // https://redux-toolkit.js.org/api/createEntityAdapter
 // https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
@@ -16,7 +16,7 @@ const recommendationsAdapter = createEntityAdapter<Article>({
 
 // Может создать набор запоминающихся селекторов на основе местоположения этого состояния
 export const getArticleRecommendations = recommendationsAdapter.getSelectors<StateSchema>(
-	(state) => state.articleDetailsPage?.recommendations || recommendationsAdapter.getInitialState(),
+	(state) => state.articleDetailsPage?.recommendations || recommendationsAdapter.getInitialState()
 );
 
 const articleDetailsPageRecommendationsSlice = createSlice({
@@ -28,17 +28,21 @@ const articleDetailsPageRecommendationsSlice = createSlice({
 		entities: {},
 	}),
 	reducers: {},
-	extraReducers: (builder) => { // хэндлер для AsyncThunk
+	extraReducers: (builder) => {
+		// хэндлер для AsyncThunk
 		builder // state = initialState
-			.addCase(fetchArticleRecommendations.pending, (state) => { // идёт запрос // ожидание
+			.addCase(fetchArticleRecommendations.pending, (state) => {
+				// идёт запрос // ожидание
 				state.error = undefined;
 				state.isLoading = true;
 			})
-			.addCase(fetchArticleRecommendations.fulfilled, (state, action) => { // запрос выполнен
+			.addCase(fetchArticleRecommendations.fulfilled, (state, action) => {
+				// запрос выполнен
 				state.isLoading = false;
 				recommendationsAdapter.setAll(state, action.payload); // записываем ответ от сервера
 			})
-			.addCase(fetchArticleRecommendations.rejected, (state, action) => { // вернулась ошибка
+			.addCase(fetchArticleRecommendations.rejected, (state, action) => {
+				// вернулась ошибка
 				state.isLoading = false;
 				state.error = action.payload;
 			});

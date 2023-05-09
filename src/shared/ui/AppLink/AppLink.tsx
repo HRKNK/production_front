@@ -1,10 +1,10 @@
 /* eslint-disable react/display-name */
-import cls from './AppLink.module.scss';
-
-import React, { memo, type ReactNode } from 'react';
+import React, { type ReactNode, memo } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
 import classNames from 'shared/lib/classNames/classNames';
+
+import cls from './AppLink.module.scss';
 
 // enum = перечисление
 export enum AppLinkTheme {
@@ -12,7 +12,8 @@ export enum AppLinkTheme {
 	SECONDARY = 'secondary',
 }
 
-interface AppLinkProps extends LinkProps { // расширяем типы пропсов для Link (зарезервированный тип)
+interface AppLinkProps extends LinkProps {
+	// расширяем типы пропсов для Link (зарезервированный тип)
 	className?: string;
 	theme?: AppLinkTheme;
 	children?: ReactNode;

@@ -1,8 +1,8 @@
-import { getProfileData } from './getProfileData';
-
 import { type StateSchema } from 'app/providers/storeProvider/public';
 import { Country } from 'entities/Country/model/types/country';
 import { Currency } from 'entities/Currency/model/types/currency';
+
+import { getProfileData } from './getProfileData';
 
 describe('getProfileData.test', () => {
 	test('should return error', () => {
@@ -16,7 +16,8 @@ describe('getProfileData.test', () => {
 			currency: Currency.USD,
 		};
 		const state: DeepPartial<StateSchema> = {
-			profile: { // тестируемый объект data из profile (внутри StateSchema)
+			profile: {
+				// тестируемый объект data из profile (внутри StateSchema)
 				data,
 			},
 		};

@@ -1,10 +1,11 @@
-import { ProfileCard } from './ProfileCard';
-
-import React from 'react';
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
-import avatar from 'shared/assets/tests/storybook.jpg';
+import React from 'react';
+
 import { Country } from 'entities/Country/public';
 import { Currency } from 'entities/Currency/public';
+import avatar from 'shared/assets/tests/storybook.jpg';
+
+import { ProfileCard } from './ProfileCard';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {

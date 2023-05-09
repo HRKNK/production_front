@@ -1,16 +1,19 @@
-import { type Article } from '../../types/article';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type ThunkConfig } from 'app/providers/storeProvider/public';
+
+import { type Article } from '../../types/article';
 
 export const fetchArticleById = createAsyncThunk<Article, string | undefined, ThunkConfig<string>>(
 	// createAsyncThunk<(что возвращаем), (что ожидаем на вход), { переопределение типа }
 	'articleDetails/fetchArticleById',
-	async (articleId, thunkApi) => { // articleId: string = принят на вход createAsyncThunk
+	async (articleId, thunkApi) => {
+		// articleId: string = принят на вход createAsyncThunk
 		const { extra, rejectWithValue } = thunkApi;
 
 		try {
-			if (!articleId) { // если undefined
+			if (!articleId) {
+				// если undefined
 				throw new Error('');
 			}
 
@@ -29,5 +32,5 @@ export const fetchArticleById = createAsyncThunk<Article, string | undefined, Th
 			console.log(e);
 			return rejectWithValue('error');
 		}
-	},
+	}
 );

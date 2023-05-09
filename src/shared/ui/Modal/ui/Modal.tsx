@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import cls from './Modal.module.scss';
+import React, { type MutableRefObject, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
-import Portal from '../../Portal/Portal';
+import { useTheme } from 'app/providers/ThemeProvider/public';
+import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 
 import { Overlay } from '../../Overlay/Overlay';
-
-import React, { type MutableRefObject, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
-import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import { useTheme } from 'app/providers/ThemeProvider/public';
+import Portal from '../../Portal/Portal';
+import cls from './Modal.module.scss';
 
 interface ModalProps {
 	className?: string;
@@ -25,7 +24,8 @@ const Modal = (props: ModalProps) => {
 	const { theme } = useTheme();
 
 	const { className, children, isOpen, onClose, lazy } = props;
-	const mods: Mods = { // Record<string, boolean | undefined>
+	const mods: Mods = {
+		// Record<string, boolean | undefined>
 		[cls.opened]: isOpen,
 		[cls.isClosing]: isClosing,
 	};
@@ -38,7 +38,8 @@ const Modal = (props: ModalProps) => {
 		}
 	}, [isOpen]);
 
-	const closeHandler = useCallback(() => { // useCallback - мемомизирует функцию
+	const closeHandler = useCallback(() => {
+		// useCallback - мемомизирует функцию
 		if (onClose) {
 			setIsClosing(true);
 			timerRef.current = setTimeout(() => {
@@ -48,17 +49,22 @@ const Modal = (props: ModalProps) => {
 		}
 	}, [onClose]);
 
-	const onKeyDown = useCallback((e: KeyboardEvent) => { // useCallback - мемомизирует функцию
-		if (e.key === 'Escape') {
-			closeHandler();
-		}
-	}, [closeHandler]);
+	const onKeyDown = useCallback(
+		(e: KeyboardEvent) => {
+			// useCallback - мемомизирует функцию
+			if (e.key === 'Escape') {
+				closeHandler();
+			}
+		},
+		[closeHandler]
+	);
 
 	useEffect(() => {
 		if (isOpen) {
 			window.addEventListener('keydown', onKeyDown);
 		}
-		return () => { // очистка таймера
+		return () => {
+			// очистка таймера
 			clearTimeout(timerRef.current);
 			window.removeEventListener('keydown', onKeyDown);
 		};
@@ -75,8 +81,10 @@ const Modal = (props: ModalProps) => {
 	return (
 		<Portal>
 			<div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
-				<Overlay className={cls.overlay} onClick={closeHandler}/>
-				<div className={cls.content}> {/* onClick={onContentClick} */}
+				<Overlay className={cls.overlay} onClick={closeHandler} />
+				<div className={cls.content}>
+					{' '}
+					{/* onClick={onContentClick} */}
 					{children}
 				</div>
 			</div>

@@ -1,8 +1,9 @@
-import { NotificationList } from './NotificationList';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
+
 import { StoreDecorator } from 'shared/config/storybook/storeDecorator';
+
+import { NotificationList } from './NotificationList';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
@@ -17,9 +18,7 @@ const Template: ComponentStory<typeof NotificationList> = (args) => <Notificatio
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [
-	StoreDecorator({}),
-];
+Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
 	mockData: [
 		{

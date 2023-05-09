@@ -1,15 +1,17 @@
 /* eslint-disable react/display-name */
-import cls from './Select.module.scss';
+import { type ChangeEvent, memo, useMemo } from 'react';
 
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import { type ChangeEvent, memo, useMemo } from 'react';
+
+import cls from './Select.module.scss';
 
 export interface SelectOption {
 	value: string;
 	content: string;
 }
 
-interface SelectProps<T extends string> { // делаем дженерик (расширяет строку)
+interface SelectProps<T extends string> {
+	// делаем дженерик (расширяет строку)
 	className?: string;
 	label?: string; // титульник перед селектором
 	options?: SelectOption[]; // массив селекторов
@@ -28,11 +30,19 @@ export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 		}
 	};
 
-	const optionsList = useMemo(() => options?.map((opt) => ( // список селекторов
-		<option className={cls.option} value={opt.value} key={opt.value}>
-			{opt.content}
-		</option>
-	)), [options]);
+	const optionsList = useMemo(
+		() =>
+			options?.map(
+				(
+					opt // список селекторов
+				) => (
+					<option className={cls.option} value={opt.value} key={opt.value}>
+						{opt.content}
+					</option>
+				)
+			),
+		[options]
+	);
 
 	const mods: Mods = {};
 

@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
-import cls from './Code.module.scss';
+import { memo, useCallback } from 'react';
+
+import CopyIcon from 'shared/assets/icons/copy.svg';
+import classNames from 'shared/lib/classNames/classNames';
 
 import { Button, ThemeButton } from '../Button/Button';
-
-import classNames from 'shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
-import CopyIcon from 'shared/assets/icons/copy.svg';
+import cls from './Code.module.scss';
 
 interface CodeProps {
 	className?: string;
@@ -25,7 +25,9 @@ export const Code = memo((props: CodeProps) => {
 			<Button onClick={onCopy} className={cls.copyBtn} theme={ThemeButton.CLEAR}>
 				<CopyIcon className={cls.copyIcon} />
 			</Button>
-			<code> {/* HTML5 тег для кода */}
+			<code>
+				{' '}
+				{/* HTML5 тег для кода */}
 				{text}
 			</code>
 		</pre>

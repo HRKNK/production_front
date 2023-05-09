@@ -1,14 +1,10 @@
 // npx webpack | webpack  if(-g)
-
 // import path from 'path'; // для пакетов ноды  * as | изменить конфиг TS [esModuleInterop, allowSyntheticDefaultImports]
+import path from 'path';
+import type webpack from 'webpack';
 
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-
 import { type BuildEnv, type BuildPaths } from './config/build/types/config';
-
-import path from 'path';
-
-import type webpack from 'webpack';
 
 export default (env: BuildEnv) => {
 	const paths: BuildPaths = {

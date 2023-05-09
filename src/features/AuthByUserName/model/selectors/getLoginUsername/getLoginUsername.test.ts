@@ -1,7 +1,7 @@
-import { getLoginUsername } from './getLoginUsername';
-
 // import { type DeepPartial } from '@reduxjs/toolkit';
 import { type StateSchema } from 'app/providers/storeProvider/public';
+
+import { getLoginUsername } from './getLoginUsername';
 
 describe('getLoginUsername.test', () => {
 	test('should return value', () => {

@@ -1,8 +1,9 @@
 /* eslint-disable react/display-name */
-import cls from './Text.module.scss';
+import { memo } from 'react';
 
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+
+import cls from './Text.module.scss';
 
 export enum TextTheme {
 	PRIMARY = 'primary',
@@ -39,15 +40,7 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 };
 
 const Text = memo((props: TextProps) => {
-	const {
-		className,
-		text,
-		title,
-		align = TextAlign.LEFT,
-		theme = TextTheme.PRIMARY,
-		size = TextSize.M,
-		'data-testid': dataTestId = 'Text',
-	} = props;
+	const { className, text, title, align = TextAlign.LEFT, theme = TextTheme.PRIMARY, size = TextSize.M, 'data-testid': dataTestId = 'Text' } = props;
 
 	const mods: Mods = {
 		[cls[theme]]: true,
@@ -59,8 +52,16 @@ const Text = memo((props: TextProps) => {
 
 	return (
 		<div className={classNames(cls.Text, mods, [className])}>
-			{title && <HeaderTag data-testid={`${dataTestId}.Header`} className={cls.title}>{title}</HeaderTag>}
-			{text && <p data-testid={`${dataTestId}.Paragraph`} className={cls.text}>{text}</p>}
+			{title && (
+				<HeaderTag data-testid={`${dataTestId}.Header`} className={cls.title}>
+					{title}
+				</HeaderTag>
+			)}
+			{text && (
+				<p data-testid={`${dataTestId}.Paragraph`} className={cls.text}>
+					{text}
+				</p>
+			)}
 		</div>
 	);
 });

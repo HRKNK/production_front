@@ -1,9 +1,10 @@
-import { loginByUsername } from './loginByUsername';
-
-import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
+import axios from 'axios';
+
 import { userActions } from 'entities/User/public';
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
+
+import { loginByUsername } from './loginByUsername';
 
 jest.mock('axios');
 const mockedAxios = jest.mocked(axios); // модуль мока с глубоким копированием полей

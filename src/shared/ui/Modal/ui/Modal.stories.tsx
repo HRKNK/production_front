@@ -1,9 +1,10 @@
-import Modal from './Modal';
-
+import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import React from 'react';
-import { type ComponentStory, type ComponentMeta } from '@storybook/react';
-import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
+import { themeDecorator } from 'shared/config/storybook/themeDecorator';
+
+import Modal from './Modal';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -22,6 +23,7 @@ Primary.args = {
 	isOpen: true,
 	children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 };
-Primary.decorators = [ // применение отдельной темы
+Primary.decorators = [
+	// применение отдельной темы
 	themeDecorator(Theme.DARK),
 ];

@@ -1,17 +1,15 @@
 /* eslint-disable react/display-name */
-import cls from './Drawer.module.scss';
+import { a, config, useSpring } from '@react-spring/web';
+import { useDrag } from '@use-gesture/react';
+import React, { type ReactNode, memo, useCallback, useEffect } from 'react';
+
+import { useTheme } from 'app/providers/ThemeProvider/public';
+import classNames, { type Mods } from 'shared/lib/classNames/classNames';
+import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
 
 import { Overlay } from '../Overlay/Overlay';
-
 import Portal from '../Portal/Portal';
-
-import classNames, { type Mods } from 'shared/lib/classNames/classNames';
-import React, { memo, useCallback, type ReactNode, useEffect } from 'react';
-import { useTheme } from 'app/providers/ThemeProvider/public';
-
-import { useDrag } from '@use-gesture/react';
-import { a, useSpring, config } from '@react-spring/web';
-import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
+import cls from './Drawer.module.scss';
 
 interface DrawerProps {
 	className?: string;
@@ -53,13 +51,7 @@ const DrawerContent = memo((props: DrawerProps) => {
 	};
 
 	const bind = Gesture.useDrag(
-		({
-			last,
-			velocity: [, vy],
-			direction: [, dy],
-			movement: [, my],
-			cancel,
-		}) => {
+		({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
 			if (my < -70) cancel();
 
 			if (last) {
@@ -73,8 +65,11 @@ const DrawerContent = memo((props: DrawerProps) => {
 			}
 		},
 		{
-			from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
-		},
+			from: () => [0, y.get()],
+			filterTaps: true,
+			bounds: { top: 0 },
+			rubberband: true,
+		}
 	);
 
 	if (!isOpen) {
@@ -99,7 +94,8 @@ const DrawerContent = memo((props: DrawerProps) => {
 	);
 });
 
-const DrawerAsync = (props: DrawerProps) => { // Тут ждем загрузки библиотек
+const DrawerAsync = (props: DrawerProps) => {
+	// Тут ждем загрузки библиотек
 	const { isLoaded } = useAnimationLibs();
 
 	if (!isLoaded) {
@@ -109,7 +105,8 @@ const DrawerAsync = (props: DrawerProps) => { // Тут ждем загрузк�
 	return <DrawerContent {...props} />;
 };
 
-export const Drawer = (props: DrawerProps) => { // Завернут в провайдер
+export const Drawer = (props: DrawerProps) => {
+	// Завернут в провайдер
 	return (
 		<AnimationProvider>
 			<DrawerAsync {...props} />

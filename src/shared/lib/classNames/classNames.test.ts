@@ -1,6 +1,7 @@
 import classNames from '../classNames/classNames';
 
-describe('classNames', () => { // коллекция тестов
+describe('classNames', () => {
+	// коллекция тестов
 	test('With only first param', () => {
 		// Ожидаем, результат
 		expect(classNames('someClass')).toBe('someClass');

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { type ThunkConfig } from 'app/providers/storeProvider/public';
 import { type Article } from 'entities/Article/public';
 
@@ -6,7 +7,8 @@ import { type Article } from 'entities/Article/public';
 export const fetchArticleRecommendations = createAsyncThunk<Article[], void, ThunkConfig<string>>(
 	// createAsyncThunk<(что возвращаем), (что ожидаем на вход), { переопределение типа }
 	'articleDetailsPage/fetchArticleRecommendations',
-	async (props, thunkApi) => { // props: void = принят на вход createAsyncThunk
+	async (props, thunkApi) => {
+		// props: void = принят на вход createAsyncThunk
 		const { extra, rejectWithValue } = thunkApi;
 
 		try {
@@ -25,5 +27,5 @@ export const fetchArticleRecommendations = createAsyncThunk<Article[], void, Thu
 		} catch (e) {
 			return rejectWithValue('error');
 		}
-	},
+	}
 );
