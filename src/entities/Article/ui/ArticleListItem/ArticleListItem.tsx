@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import classNames from 'shared/lib/classNames/classNames';
+import { AppImage } from 'shared/ui/AppImage/public';
 import { AppLink } from 'shared/ui/AppLink/public';
 import { Avatar } from 'shared/ui/Avatar/public';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { Card } from 'shared/ui/Card/public';
 import { Icon } from 'shared/ui/Icon/public';
+import { Skeleton } from 'shared/ui/Skeleton/public';
 import { Text } from 'shared/ui/Text/public';
 
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
@@ -56,7 +58,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 					</div>
 					<Text title={article.title} className={cls.title} />
 					{types}
-					<img src={article.img} className={cls.img} alt={article.title} />
+					<AppImage fallback={<Skeleton width={'100%'} height={250} />} src={article.img} className={cls.img} alt={article.title} />
 					{textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />}
 					<div className={cls.footer}>
 						{/* для таргет бланка */}
@@ -82,7 +84,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 				{/* onClick={onOpenArticle} */}
 				{/* Карточка с аватаром / датой создания */}
 				<div className={cls.imageWrapper}>
-					<img alt={article.title} src={article.img} className={cls.img} />
+					<AppImage fallback={<Skeleton width={200} height={200} />} alt={article.title} src={article.img} className={cls.img} />
 					<Text text={article.createdAt} className={cls.date} />
 				</div>
 				{/* Блок с просмотрами/типом статьи */}
