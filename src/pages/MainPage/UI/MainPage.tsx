@@ -21,7 +21,7 @@ const MainPage = () => {
 	const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
 	return (
-		<Page>
+		<Page data-testid={'MainPage'}>
 			{t('Главная')}
 			<HStack gap="32">
 				<Counter></Counter>
