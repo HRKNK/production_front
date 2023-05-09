@@ -7,7 +7,7 @@ import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { getUserAuthData } from 'entities/User/public';
 import { LoginModal } from 'features/AuthByUserName/public';
 import { AvatarDropdown } from 'features/avatarDropdown/public';
-import { NotificationButton } from 'features/notificationButton/ui/NotificationButton/NotificationButton';
+import { NotificationButton } from 'features/notificationButton/public';
 // import { Link } from 'react-router-dom';
 import classNames from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
