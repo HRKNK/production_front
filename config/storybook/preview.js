@@ -1,10 +1,10 @@
-import { styleDecorator } from 'shared/config/storybook/styleDecorator';
+import { addDecorator } from '@storybook/react';
+
 import { Theme } from 'app/providers/ThemeProvider/public';
 import { routeDecorator } from 'shared/config/storybook/routeDecorator';
-import { translationDecorator } from 'shared/config/storybook/translationDecorator';
+import { styleDecorator } from 'shared/config/storybook/styleDecorator';
 import { suspenseDecorator } from 'shared/config/storybook/suspenseDecorator';
-
-import { addDecorator } from '@storybook/react';
+import { translationDecorator } from 'shared/config/storybook/translationDecorator';
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
