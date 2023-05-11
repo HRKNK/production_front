@@ -3,4 +3,4 @@
 
 # npm run eslint
 # npm run stlint
-# npm run eslint
+npx lint-staged
