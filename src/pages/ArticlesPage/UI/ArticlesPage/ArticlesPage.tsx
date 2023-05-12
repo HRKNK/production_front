@@ -54,7 +54,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 	return (
 		// Удаление редьюса
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-			<Page onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
+			<Page data-testid={'ArticlesPage'} onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
 				{/* Селектор вида отображения статей. UPD: Перенесено в ArticlesPageFilters
 				<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
 				{/* Фильтры */}
