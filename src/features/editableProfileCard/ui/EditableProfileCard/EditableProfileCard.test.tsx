@@ -52,12 +52,11 @@ describe('features/EditableProfileCard', () => {
 		await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton')); // имитация нажатия (селектор)
 
 		await userEvent.clear(screen.getByTestId('ProfileCard.firstname')); // имитация очистки поля
-		await userEvent.clear(screen.getByTestId('ProfileCard.lastname')); // имитация очистки поля
-
 		await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user'); // имитация ввода значения
-		await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user'); // имитация ввода значения
-
 		expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user'); // результат (введен: user)
+
+		await userEvent.clear(screen.getByTestId('ProfileCard.lastname')); // имитация очистки поля
+		await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user'); // имитация ввода значения
 		expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user'); // результат (введен: user)
 
 		await userEvent.click(screen.getByTestId('EditableProfileCardHeader.CancelButton')); // имитация нажатия (селектор)
