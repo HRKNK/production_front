@@ -37,7 +37,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 	}
 
 	return (
-		<VStack gap="8" max className={classNames(cls.CommentCard, {}, [className])}>
+		<VStack data-testid="CommentCard.Content" gap="8" max className={classNames(cls.CommentCard, {}, [className])}>
 			{/* to = переход в профиль по ид /profile/1 */}
 			<AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
 				{/* Аватар опционален */}

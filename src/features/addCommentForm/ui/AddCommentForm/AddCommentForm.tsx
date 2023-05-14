@@ -7,7 +7,7 @@ import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/Dy
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { Input } from 'shared/ui/Input/public';
-import { VStack } from 'shared/ui/Stack/public';
+import { HStack, VStack } from 'shared/ui/Stack/public';
 
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
@@ -45,16 +45,22 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 	}, [onCommentTextChange, onSendComment, text]);
 
 	return (
-		<VStack gap="8" max>
-			<DynamicModuleLoader reducers={reducers}>
+		<DynamicModuleLoader reducers={reducers}>
+			<HStack data-testid="AddCommentForm" justify="between" max>
 				<div className={classNames(cls.AddCommentForm, {}, [className])}>
-					<Input className={cls.input} placeholder={t('Введите текст комментария')} value={text} onChange={onCommentTextChange} />
-					<Button theme={ThemeButton.OUTLINE} onClick={onSendHandler}>
+					<Input
+						data-testid="AddCommentForm.Input"
+						className={cls.input}
+						placeholder={t('Введите текст комментария')}
+						value={text}
+						onChange={onCommentTextChange}
+					/>
+					<Button data-testid="AddCommentForm.Button" theme={ThemeButton.OUTLINE} onClick={onSendHandler}>
 						{t('Отправить')}
 					</Button>
 				</div>
-			</DynamicModuleLoader>
-		</VStack>
+			</HStack>
+		</DynamicModuleLoader>
 	);
 });
 
