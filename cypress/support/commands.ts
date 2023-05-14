@@ -30,34 +30,18 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-import { Cypress, cy } from 'local-cypress';
+import { Cypress } from 'local-cypress';
 
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import * as articleCommands from './commands/article';
+import * as commentsCommands from './commands/comments';
+import * as commonCommands from './commands/common';
+import * as profileCommands from './commands/profile';
+import * as ratingCommands from './commands/rating';
 
-Cypress.Commands.add('login', (username: string = 'admin', password: string = '123') => {
-	cy.request({
-		method: 'POST',
-		url: `http://localhost:8000/login`,
-		body: {
-			grant_type: 'password',
-			username,
-			password,
-		},
-	}).then(({ body }) => {
-		window.localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(body));
-		cy.visit('/');
-	});
-});
-
-declare global {
-	namespace Cypress {
-		interface Chainable {
-			login(username?: string, password?: string): Chainable<void>;
-			// drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>;
-			// dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>;
-			// visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>;
-		}
-	}
-}
+Cypress.Commands.addAll(commonCommands);
+Cypress.Commands.addAll(articleCommands);
+Cypress.Commands.addAll(commentsCommands);
+Cypress.Commands.addAll(profileCommands);
+Cypress.Commands.addAll(ratingCommands);
 
 export {};
