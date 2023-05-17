@@ -27,9 +27,6 @@
 		"generate:slice": "node ./scripts/createSlice/index.js",
 		"postinstall": "rmdir /s /q .\\node_modules\\.cache"
 	},
-	"lint-staged": {
-		"**/*.{ts,tsx}": "eslint"
-	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -40,6 +37,9 @@
 		"@babel/preset-env": "^7.20.2",
 		"@babel/preset-react": "^7.18.6",
 		"@babel/preset-typescript": "^7.18.6",
+		"@cypress/vite-dev-server": "^5.0.5",
+		"@cypress/webpack-dev-server": "^3.4.1",
+		"@cypress/webpack-preprocessor": "^5.17.1",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
 		"@storybook/addon-actions": "^6.5.16",
 		"@storybook/addon-essentials": "^6.5.16",

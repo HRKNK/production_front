@@ -4,3 +4,9 @@
 # npm run eslint
 # npm run stlint
 # npx lint-staged
+
+    # package.json
+    # 
+	# "lint-staged": {
+	# 	"**/*.{ts,tsx}": "eslint"
+	# },
