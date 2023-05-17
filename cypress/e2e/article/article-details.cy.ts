@@ -29,9 +29,16 @@ describe('Переход на страницу статей', () => {
 		cy.getByTestId('CommentCard.Content').should('have.length', 1); // 1-ин комментарий существует на странице
 	});
 	it('Установка оценки', () => {
+		// МОК запроса
+		cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' }); // Запрос, Маршрут, Фикстура (заранее записанный ответ бэкенда)
 		cy.getByTestId('ArticleDetails.Info').should('exist'); // should - должен => exist - существовать на странице
 		cy.getByTestId('RatingCard').scrollIntoView(); // скролл к указанному элементу
 		cy.setRate(4, 'feedback'); // Установка оценки
 		cy.get('[data-selected=true]').should('have.length', 4); // Оценка 4
+	});
+
+	// Пример пропуска теста
+	it.skip('Пример пропуска теста', () => {
+		cy.getByTestId('ERROR').should('exist');
 	});
 });

@@ -594,6 +594,21 @@
         ""
       ],
       "id": "6v71ELe"
+    },
+    {
+      "title": "Test header",
+      "subtitle": "Subtitle",
+      "img": "https://png.pngtree.com/element_our/png_detail/20190103/gazettemedianewsnewsletternewspaper-purple-business-logo-png_307881.jpg",
+      "views": 100,
+      "createdAt": "01.01.2000",
+      "userId": "1",
+      "type": [
+        "SCIENCE"
+      ],
+      "blocks": [
+        ""
+      ],
+      "id": "EeApc8X"
     }
   ],
   "comments": [
