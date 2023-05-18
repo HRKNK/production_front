@@ -24,6 +24,9 @@ export const userSlice = createSlice({
 				state.authData = json;
 				setFeatureFlags(json.features); // Фича флаги
 			}
+			// else { // На компоненты вне авторизации
+			// 	setFeatureFlags({ isArticleRatingEnabled: false, isCounterEnabled: false });
+			// }
 			state._inited = true;
 		},
 		logout: (state) => {

@@ -27,7 +27,7 @@ export function buildPlugins ({ paths, isDev, apiUrl, project }: BuildOptions): 
 
 	if (isDev) { // докинуть плагины в дэв сборку
 		plugins.push(new webpack.HotModuleReplacementPlugin()); // апдейты изменений без перезагрузок страницы
-		plugins.push(new ReactRefreshWebpackPlugin()); // апдейты для реакт компонентов
+		plugins.push(new ReactRefreshWebpackPlugin( { overlay: false } )); // апдейты для реакт компонентов (overlay - наложение ошибки)
 		plugins.push(new BundleAnalyzerPlugin({
 			openAnalyzer: false, // открытие вкладки статистики (ссылка дублируется в консоль)
 		}));
