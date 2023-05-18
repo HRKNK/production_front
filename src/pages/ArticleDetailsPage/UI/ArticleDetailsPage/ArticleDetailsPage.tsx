@@ -11,6 +11,7 @@ import { ArticleRating } from 'features/articleRating/public';
 import { ArticleRecommendationsList } from 'features/articleRecommendationsList/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { getFeatureFlag } from 'shared/lib/features/setGetFeatures';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
@@ -41,6 +42,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 	const { className } = props;
 	const { t } = useTranslation('article-details');
 	const { id } = useParams<{ id: string }>(); // Обработчик возвращает объект из пар ключ-значение динамических параметров из текущего URL-адреса
+	const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
 
 	// const comments = useSelector(getArticleComments.selectAll); // адаптер заменяет свой селектор.
 	// const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
@@ -86,7 +88,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 				<ArticleDetails id={id}></ArticleDetails>
 
 				{/* Блок с отзывами */}
-				<ArticleRating articleId={id}></ArticleRating>
+				{isArticleRatingEnabled && <ArticleRating articleId={id}></ArticleRating>}
 
 				{/* Блок с рекомендациями. UPD: Перенесено в фичи */}
 				<ArticleRecommendationsList></ArticleRecommendationsList>
