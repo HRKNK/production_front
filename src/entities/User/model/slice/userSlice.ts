@@ -3,6 +3,8 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { setFeatureFlags } from 'shared/lib/features/setGetFeatures';
 
+import { saveJsonSettings } from '../services/saveJsonSettings';
+import { type JsonSettings } from '../types/jsonSettings';
 import { type User, type UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
@@ -33,6 +35,16 @@ export const userSlice = createSlice({
 			state.authData = undefined;
 			localStorage.removeItem(USER_LOCALSTORAGE_KEY);
 		},
+	},
+	extraReducers: (builder) => {
+		// хэндлер для AsyncThunk
+		builder // state = initialState
+			.addCase(saveJsonSettings.fulfilled, (state, action: PayloadAction<JsonSettings>) => {
+				// запрос выполнен
+				if (state.authData) {
+					state.authData.jsonSettings = action.payload; // записываем ответ от сервера
+				}
+			});
 	},
 });
 
