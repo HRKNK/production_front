@@ -29,9 +29,9 @@ if (featureState !== 'on' && featureState !== 'off') throw new Error('Некор
 const project = new Project({});
 
 // Добавить все файлы из корня src
-project.addSourceFilesAtPaths('src/**/*.ts');
-project.addSourceFilesAtPaths('src/**/*.tsx');
-// project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx');
+// project.addSourceFilesAtPaths('src/**/*.ts');
+// project.addSourceFilesAtPaths('src/**/*.tsx');
+project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx');
 
 const files = project.getSourceFiles();
 
@@ -112,6 +112,7 @@ files.forEach((sourceFile) => {
 			if (featureState === 'off') node.replaceWithText(offFunction?.getBody().getText() ?? '');
 
 			console.log(`Внесены изменения по фича-флагу: ${removedFeatureName} [${featureState}]`);
+			return null;
 		}
 
 		/**
@@ -145,6 +146,7 @@ files.forEach((sourceFile) => {
 			if (featureState === 'off' && offValue) node.replaceWithText(offValue);
 
 			console.log(`Внесены изменения по фича-флагу: ${removedFeatureName} [${featureState}]`);
+			return null;
 		}
 	});
 });
