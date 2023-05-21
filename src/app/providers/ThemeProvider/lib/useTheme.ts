@@ -4,14 +4,14 @@ import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 
 // интерфейс возврата
 interface UseThemeResult {
-	toggleTheme: () => void; // функция ничего не возвращает
+	toggleTheme: (saveAction: (theme: Theme) => void) => void; // функция ничего не возвращает
 	theme: Theme;
 }
 
 export function useTheme(): UseThemeResult {
 	const { theme, setTheme } = useContext(ThemeContext);
 
-	const toggleTheme = () => {
+	const toggleTheme = (saveAction: (theme: Theme) => void) => {
 		let newTheme: Theme;
 		switch (theme) {
 			case Theme.DARK:
@@ -24,10 +24,12 @@ export function useTheme(): UseThemeResult {
 				newTheme = Theme.DARK;
 				break;
 			default:
-				newTheme = Theme.DARK;
+				newTheme = Theme.GREEN;
 				break;
 		}
 		setTheme?.(newTheme);
+		saveAction?.(newTheme);
+
 		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
 	};
 
