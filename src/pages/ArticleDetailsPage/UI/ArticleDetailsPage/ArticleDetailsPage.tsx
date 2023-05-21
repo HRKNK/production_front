@@ -6,15 +6,18 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { ArticleDetails, ArticleList } from 'entities/Article/public';
 import { CommentList } from 'entities/Comment/public';
+import { Counter } from 'entities/Counter/public';
 import { AddCommentForm } from 'features/addCommentForm/public';
 import { ArticleRating } from 'features/articleRating/public';
 import { ArticleRecommendationsList } from 'features/articleRecommendationsList/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from 'shared/lib/features/public';
 import { getFeatureFlag } from 'shared/lib/features/setGetFeatures';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
+import { Card } from 'shared/ui/Card/public';
 import { Text, TextSize } from 'shared/ui/Text/public';
 import { Page } from 'widgets/Page/Page';
 
@@ -80,6 +83,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 				{/* <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
 					{t('Назад к списку')}
 				</Button> */}
+
+				{/* Тестовый компонент под фича-флаг */}
+				{/* <ToggleFeatures feature="isCounterEnabled" on={<Counter />} off={<Card>{t('`name` скоро появится!')}</Card>} /> */}
 
 				{/* Шапка статей */}
 				<ArticleDetailsPageHeader></ArticleDetailsPageHeader>
