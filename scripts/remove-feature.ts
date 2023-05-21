@@ -29,9 +29,9 @@ if (featureState !== 'on' && featureState !== 'off') throw new Error('Некор
 const project = new Project({});
 
 // Добавить все файлы из корня src
-// project.addSourceFilesAtPaths('src/**/*.ts');
-// project.addSourceFilesAtPaths('src/**/*.tsx');
-project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx');
+project.addSourceFilesAtPaths('src/**/*.ts');
+project.addSourceFilesAtPaths('src/**/*.tsx');
+// project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx');
 
 const files = project.getSourceFiles();
 
@@ -66,6 +66,7 @@ const getAttributeNodeByName = (jsxAttributes: JsxAttribute[], name: string) => 
 	return jsxAttributes.find((node) => node.getName() === name);
 };
 
+// Удаляем скобки (если есть) Пример: on={ ( <div></div> ) }
 const getReplacedComponent = (attribute?: JsxAttribute) => {
 	const value = attribute?.getFirstDescendantByKind(SyntaxKind.JsxExpression)?.getExpression()?.getText();
 	if (value?.startsWith('(')) return value.slice(1, -1);
