@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
+import { ArticlePageGreeting } from 'features/articlePageGreeting/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -55,6 +56,9 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 		// Удаление редьюса
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
 			<Page data-testid={'ArticlesPage'} onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
+				{/* Приветственное уведомление */}
+				<ArticlePageGreeting />
+
 				{/* Селектор вида отображения статей. UPD: Перенесено в ArticlesPageFilters
 				<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
 				{/* Фильтры */}

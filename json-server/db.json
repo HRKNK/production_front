@@ -669,7 +669,8 @@
       },
       "jsonSettings": {
         "theme": "app_green_theme",
-        "isFirstVisit": "true",
+        "isFirstVisit": false,
+        "isArticlesPageWasOpened": true,
         "settingsPageHasBeenOpen": false
       },
       "avatar": "https://img.freepik.com/premium-vector/mans-head-avatar-vector_83738-354.jpg"
@@ -687,7 +688,8 @@
       },
       "jsonSettings": {
         "theme": "app_green_theme",
-        "isFirstVisit": "true",
+        "isFirstVisit": false,
+        "isArticlesPageWasOpened": false,
         "settingsPageHasBeenOpen": false
       },
       "avatar": "https://cdn-icons-png.flaticon.com/512/206/206864.png"
@@ -705,7 +707,8 @@
       },
       "jsonSettings": {
         "theme": "app_green_theme",
-        "isFirstVisit": "true",
+        "isFirstVisit": false,
+        "isArticlesPageWasOpened": false,
         "settingsPageHasBeenOpen": false
       },
       "avatar": "https://cdn-icons-png.flaticon.com/512/345/345636.png"
@@ -723,7 +726,8 @@
       },
       "jsonSettings": {
         "theme": "app_green_theme",
-        "isFirstVisit": "true",
+        "isFirstVisit": false,
+        "isArticlesPageWasOpened": false,
         "settingsPageHasBeenOpen": false
       },
       "avatar": ""
