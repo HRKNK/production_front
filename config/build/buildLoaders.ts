@@ -57,7 +57,21 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] { //
 	const svgLoader = {
 		exclude: /node_modules/, // исключение
 		test: /\.svg$/,
-		use: ['@svgr/webpack'],
+		// use: ['@svgr/webpack'], 
+		use: [{
+			loader: '@svgr/webpack',
+			options: { // Конфиг лоадера: https://react-svgr.com/docs/options
+				icon: true, // Ресайз SVG = Удаляет из SVG размеры
+				svgoConfig: { // Реколор SVG = Удаляет из SVG fill
+					plugins: [{
+						name: 'convertColors',
+							params: {
+								currentColor: true,
+							},
+					}],
+				},
+			},
+		}],
 	};
 
 	const fileLoader = {
