@@ -1,6 +1,6 @@
 import { type FeatureFlags } from 'shared/types/featureFlags';
 
-let featureFlags: FeatureFlags;
+let featureFlags: FeatureFlags = {};
 
 // Кладем текущий флаг
 export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
@@ -11,5 +11,5 @@ export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
 
 // Получаем текущий флаг
 export function getFeatureFlag(flag: keyof FeatureFlags) {
-	return featureFlags[flag];
+	return featureFlags?.[flag];
 }
