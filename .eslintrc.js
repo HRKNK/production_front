@@ -4,7 +4,14 @@ module.exports = {
 		es2021: true,
 		jest: true,
 	},
-	extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended', 'plugin:storybook/recommended', 'plugin:react-hooks/recommended', 'prettier'],
+	extends: [
+		'plugin:react/recommended',
+		'standard-with-typescript',
+		'plugin:i18next/recommended',
+		'plugin:storybook/recommended',
+		'plugin:react-hooks/recommended',
+		'prettier',
+	],
 	overrides: [
 		// исключение
 		{
@@ -94,22 +101,15 @@ module.exports = {
 				},
 			},
 		],
-
+		// плагин арх-рных правил
 		'custom-plugin/layer-imports': [
 			'error',
-			{
-				ignoreImportPatterns: ['**/storeProvider.tsx', '**/styleDecorator.ts'],
-			},
+			{ ignoreImportPatterns: ['**/storeProvider.tsx', '**/styleDecorator.ts', 'app/styles/**/*.{css,scss}', 'app/providers/**/*'] },
 		],
-		'custom-plugin/path-checker': 'error', // плагин на проверку путей импорта // ['error' , { alias: '@' }]
-		'custom-plugin/public-imports': [
-			'warn',
-			{
-				// плагин арх-рных правил
-				testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-				publicFile: 'public',
-			},
-		], // плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]
+		// плагин на проверку путей импорта // ['error' , { alias: '@' }]
+		'custom-plugin/path-checker': 'error',
+		// плагин на проверку импорта из паблика // ['error' , { alias: '@', testFiles: [], publicFile: 'string' }]
+		'custom-plugin/public-imports': ['warn', { testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'], publicFile: 'public' }],
 
 		// Свалка
 		'@typescript-eslint/explicit-function-return-type': 'off',

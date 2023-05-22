@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { memo, useCallback } from 'react';
 
-import { Theme, useTheme } from 'app/providers/ThemeProvider/public';
+import { useTheme } from 'app/providers/ThemeProvider/public';
 import { saveJsonSettings } from 'entities/User/public';
 // реакт преобразовывает svg в реакт компонент = компонент наследует пропс-атрибуты характерные для svg
 // import DarkIcon from 'shared/assets/icons/theme-dark.svg';
@@ -9,9 +9,9 @@ import { saveJsonSettings } from 'entities/User/public';
 import ThemeIcon from 'shared/assets/icons/theme-light.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Icon } from 'shared/ui/Icon/Icon';
 
 import { Button, ThemeButton } from '../../Button/Button';
+import { Icon } from '../../Icon/Icon';
 import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
