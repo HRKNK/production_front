@@ -10,6 +10,7 @@ import { AvatarDropdown } from 'features/avatarDropdown/public';
 import { NotificationButton } from 'features/notificationButton/public';
 // import { Link } from 'react-router-dom';
 import classNames from 'shared/lib/classNames/classNames';
+import { ToggleFeatures } from 'shared/lib/features/public';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
 import { Button, ThemeButton } from 'shared/ui/Button/public';
 import { HStack } from 'shared/ui/Stack/public';
@@ -38,21 +39,48 @@ const NavBar = memo(({ className }: NavBarProps) => {
 
 	if (authData) {
 		return (
-			<header className={classNames(cls.navbar, {}, [className])}>
-				<Text className={cls.appName} title="APP"></Text>
-				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
-					{t('Создать статью')}
-				</AppLink>
-				<HStack gap="16" className={cls.dropdown}>
-					{/* Список уведомлений */}
-					<NotificationButton />
-					{/* Выпадающий список ссылок */}
-					<AvatarDropdown />
-				</HStack>
-				{/* <Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onLogout}>
-					{t('Выйти')}
-				</Button> */}
-			</header>
+			<ToggleFeatures
+				feature="isAppRedesigned"
+				on={
+					<header className={classNames(cls.navbarRedesigned, {}, [className])}>
+						<HStack gap="16" className={cls.dropdown}>
+							{/* Список уведомлений */}
+							<NotificationButton />
+							{/* Выпадающий список ссылок */}
+							<AvatarDropdown />
+						</HStack>
+					</header>
+				}
+				off={
+					<header className={classNames(cls.navbar, {}, [className])}>
+						<Text className={cls.appName} title="APP"></Text>
+						<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
+							{t('Создать статью')}
+						</AppLink>
+						<HStack gap="16" className={cls.dropdown}>
+							{/* Список уведомлений */}
+							<NotificationButton />
+							{/* Выпадающий список ссылок */}
+							<AvatarDropdown />
+						</HStack>
+					</header>
+				}
+			/>
+			// <header className={classNames(cls.navbar, {}, [className])}>
+			// 	<Text className={cls.appName} title="APP"></Text>
+			// 	<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.articles_create}>
+			// 		{t('Создать статью')}
+			// 	</AppLink>
+			// 	<HStack gap="16" className={cls.dropdown}>
+			// 		{/* Список уведомлений */}
+			// 		<NotificationButton />
+			// 		{/* Выпадающий список ссылок */}
+			// 		<AvatarDropdown />
+			// 	</HStack>
+			// 	{/* <Button theme={ThemeButton.OUTLINE} className={cls.links} onClick={onLogout}>
+			// 		{t('Выйти')}
+			// 	</Button> */}
+			// </header>
 		);
 	}
 

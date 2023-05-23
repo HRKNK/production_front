@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { type StateSchema } from 'app/providers/storeProvider/public';
 import { getUIScrollByPath, scrollSaveActions } from 'features/ScrollSave/public';
 import classNames from 'shared/lib/classNames/classNames';
+import { toggleFeatures } from 'shared/lib/features/public';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -48,7 +49,21 @@ export const Page = memo((props: PageProps) => {
 	}, 250);
 
 	return (
-		<main data-testid={props['data-testid'] ?? 'Page'} onScroll={onScroll} ref={wrapperRef} className={classNames(cls.Page, {}, [className])}>
+		<main
+			data-testid={props['data-testid'] ?? 'Page'}
+			onScroll={onScroll}
+			ref={wrapperRef}
+			// Фича-флаг под редизайн
+			className={classNames(
+				toggleFeatures({
+					name: 'isAppRedesigned',
+					on: () => cls.PageRedesigned,
+					off: () => cls.Page,
+				}),
+				{},
+				[className]
+			)}
+		>
 			{children} {/* сам Page */}
 			{onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null} {/* объект слежки */}
 		</main>
