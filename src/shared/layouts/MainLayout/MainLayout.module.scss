@@ -7,8 +7,8 @@
 
 // зоны
 .sidebar {
+	// justify-self: center;
 	grid-area: sidebar;
-	justify-self: center;
 	padding: 32px;
 }
 
@@ -17,6 +17,7 @@
 	max-width: 1200px;
 	justify-self: center;
 	padding: 32px;
+	width: 100%;
 }
 
 .rightbar {
