@@ -3,8 +3,8 @@ import { Fragment, type ReactNode, useState } from 'react';
 
 import classNames, { Mods } from 'shared/lib/classNames/classNames';
 
+import { HStack } from '../../redesigned/Stack/public';
 import { Button } from '../Button/Button';
-import { HStack } from '../Stack/public';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {

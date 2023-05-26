@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import classNames from 'shared/lib/classNames/classNames';
-import { AppImage } from 'shared/ui/deprecated/AppImage/public';
 import { AppLink } from 'shared/ui/deprecated/AppLink/public';
 import { Avatar } from 'shared/ui/deprecated/Avatar/public';
 import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
@@ -13,6 +12,7 @@ import { Card } from 'shared/ui/deprecated/Card/public';
 import { Icon } from 'shared/ui/deprecated/Icon/public';
 import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
 import { Text } from 'shared/ui/deprecated/Text/public';
+import { AppImage } from 'shared/ui/redesigned/AppImage/public';
 
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { type Article, type ArticleTextBlock } from '../../model/types/article';

@@ -10,9 +10,6 @@ interface OverlayProps {
 }
 
 // eslint-disable-next-line react/display-name
-/**
- * @deprecated Устарело, используйте новый компонент редизайна
- */
 export const Overlay = memo((props: OverlayProps) => {
 	// Компонент затемнения
 	const { className, onClick } = props;

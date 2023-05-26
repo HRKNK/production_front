@@ -22,7 +22,11 @@ const LangSwitсher = memo(({ className, short }: LangSwitсherProps) => {
 	return (
 		<ToggleFeatures
 			feature="isAppRedesigned"
-			on={<Button variant="clear">{t(short ? 'Язык' : 'Короткий язык')}</Button>}
+			on={
+				<Button onClick={toggle} variant="clear">
+					{t(short ? 'Язык' : 'Короткий язык')}
+				</Button>
+			}
 			off={
 				<ButtonDeprecated className={classNames('', {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>
 					{t(short ? 'Короткий язык' : 'Язык')}

@@ -13,8 +13,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import { ToggleFeatures } from 'shared/lib/features/public';
 import { AppLink, AppLinkTheme } from 'shared/ui/deprecated/AppLink/public';
 import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
-import { HStack } from 'shared/ui/deprecated/Stack/public';
 import { Text } from 'shared/ui/deprecated/Text/public';
+import { HStack } from 'shared/ui/redesigned/Stack/public';
 
 import cls from './NavBar.module.scss';
 

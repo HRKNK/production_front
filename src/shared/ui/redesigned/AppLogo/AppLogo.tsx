@@ -4,7 +4,7 @@ import AppSvg from 'shared/assets/icons/app-image.svg';
 import classNames from 'shared/lib/classNames/classNames';
 
 import { Icon } from '../../deprecated/Icon/public';
-import { HStack } from '../../deprecated/Stack/public';
+import { HStack } from '../../redesigned/Stack/public';
 import cls from './AppLogo.module.scss';
 
 interface AppLogoProps {

@@ -2,7 +2,7 @@
 	min-height: 100%;
 	display: grid; // сетка
 	grid-template-areas: 'sidebar content rightbar'; // зоны
-	grid-template-columns: 284px 1fr 176px; // длина под sidebar, content (1 фракция), rightbar
+	grid-template-columns: min-content 1fr 100px; // длина под sidebar, content (1 фракция), rightbar // min-content дать больше места для content
 }
 
 // зоны
@@ -10,11 +10,12 @@
 	// justify-self: center;
 	grid-area: sidebar;
 	padding: 32px;
+	max-width: 284px;
 }
 
 .content {
 	grid-area: content;
-	max-width: 1200px;
+	max-width: 1240px;
 	justify-self: center;
 	padding: 32px;
 	width: 100%;

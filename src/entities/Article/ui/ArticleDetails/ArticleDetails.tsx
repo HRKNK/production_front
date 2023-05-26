@@ -11,8 +11,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from 'shared/ui/deprecated/Avatar/public';
 import { Icon } from 'shared/ui/deprecated/Icon/public';
 import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
-import { VStack } from 'shared/ui/deprecated/Stack/public';
 import { Text, TextAlign, TextSize } from 'shared/ui/deprecated/Text/public';
+import { VStack } from 'shared/ui/redesigned/Stack/public';
 
 import { ArticleBlockType } from '../../model/consts/consts';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../model/selectors/articleDetails';

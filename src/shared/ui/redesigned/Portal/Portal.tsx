@@ -7,9 +7,6 @@ interface PortalProps {
 	element?: HTMLElement; // куда переносим
 }
 
-/**
- * @deprecated Устарело, используйте новый компонент редизайна
- */
 const Portal = (props: PortalProps) => {
 	const { children, element = document.body } = props;
 

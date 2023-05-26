@@ -7,8 +7,8 @@ import { useTheme } from 'app/providers/ThemeProvider/public';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
 
-import { Overlay } from '../Overlay/Overlay';
-import Portal from '../Portal/Portal';
+import { Overlay } from '../../redesigned/Overlay/Overlay';
+import Portal from '../../redesigned/Portal/Portal';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {

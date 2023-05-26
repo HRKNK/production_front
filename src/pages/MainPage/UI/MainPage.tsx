@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Counter } from 'entities/Counter/public';
 import { RatingCard } from 'entities/Rating/public';
 import { ListBox } from 'shared/ui/deprecated/ListBox/public';
-import { HStack } from 'shared/ui/deprecated/Stack/public';
+import { HStack } from 'shared/ui/redesigned/Stack/public';
 import { Page } from 'widgets/Page/Page';
 
 const MainPage = () => {

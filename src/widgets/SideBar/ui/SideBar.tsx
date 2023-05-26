@@ -9,9 +9,9 @@ import ArrowIcon from 'shared/assets/icons/arrow-bottom.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { ToggleFeatures } from 'shared/lib/features/public';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/deprecated/Button/public';
-import { VStack } from 'shared/ui/deprecated/Stack/public';
 import { AppLogo } from 'shared/ui/redesigned/AppLogo/public';
 import { Icon } from 'shared/ui/redesigned/Icon/public';
+import { VStack } from 'shared/ui/redesigned/Stack/public';
 
 import { getSideBarItems } from '../model/selectors/getSideBarItems';
 import cls from './SideBar.module.scss';

@@ -6,9 +6,7 @@ interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	fallback?: ReactElement; // нода загрузки
 	errorFallback?: ReactElement; // запасная нода
 }
-/**
- * @deprecated Устарело, используйте новый компонент редизайна
- */
+
 export const AppImage = memo((props: AppImageProps) => {
 	const { className, src, alt = 'image', errorFallback, fallback, ...otherProps } = props;
 	const [isLoading, setIsLoading] = useState(true); // состояние загрузки изображения

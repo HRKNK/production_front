@@ -3,7 +3,7 @@ import { type CSSProperties, useMemo } from 'react';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 
 import UserIcon from '../../../../assets/icons/user-filled.svg';
-import { AppImage } from '../../AppImage/public';
+import { AppImage } from '../../../redesigned/AppImage/public';
 import { Icon } from '../../Icon/public';
 import { Skeleton } from '../../Skeleton/public';
 import cls from './Avatar.module.scss';

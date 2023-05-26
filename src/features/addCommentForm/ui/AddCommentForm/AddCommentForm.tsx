@@ -7,7 +7,7 @@ import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/Dy
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
 import { Input } from 'shared/ui/deprecated/Input/public';
-import { HStack, VStack } from 'shared/ui/deprecated/Stack/public';
+import { HStack, VStack } from 'shared/ui/redesigned/Stack/public';
 
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';

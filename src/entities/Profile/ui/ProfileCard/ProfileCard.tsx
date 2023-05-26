@@ -7,8 +7,8 @@ import { Avatar } from 'shared/ui/deprecated/Avatar/public';
 import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
 import { Input } from 'shared/ui/deprecated/Input/public';
 import { Loader } from 'shared/ui/deprecated/Loader/public';
-import { HStack, VStack } from 'shared/ui/deprecated/Stack/public';
 import { Text, TextAlign, TextTheme } from 'shared/ui/deprecated/Text/public';
+import { HStack, VStack } from 'shared/ui/redesigned/Stack/public';
 
 import { type Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
