@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { ArticleList } from 'entities/Article/public';
 import classNames from 'shared/lib/classNames/classNames';
-import { VStack } from 'shared/ui/Stack/public';
-import { Text, TextSize } from 'shared/ui/Text/public';
+import { VStack } from 'shared/ui/deprecated/Stack/public';
+import { Text, TextSize } from 'shared/ui/deprecated/Text/public';
 
 import { useArticleRecommendationsList } from '../../api/aritcleRecommendationsApi';
 

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { RatingCard } from 'entities/Rating/public';
 import { getUserAuthData } from 'entities/User/public';
-import { Skeleton } from 'shared/ui/Skeleton/public';
+import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
 
 import { useGetArticleRating, useRateArticle } from '../../api/articleRatingApi';
 

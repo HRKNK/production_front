@@ -12,8 +12,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { type SortOrder } from 'shared/types/sort';
-import { Card } from 'shared/ui/Card/public';
-import { Input } from 'shared/ui/Input/public';
+import { Card } from 'shared/ui/deprecated/Card/public';
+import { Input } from 'shared/ui/deprecated/Input/public';
 
 import {
 	getArticlesPageOrder,

@@ -3,8 +3,8 @@ import { memo } from 'react';
 import ListIcon from 'shared/assets/icons/list.svg';
 import TiledIcon from 'shared/assets/icons/tiled.svg';
 import classNames from 'shared/lib/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Icon } from 'shared/ui/Icon/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { Icon } from 'shared/ui/deprecated/Icon/public';
 
 import { ArticleView } from '../../model/consts/consts';
 import cls from './ArticleViewSelector.module.scss';

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button/public';
+import { Button } from 'shared/ui/deprecated/Button/public';
 
 const BugButton = () => {
 	// Компонент тестирования (Fake Error)

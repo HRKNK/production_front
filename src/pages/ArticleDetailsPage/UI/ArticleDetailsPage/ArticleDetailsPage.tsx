@@ -16,9 +16,9 @@ import { ToggleFeatures } from 'shared/lib/features/public';
 import { getFeatureFlag } from 'shared/lib/features/setGetFeatures';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Card } from 'shared/ui/Card/public';
-import { Text, TextSize } from 'shared/ui/Text/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { Card } from 'shared/ui/deprecated/Card/public';
+import { Text, TextSize } from 'shared/ui/deprecated/Text/public';
 import { Page } from 'widgets/Page/Page';
 
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';

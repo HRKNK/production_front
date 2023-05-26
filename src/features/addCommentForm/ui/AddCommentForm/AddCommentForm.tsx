@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Input } from 'shared/ui/Input/public';
-import { HStack, VStack } from 'shared/ui/Stack/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { Input } from 'shared/ui/deprecated/Input/public';
+import { HStack, VStack } from 'shared/ui/deprecated/Stack/public';
 
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';

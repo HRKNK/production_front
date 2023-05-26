@@ -7,7 +7,7 @@ import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { getArticleDetailsData } from 'entities/Article/public';
 import classNames from 'shared/lib/classNames/classNames';
 // import { getUserAuthData } from 'entities/User/public';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
 
 import { getCanEditArticle } from '../../model/selectors/article';
 import cls from './ArticleDetailsPageHeader.module.scss';

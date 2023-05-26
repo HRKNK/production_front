@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { getJsonSettings, saveJsonSettings } from 'entities/User/public';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
-import { Drawer } from 'shared/ui/Drawer/public';
-import { Modal } from 'shared/ui/Modal/public';
-import { Text } from 'shared/ui/Text/public';
+import { Drawer } from 'shared/ui/deprecated/Drawer/public';
+import { Modal } from 'shared/ui/deprecated/Modal/public';
+import { Text } from 'shared/ui/deprecated/Text/public';
 
 export const ArticlePageGreeting = memo(() => {
 	const { t } = useTranslation();

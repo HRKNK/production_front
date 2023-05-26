@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 
 import { BugButton } from 'app/providers/ErrorBoundary/public';
 import LangSwither from 'features/LangSwither/LangSwither';
+import { ThemeSwitcher } from 'features/ThemeSwitcher/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { ToggleFeatures } from 'shared/lib/features/public';
-import { AppLogo } from 'shared/ui/AppLogo/public';
-import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/public';
-import { VStack } from 'shared/ui/Stack/public';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/public';
+import { AppLogo } from 'shared/ui/deprecated/AppLogo/public';
+import { Button, ButtonSize, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { VStack } from 'shared/ui/deprecated/Stack/public';
 
 import { getSideBarItems } from '../model/selectors/getSideBarItems';
 import cls from './SideBar.module.scss';

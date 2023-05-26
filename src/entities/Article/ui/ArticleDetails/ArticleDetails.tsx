@@ -8,11 +8,11 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Avatar } from 'shared/ui/Avatar/public';
-import { Icon } from 'shared/ui/Icon/public';
-import { Skeleton } from 'shared/ui/Skeleton/public';
-import { VStack } from 'shared/ui/Stack/public';
-import { Text, TextAlign, TextSize } from 'shared/ui/Text/public';
+import { Avatar } from 'shared/ui/deprecated/Avatar/public';
+import { Icon } from 'shared/ui/deprecated/Icon/public';
+import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
+import { VStack } from 'shared/ui/deprecated/Stack/public';
+import { Text, TextAlign, TextSize } from 'shared/ui/deprecated/Text/public';
 
 import { ArticleBlockType } from '../../model/consts/consts';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../model/selectors/articleDetails';

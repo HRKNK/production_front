@@ -11,10 +11,9 @@ import { type ReduxStoreWithManager } from 'app/providers/storeProvider/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Input } from 'shared/ui/Input/public';
-import { Text } from 'shared/ui/Text/public';
-import { TextTheme } from 'shared/ui/Text/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { Input } from 'shared/ui/deprecated/Input/public';
+import { Text, TextTheme } from 'shared/ui/deprecated/Text/public';
 
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';

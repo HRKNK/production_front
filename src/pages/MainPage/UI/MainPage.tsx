@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Counter } from 'entities/Counter/public';
 import { RatingCard } from 'entities/Rating/public';
-import { ListBox } from 'shared/ui/ListBox/public';
-import { HStack } from 'shared/ui/Stack/public';
+import { ListBox } from 'shared/ui/deprecated/ListBox/public';
+import { HStack } from 'shared/ui/deprecated/Stack/public';
 import { Page } from 'widgets/Page/Page';
 
 const MainPage = () => {

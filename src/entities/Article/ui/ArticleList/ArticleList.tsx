@@ -2,7 +2,7 @@ import { type HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/public';
+import { Text, TextSize } from 'shared/ui/deprecated/Text/public';
 
 import { ArticleView } from '../../model/consts/consts';
 import { type Article } from '../../model/types/article';

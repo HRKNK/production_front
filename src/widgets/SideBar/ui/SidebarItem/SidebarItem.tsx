@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { getUserAuthData } from 'entities/User/public';
 import classNames from 'shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/public';
+import { AppLink, AppLinkTheme } from 'shared/ui/deprecated/AppLink/public';
 
 import { type SidebarItemType } from '../../model/types/items';
 import cls from './SidebarItem.module.scss';

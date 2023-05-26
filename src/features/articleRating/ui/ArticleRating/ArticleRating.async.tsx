@@ -1,6 +1,6 @@
 import { FC, Suspense, lazy } from 'react';
 
-import { Skeleton } from 'shared/ui/Skeleton/public';
+import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
 
 import { type ArticleRatingProps } from './ArticleRating';
 

@@ -5,10 +5,10 @@ import NotificationIcon from 'shared/assets/icons/notification.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { AnimationProvider } from 'shared/lib/components/AnimationProvider/public';
 import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
-import { Button, ThemeButton } from 'shared/ui/Button/public';
-import { Drawer } from 'shared/ui/Drawer/public';
-import { Icon } from 'shared/ui/Icon/public';
-import { Popover } from 'shared/ui/Popover/public';
+import { Button, ThemeButton } from 'shared/ui/deprecated/Button/public';
+import { Drawer } from 'shared/ui/deprecated/Drawer/public';
+import { Icon } from 'shared/ui/deprecated/Icon/public';
+import { Popover } from 'shared/ui/deprecated/Popover/public';
 
 import cls from './NotificationButton.module.scss';
 

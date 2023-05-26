@@ -7,9 +7,9 @@ import { AddCommentForm } from 'features/addCommentForm/public';
 import classNames from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Loader } from 'shared/ui/Loader/public';
-import { VStack } from 'shared/ui/Stack/public';
-import { Text, TextSize } from 'shared/ui/Text/public';
+import { Loader } from 'shared/ui/deprecated/Loader/public';
+import { VStack } from 'shared/ui/deprecated/Stack/public';
+import { Text, TextSize } from 'shared/ui/deprecated/Text/public';
 
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';

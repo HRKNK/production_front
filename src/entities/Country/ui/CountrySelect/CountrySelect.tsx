@@ -2,8 +2,8 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { ListBox } from 'shared/ui/ListBox/public';
-import { Select } from 'shared/ui/Select/public';
+import { ListBox } from 'shared/ui/deprecated/ListBox/public';
+import { Select } from 'shared/ui/deprecated/Select/public';
 
 import { Country } from '../../model/types/country';
 
