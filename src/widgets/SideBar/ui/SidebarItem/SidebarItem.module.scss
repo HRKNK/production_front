@@ -1,18 +1,14 @@
 .item {
-	margin-top: 30px;
-	margin-left: 20px;
 	display: flex;
 	align-items: center;
 }
 
 .icon {
-	fill: var(--primary-color);
-	width: 100%;
+	fill: var(--inverted-primary-color);
 }
 
 .link {
 	opacity: 0;
-	transition: 0.2s opacity;
 	width: 0;
 	white-space: nowrap;
 }
@@ -22,5 +18,36 @@
 		width: 100%;
 		margin-left: 15px;
 		opacity: 1;
+	}
+}
+
+.itemRedesigned {
+	display: flex;
+	align-items: center;
+}
+
+.collapsedRedesigned {
+	width: 100%;
+	padding: 0 9px;
+
+	.link {
+		opacity: 1;
+		width: 0;
+		margin: 3px 10px 0;
+	}
+}
+
+.active {
+	background: linear-gradient(89.97deg, rgba(29, 89, 255, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);
+	position: relative;
+	padding: 0 9px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 2px;
+		left: 0;
+		background: var(--accent-redesigned);
+		height: 100%;
 	}
 }

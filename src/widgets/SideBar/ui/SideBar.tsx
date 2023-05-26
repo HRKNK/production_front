@@ -3,13 +3,15 @@ import React, { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { BugButton } from 'app/providers/ErrorBoundary/public';
-import LangSwither from 'features/LangSwither/LangSwither';
+import LangSwitсher from 'features/LangSwitсher/LangSwitсher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher/public';
+import ArrowIcon from 'shared/assets/icons/arrow-bottom.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { ToggleFeatures } from 'shared/lib/features/public';
-import { AppLogo } from 'shared/ui/deprecated/AppLogo/public';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/deprecated/Button/public';
 import { VStack } from 'shared/ui/deprecated/Stack/public';
+import { AppLogo } from 'shared/ui/redesigned/AppLogo/public';
+import { Icon } from 'shared/ui/redesigned/Icon/public';
 
 import { getSideBarItems } from '../model/selectors/getSideBarItems';
 import cls from './SideBar.module.scss';
@@ -57,13 +59,23 @@ const SideBar = memo(({ className }: SideBarProps) => {
 
 					<div className={cls.switchers}>
 						<ThemeSwitcher></ThemeSwitcher>
-						<LangSwither short={collapsed} className={cls.lang}></LangSwither>
+						<LangSwitсher short={collapsed} className={cls.lang}></LangSwitсher>
 					</div>
 				</section>
 			}
 			on={
-				<section data-testid="sidebar" className={classNames(cls.sidebarRedesigned, { [cls.collapsed]: collapsed }, [className])}>
-					<AppLogo className={cls.appLogo} />
+				<section data-testid="sidebar" className={classNames(cls.SidebarRedesigned, { [cls.collapsedRedesigned]: collapsed }, [className])}>
+					<AppLogo size={collapsed ? 30 : 50} className={cls.appLogo} />
+					<VStack role="navigation" gap={'8'} className={cls.items}>
+						{sideBarItemsList.map((item, id) => (
+							<SidebarItem key={id} item={item} collapsed={!collapsed}></SidebarItem>
+						))}
+					</VStack>
+					<Icon data-testid="sidebar-toggle" onClick={toggle} className={cls.collapseBtn} Svg={ArrowIcon} clickable />
+					<div className={cls.switchers}>
+						<ThemeSwitcher />
+						<LangSwitсher short={!collapsed} className={cls.lang} />
+					</div>
 				</section>
 			}
 		/>
