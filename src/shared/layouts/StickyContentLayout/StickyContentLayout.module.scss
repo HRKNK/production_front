@@ -1,0 +1,30 @@
+.MainLayout {
+	display: grid; // сетка
+	grid-template-areas: 'left content right'; // зоны
+	grid-template-columns: min-content 1fr min-content; // середина займёт всё свободное пространство
+}
+
+
+.left {
+	grid-area: left;
+}
+
+.content {
+	grid-area: content;
+	max-width: 1240px;
+	justify-self: center;
+	padding: 0 16px;
+	width: 100%;
+}
+
+.right{
+	grid-area: right;
+}
+
+.left,
+.right {
+	position: sticky;
+	top: 32px;
+	height: fit-content; // ширина по содержимому
+}
+
