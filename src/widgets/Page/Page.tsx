@@ -33,7 +33,12 @@ export const Page = memo((props: PageProps) => {
 	useInfiniteScroll({
 		// бесконечная пагинация
 		triggerRef, // Элемент, который будет наблюдаться
-		wrapperRef, // Область просмотра (null? - следит за окном браузера)
+		wrapperRef: toggleFeatures({
+			// Область просмотра (null? - следит за окном браузера)
+			name: 'isAppRedesigned',
+			on: () => undefined,
+			off: () => wrapperRef,
+		}),
 		callback: onScrollEnd,
 	});
 
