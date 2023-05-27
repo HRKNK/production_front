@@ -3,7 +3,7 @@ import { type MutableRefObject, useEffect, useRef } from 'react';
 export interface UseInfiniteScrollOptions {
 	callback?: () => void; // вызывается при пересечении элемента
 	triggerRef: MutableRefObject<HTMLElement>; // зарезервированный ref тип <>
-	wrapperRef: MutableRefObject<HTMLElement>; // зарезервированный ref тип <>
+	wrapperRef?: MutableRefObject<HTMLElement>; // зарезервированный ref тип <>
 }
 
 export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) {
@@ -11,7 +11,7 @@ export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfin
 
 	useEffect(() => {
 		// Замкнули переменные
-		const wrapperElement = wrapperRef.current; // Область просмотра (null? - следит за окном браузера)
+		const wrapperElement = wrapperRef?.current || null; // Область просмотра (null? - следит за окном браузера)
 		const triggerElement = triggerRef.current; // Элемент, который будет наблюдаться
 
 		if (callback) {
