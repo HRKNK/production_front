@@ -1,5 +1,5 @@
 import { Listbox as HListBox } from '@headlessui/react';
-import { Fragment, type ReactNode, useState } from 'react';
+import { Fragment, type ReactNode, useMemo, useState } from 'react';
 
 import classNames, { Mods } from 'shared/lib/classNames/classNames';
 
@@ -25,12 +25,12 @@ const people = [
 
 type DropdownDirection = 'top' | 'bottom';
 
-interface ListBoxProps {
+interface ListBoxProps<T extends string> {
 	items?: ListBoxItem[]; // список айтемов (селектов)
 	className?: string;
-	value?: string; // выбранный элемент
+	value?: T; // выбранный элемент
 	defaultValue?: string; // если элемент не выбран (дэфолт)
-	onChange: (value: string) => void; // переключение списка (пропс обязателен)
+	onChange: (value: T) => void; // переключение списка (пропс обязателен)
 	readonly?: boolean;
 	direction?: DropdownDirection; // направление выпадающего списка
 	label?: string; // текст-заголовок перед селектом
@@ -42,9 +42,13 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
 	top: cls.optionsTop,
 };
 
-export function ListBox(props: ListBoxProps) {
+export function ListBox<T extends string>(props: ListBoxProps<T>) {
 	const { className, items, value, defaultValue, onChange, readonly, direction = 'bottom', label } = props;
 	const optionsClasses = [mapDirectionClass[direction], cls.menu]; // класс устанавливает пропс direction
+
+	const selectedItem = useMemo(() => {
+		return items?.find((item) => item.value === value);
+	}, [items, value]);
 
 	return (
 		<HStack gap="4">
@@ -64,7 +68,9 @@ export function ListBox(props: ListBoxProps) {
 					className={cls.trigger}
 				>
 					{/* Своя кнопка (кастомная) */}
-					<Button disabled={readonly}>{value ?? defaultValue}</Button>
+					<Button variant="filled" disabled={readonly}>
+						{selectedItem?.content ?? defaultValue}
+					</Button>
 				</HListBox.Button>
 				<HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>
 					{items?.map((item) => (
@@ -77,9 +83,9 @@ export function ListBox(props: ListBoxProps) {
 							{(
 								{ active, selected } // active - ховер, selected - выбранный
 							) => (
-								<li className={classNames(cls.item, { [cls.active]: active, [cls.disabled]: item.disabled })}>
-									{/* Для !!! можно добавить иконку галочки/селектед */}
-									{selected && '!!!'}
+								<li className={classNames(cls.item, { [cls.active]: active, [cls.disabled]: item.disabled, [cls.selected]: selected })}>
+									{/* Для > можно добавить иконку галочки/селектед */}
+									{selected && '> '}
 									{item.content}
 								</li>
 							)}
