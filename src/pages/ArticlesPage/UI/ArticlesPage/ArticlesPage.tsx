@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
 import { ArticlePageGreeting } from 'features/articlePageGreeting/public';
+import { StickyContentLayout } from 'shared/layouts/StickyContentLayout';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from 'shared/lib/features/public';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
@@ -16,6 +18,8 @@ import { initArticlesPage } from '../../model/services/initArticlesPage/initArti
 import { articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -52,21 +56,44 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 		void dispatch(initArticlesPage(searchParams));
 	});
 
+	const content = (
+		<ToggleFeatures
+			feature={'isAppRedesigned'}
+			on={
+				<StickyContentLayout
+					left={<ViewSelectorContainer />} // Селектор вида отображения статей
+					right={<FiltersContainer />} // Фильтры
+					content={
+						<Page data-testid={'ArticlesPage'} onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
+							{/* Приветственное уведомление */}
+							<ArticlePageGreeting />
+							{/* Список статей. */}
+							<ArticleInfiniteList></ArticleInfiniteList>
+						</Page>
+					}
+				></StickyContentLayout>
+			}
+			off={
+				<Page data-testid={'ArticlesPage'} onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
+					{/* Приветственное уведомление */}
+					<ArticlePageGreeting />
+
+					{/* Селектор вида отображения статей. UPD: Перенесено в ArticlesPageFilters
+					<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
+					{/* Фильтры */}
+					<ArticlesPageFilters></ArticlesPageFilters>
+					{/* Список статей. UPD: Перенесено в UI сегмент */}
+					<ArticleInfiniteList></ArticleInfiniteList>
+					{/* <ArticleList isLoading={isLoading} view={view} articles={articles}/> */}
+				</Page>
+			}
+		/>
+	);
+
 	return (
 		// Удаление редьюса
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-			<Page data-testid={'ArticlesPage'} onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>
-				{/* Приветственное уведомление */}
-				<ArticlePageGreeting />
-
-				{/* Селектор вида отображения статей. UPD: Перенесено в ArticlesPageFilters
-				<ArticleViewSelector view={view} onViewClick={onChangeView} /> */}
-				{/* Фильтры */}
-				<ArticlesPageFilters></ArticlesPageFilters>
-				{/* Список статей. UPD: Перенесено в UI сегмент */}
-				<ArticleInfiniteList></ArticleInfiniteList>
-				{/* <ArticleList isLoading={isLoading} view={view} articles={articles}/> */}
-			</Page>
+			{content}
 		</DynamicModuleLoader>
 	);
 };
