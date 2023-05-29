@@ -1,11 +1,26 @@
+.addonLeft svg, .addonRight svg { // перекрашиваем SVG
+	color: var(--hint-redesigned);
+	display: flex;
+}
+
 .Button {
 	cursor: pointer;
 	color: var(--text-redesigned);
-	padding: 6px 15px;
+	display: flex;
+	padding: 8px 16px;
+	align-items: center;
 
 	&:hover {
 		color: var(--accent-redesigned);
+
+		.addonLeft svg, .addonRight svg { // перекрашиваем SVG
+			color: var(--accent-redesigned);
+		}
 	}
+}
+
+.withAddon {
+	padding: 0 16px;
 }
 
 .clear {
@@ -20,7 +35,6 @@
 	border: none;
 	border-radius: 34px;
 	outline: none;
-	padding: 8px 16px;
 }
 
 .square {
