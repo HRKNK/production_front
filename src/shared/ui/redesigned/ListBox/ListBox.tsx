@@ -1,10 +1,12 @@
 import { Listbox as HListBox } from '@headlessui/react';
 import { Fragment, type ReactNode, useMemo, useState } from 'react';
 
+import ArrowIcon from 'shared/assets/icons/arrow-bottom.svg';
 import classNames, { Mods } from 'shared/lib/classNames/classNames';
 
 import { HStack } from '../../redesigned/Stack/public';
 import { Button } from '../Button/Button';
+import { Icon } from '../Icon/public';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
@@ -68,7 +70,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
 					className={cls.trigger}
 				>
 					{/* Своя кнопка (кастомная) */}
-					<Button variant="filled" disabled={readonly}>
+					<Button addonRight={<Icon Svg={ArrowIcon} />} variant="filled" disabled={readonly}>
 						{selectedItem?.content ?? defaultValue}
 					</Button>
 				</HListBox.Button>

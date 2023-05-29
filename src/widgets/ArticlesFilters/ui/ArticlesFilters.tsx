@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { type ArticleSortField, type ArticleType } from 'entities/Article/public';
 import { ArticleSortSelector } from 'features/ArticleSortSelector/public';
 import { ArticleTypeTabs } from 'features/ArticleTypeTabs/public';
+import SearchIcon from 'shared/assets/icons/search.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { type SortOrder } from 'shared/types/sort';
 import { Card } from 'shared/ui/redesigned/Card/Card';
+import { Icon } from 'shared/ui/redesigned/Icon/public';
 import { Input } from 'shared/ui/redesigned/Input/public';
 import { VStack } from 'shared/ui/redesigned/Stack/public';
 
@@ -33,7 +35,7 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
 	return (
 		<Card padding="24" className={classNames(cls.ArticlesFilters, {}, [className])}>
 			<VStack gap="32">
-				<Input onChange={onChangeSearch} value={search} placeholder={t('Поиск')} />
+				<Input addonLeft={<Icon Svg={SearchIcon} />} onChange={onChangeSearch} value={search} placeholder={t('Поиск')} />
 				<ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
 				<ArticleSortSelector order={order} sort={sort} onChangeOrder={onChangeOrder} onChangeSort={onChangeSort} />
 			</VStack>
