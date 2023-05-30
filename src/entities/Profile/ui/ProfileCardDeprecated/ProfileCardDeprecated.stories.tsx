@@ -5,18 +5,18 @@ import { Country } from 'entities/Country/public';
 import { Currency } from 'entities/Currency/public';
 import avatar from 'shared/assets/tests/storybook.jpg';
 
-import { ProfileCard } from './ProfileCard';
+import { ProfileCardDeprecated } from './ProfileCardDeprecated';
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
-	title: 'entities/ProfileCard',
-	component: ProfileCard,
+	title: 'entities/ProfileCardDeprecated',
+	component: ProfileCardDeprecated,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof ProfileCard>;
+} as ComponentMeta<typeof ProfileCardDeprecated>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCardDeprecated> = (args) => <ProfileCardDeprecated {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
