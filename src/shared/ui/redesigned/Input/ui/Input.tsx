@@ -3,10 +3,14 @@ import React, { type InputHTMLAttributes, type ReactNode, memo, useEffect, useRe
 
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 
+import { HStack } from '../../Stack/public';
+import { Text } from '../../Text/public';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>;
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly' | 'size'>;
 // Omit позволяет забрать все типы исключив (value / onChange)
+
+type inputSize = 's' | 'm' | 'l';
 
 interface InputProps extends HTMLInputProps {
 	className?: string;
@@ -14,12 +18,27 @@ interface InputProps extends HTMLInputProps {
 	onChange?: (value: string) => void;
 	autoFocus?: boolean;
 	readonly?: boolean;
+	label?: string; // этикетка
+	size?: inputSize; // размер инпута
 	addonLeft?: ReactNode; // Дополнение слева (иконка)
 	addonRight?: ReactNode; // Дополнение справа (иконка)
 }
 
 const Input = memo((props: InputProps) => {
-	const { className, value, onChange, placeholder, autoFocus, readonly, addonLeft, addonRight, type = 'text', ...otherProps } = props;
+	const {
+		className,
+		value,
+		onChange,
+		placeholder,
+		autoFocus,
+		size = 'm',
+		label,
+		readonly,
+		addonLeft,
+		addonRight,
+		type = 'text',
+		...otherProps
+	} = props;
 
 	const [isFocus, setIsFocus] = useState(false);
 
@@ -48,8 +67,8 @@ const Input = memo((props: InputProps) => {
 		[cls.withAddonRight]: Boolean(addonRight),
 	};
 
-	return (
-		<div className={classNames(cls.inputWrapper, mods, [className])}>
+	const input = (
+		<div className={classNames(cls.inputWrapper, mods, [className, cls[size]])}>
 			<div className={cls.addonLeft}>{addonLeft && addonLeft}</div>
 			<input
 				ref={ref}
@@ -66,6 +85,17 @@ const Input = memo((props: InputProps) => {
 			<div className={cls.addonRight}>{addonRight && addonRight}</div>
 		</div>
 	);
+
+	if (label) {
+		return (
+			<HStack max gap="8">
+				<Text text={label} />
+				{input}
+			</HStack>
+		);
+	}
+
+	return input;
 });
 
 export default Input;
