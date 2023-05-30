@@ -33,14 +33,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
 	const { className, articles, view = ArticleView.SMALL, isLoading, target } = props;
 	const { t } = useTranslation();
 
-	// if (isLoading) {
-	// 	return (
-	// 		<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-	// 			{getSkeletons(view)}
-	// 		</div>
-	// 	);
-	// }
-
 	const renderArticle = (article: Article) => <ArticleListItem target={target} article={article} view={view} className={cls.card} key={article.id} />;
 
 	if (!isLoading && !articles.length) {
