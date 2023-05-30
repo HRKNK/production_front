@@ -1,9 +1,9 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import classNames from 'shared/lib/classNames/classNames';
-import { ListBox } from 'shared/ui/deprecated/ListBox/public';
-import { Select } from 'shared/ui/deprecated/Select/public';
+import { ToggleFeatures } from 'shared/lib/features/public';
+import { ListBox as ListBoxDeprecated } from 'shared/ui/deprecated/ListBox/public';
+import { ListBox } from 'shared/ui/redesigned/ListBox/public';
 
 import { Country } from '../../model/types/country';
 
@@ -34,26 +34,30 @@ export const CountrySelect = memo(({ className, value, onChange, readonly }: Cou
 	);
 
 	return (
-		<ListBox
-			className={className}
-			value={value}
-			defaultValue={t('Укажите страну')}
-			items={options}
-			onChange={onChangeHandler}
-			readonly={readonly}
-		></ListBox>
-	);
-
-	/*
-	return (
-		<Select
-			className={classNames('', {}, [className])}
-			label={t('Укажите страну')}
-			options={options}
-			value={value}
-			onChange={onChangeHandler}
-			readonly={readonly}
+		<ToggleFeatures
+			feature={'isAppRedesigned'}
+			on={
+				<ListBox
+					direction="top"
+					className={className}
+					value={value}
+					label={t('Укажите страну')}
+					defaultValue={t('Укажите страну')}
+					items={options}
+					onChange={onChangeHandler}
+					readonly={readonly}
+				></ListBox>
+			}
+			off={
+				<ListBoxDeprecated
+					className={className}
+					value={value}
+					defaultValue={t('Укажите страну')}
+					items={options}
+					onChange={onChangeHandler}
+					readonly={readonly}
+				></ListBoxDeprecated>
+			}
 		/>
 	);
-	*/
 });
