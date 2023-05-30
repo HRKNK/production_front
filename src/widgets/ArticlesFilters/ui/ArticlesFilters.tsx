@@ -35,7 +35,7 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
 	return (
 		<Card padding="24" className={classNames(cls.ArticlesFilters, {}, [className])}>
 			<VStack gap="32">
-				<Input addonLeft={<Icon Svg={SearchIcon} />} onChange={onChangeSearch} value={search} placeholder={t('Поиск')} />
+				<Input size="s" addonLeft={<Icon Svg={SearchIcon} />} onChange={onChangeSearch} value={search} placeholder={t('Поиск')} />
 				<ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
 				<ArticleSortSelector order={order} sort={sort} onChangeOrder={onChangeOrder} onChangeSort={onChangeSort} />
 			</VStack>

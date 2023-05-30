@@ -55,7 +55,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
 	return (
 		<HStack gap="4">
 			{/* текст-заголовок перед селектом */}
-			{label && <span>{`${label}>`}</span>}
+			{label && <span>{`${label} `}</span>}
 			<HListBox
 				disabled={readonly}
 				as="div" // в какой тег будет обернут
