@@ -10,6 +10,7 @@ import { ForbiddenPage } from 'pages/ForbiddenPage/public';
 import { MainPage } from 'pages/MainPage/public';
 import { NotFoundPage } from 'pages/NotFoundPage/public';
 import { ProfilePage } from 'pages/ProfilePage/public';
+import { SettingsPage } from 'pages/SettingsPage/public';
 
 export type AppRouteProps = RouteProps & {
 	// Route properties
@@ -27,6 +28,7 @@ export enum AppRoutes {
 	ARTICLES_CREATE = 'articles_create',
 	ADMIN_PANEL = 'admin_panel',
 	FORBIDDEN = 'forbidden',
+	SETTINGS = 'settings',
 	//
 	NOT_FOUND = 'not_found',
 }
@@ -53,6 +55,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.ARTICLES_CREATE]: '/articles/new', // новая статья
 	[AppRoutes.ADMIN_PANEL]: '/admin', // админ панель
 	[AppRoutes.FORBIDDEN]: '/forbidden', // доступ запрещен
+	[AppRoutes.SETTINGS]: '/settings', // настройки
 	// Несуществующие маршруты: *
 	[AppRoutes.NOT_FOUND]: '*',
 };
@@ -100,6 +103,11 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 		element: <AdminPanelPage />,
 		authOnly: true,
 		roles: [UserRole.ADMIN, UserRole.MANAGER], // доступ по ролям
+	},
+	[AppRoutes.SETTINGS]: {
+		path: `${RoutePath.settings}`,
+		element: <SettingsPage />,
+		authOnly: true, // только для авторизованных
 	},
 	[AppRoutes.FORBIDDEN]: {
 		path: `${RoutePath.forbidden}`,

@@ -43,12 +43,16 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 			  ]
 			: []),
 		{
-			content: t('Выйти'),
-			onClick: onLogout,
-		},
-		{
 			content: t('Профиль'),
 			href: RoutePath.profile + authData.id,
+		},
+		{
+			content: t('Настройки'),
+			href: RoutePath.settings,
+		},
+		{
+			content: t('Выйти'),
+			onClick: onLogout,
 		},
 	];
 
