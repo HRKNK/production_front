@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
 import { Loader } from 'shared/ui/deprecated/Loader/public';
-import { Modal } from 'shared/ui/deprecated/Modal/public';
+import { Modal } from 'shared/ui/redesigned/Modal/public';
 
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import cls from './LoginModal.module.scss';

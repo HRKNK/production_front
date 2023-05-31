@@ -7,9 +7,9 @@ import classNames from 'shared/lib/classNames/classNames';
 import { ToggleFeatures } from 'shared/lib/features/public';
 import { useDevice } from 'shared/lib/hooks/useDevice/useDevice';
 import { Button as ButtonDeprecated, ThemeButton } from 'shared/ui/deprecated/Button/public';
-import { Drawer } from 'shared/ui/deprecated/Drawer/public';
 import { Icon as IconDeprecated } from 'shared/ui/deprecated/Icon/public';
 import { Popover as PopoverDeprecated } from 'shared/ui/deprecated/Popover/public';
+import { Drawer } from 'shared/ui/redesigned/Drawer/public';
 import { Icon } from 'shared/ui/redesigned/Icon/public';
 import { Popover } from 'shared/ui/redesigned/Popover/public';
 
