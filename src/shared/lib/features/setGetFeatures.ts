@@ -13,3 +13,8 @@ export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
 export function getFeatureFlag(flag: keyof FeatureFlags) {
 	return featureFlags?.[flag];
 }
+
+// Вернуть все флаги
+export function getAllFeatureFlags() {
+	return featureFlags;
+}
