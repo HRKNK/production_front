@@ -1,14 +1,13 @@
 /* eslint-disable react/display-name */
-import { a, config, useSpring } from '@react-spring/web';
-import { useDrag } from '@use-gesture/react';
 import React, { type ReactNode, memo, useCallback, useEffect } from 'react';
 
 import { useTheme } from 'app/providers/ThemeProvider/public';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider/public';
+import { toggleFeatures } from 'shared/lib/features/public';
 
-import { Overlay } from '../../redesigned/Overlay/Overlay';
-import Portal from '../../redesigned/Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import Portal from '../Portal/Portal';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
@@ -79,8 +78,19 @@ const DrawerContent = memo((props: DrawerProps) => {
 	const display = y.to((py) => (py < height ? 'block' : 'none'));
 
 	return (
-		<Portal>
-			<div className={classNames(cls.Drawer, mods, [className, theme, 'app_drawer'])}>
+		<Portal element={document.getElementById('app') ?? document.body}>
+			<div
+				className={classNames(cls.Drawer, mods, [
+					className,
+					theme,
+					'app_drawer',
+					toggleFeatures({
+						name: 'isAppRedesigned',
+						on: () => cls.drawerNew,
+						off: () => cls.drawerOld,
+					}),
+				])}
+			>
 				<Overlay onClick={onClose} />
 				{/* <div className={cls.content}>
 					{children}
@@ -105,9 +115,6 @@ const DrawerAsync = (props: DrawerProps) => {
 	return <DrawerContent {...props} />;
 };
 
-/**
- * @deprecated Устарело, используйте новый компонент редизайна
- */
 export const Drawer = (props: DrawerProps) => {
 	// Завернут в провайдер
 	return (

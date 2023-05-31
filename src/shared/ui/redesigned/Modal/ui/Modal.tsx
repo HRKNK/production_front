@@ -3,6 +3,7 @@ import React, { type MutableRefObject, type ReactNode, useCallback, useEffect, u
 
 import { useTheme } from 'app/providers/ThemeProvider/public';
 import classNames, { type Mods } from 'shared/lib/classNames/classNames';
+import { toggleFeatures } from 'shared/lib/features/toggleFeatures';
 
 import { Overlay } from '../../../redesigned/Overlay/Overlay';
 import Portal from '../../../redesigned/Portal/Portal';
@@ -16,9 +17,6 @@ interface ModalProps {
 	lazy?: boolean;
 }
 
-/**
- * @deprecated Устарело, используйте новый компонент редизайна
- */
 const Modal = (props: ModalProps) => {
 	const [isClosing, setIsClosing] = useState(false);
 	// useRef<ReturnType<typeof setTimeout> | null>()
@@ -83,7 +81,18 @@ const Modal = (props: ModalProps) => {
 
 	return (
 		<Portal>
-			<div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
+			<div
+				className={classNames(cls.Modal, mods, [
+					className,
+					theme,
+					'app_modal',
+					toggleFeatures({
+						name: 'isAppRedesigned',
+						on: () => cls.modalNew,
+						off: () => cls.modalOld,
+					}),
+				])}
+			>
 				<Overlay className={cls.overlay} onClick={closeHandler} />
 				<div className={cls.content}>
 					{' '}
