@@ -1,7 +1,9 @@
 import { memo } from 'react';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { Skeleton } from 'shared/ui/deprecated/Skeleton/public';
+import { toggleFeatures } from 'shared/lib/features/public';
+import { Skeleton as SkeletonDeprecated } from 'shared/ui/deprecated/Skeleton/public';
+import { Skeleton as SkeletonRedesigned } from 'shared/ui/redesigned/Skeleton/public';
 import { VStack } from 'shared/ui/redesigned/Stack/public';
 
 import { useNotifications } from '../../api/notificationApi';
@@ -19,9 +21,14 @@ export const NotificationList = memo((props: NotificationListProps) => {
 		pollingInterval: 10000, // таймер на запрос
 	});
 
+	// лоадер/скелетон
+	const Skeleton = toggleFeatures({
+		name: 'isAppRedesigned',
+		on: () => SkeletonRedesigned,
+		off: () => SkeletonDeprecated,
+	});
 	if (isLoading) {
 		return (
-			// лоадер
 			<VStack gap="16" max className={classNames(cls.NotificationList, {}, [className])}>
 				<Skeleton width="100%" border="8px" height="80px" />
 				<Skeleton width="100%" border="8px" height="80px" />
