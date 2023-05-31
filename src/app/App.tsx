@@ -33,7 +33,7 @@ const App = () => {
 		<ToggleFeatures
 			feature="isAppRedesigned"
 			off={
-				<div className={classNames('app', {}, [theme])}>
+				<div id="app" className={classNames('app', {}, [theme])}>
 					<Suspense fallback="">
 						<NavBar></NavBar>
 						<div className="content-page">
@@ -44,7 +44,7 @@ const App = () => {
 				</div>
 			}
 			on={
-				<div className={classNames('app_redesigned', {}, [theme])}>
+				<div id="app" className={classNames('app_redesigned', {}, [theme])}>
 					<Suspense fallback="">
 						<MainLayout content={<AppRouter />} header={<NavBar />} sidebar={<SideBar />} toolbar={<div />}></MainLayout>
 					</Suspense>
