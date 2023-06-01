@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { memo, useCallback } from 'react';
 
-import CopyIcon from 'shared/assets/icons/copy.svg';
+import CopyIcon from 'shared/assets/icons/copy_old.svg';
 import classNames from 'shared/lib/classNames/classNames';
 
 import { Button, ThemeButton } from '../Button/Button';
