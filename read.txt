@@ -41,6 +41,8 @@
 // I18N https://react.i18next.com/getting-started // плагин-интернационализации
 // npm install react-i18next i18next --save
 
+// I18N Плюральные формы (форматирование окончания текста) https://www.i18next.com/translation-function/plurals
+
 // BABEL https://babeljs.io/setup#installation
 // npm install --save-dev babel-loader @babel/core // Babel loader // Транспайлер ES стандарта
 // npm install @babel/preset-env --save-dev
