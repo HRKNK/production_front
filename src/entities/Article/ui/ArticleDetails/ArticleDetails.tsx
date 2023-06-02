@@ -7,16 +7,14 @@ import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import EyeIcon from 'shared/assets/icons/eye_old.svg';
 import classNames from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ToggleFeatures } from 'shared/lib/features/public';
+import { ToggleFeatures, toggleFeatures } from 'shared/lib/features/public';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar as AvatarDeprecated } from 'shared/ui/deprecated/Avatar/public';
 import { Icon as IconDeprecated } from 'shared/ui/deprecated/Icon/public';
 import { Skeleton as SkeletonDeprecated } from 'shared/ui/deprecated/Skeleton/public';
 import { TextAlign, Text as TextDeprecated, TextSize } from 'shared/ui/deprecated/Text/public';
 import { AppImage } from 'shared/ui/redesigned/AppImage/AppImage';
-import { Avatar } from 'shared/ui/redesigned/Avatar/public';
-import { Icon } from 'shared/ui/redesigned/Icon/public';
-import { Skeleton } from 'shared/ui/redesigned/Skeleton/Skeleton';
+import { Skeleton as SkeletonRegesigned } from 'shared/ui/redesigned/Skeleton/public';
 import { VStack } from 'shared/ui/redesigned/Stack/public';
 import { Text } from 'shared/ui/redesigned/Text/public';
 
@@ -71,7 +69,7 @@ const Redesigned = () => {
 			<Text title={article?.subtitle} size="l" />
 
 			{/* Изображение темы / Аватар */}
-			<AppImage fallback={<Skeleton />} width={'100%'} height={420} src={article?.img} className={cls.img} />
+			<AppImage fallback={<SkeletonRegesigned />} width={'100%'} height={420} src={article?.img} className={cls.img} />
 
 			{/* Содержимое статей */}
 			{article?.blocks.map(renderArticleBlock)}
@@ -95,18 +93,30 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
 	let content;
 
+	const Skeleton = toggleFeatures({
+		name: 'isAppRedesigned',
+		on: () => SkeletonRegesigned,
+		off: () => SkeletonDeprecated,
+	});
+
 	if (isLoading) {
 		content = (
 			<>
-				<SkeletonDeprecated className={cls.avatar} width={200} height={200} border="50%" />
-				<SkeletonDeprecated className={cls.title} width={300} height={32} />
-				<SkeletonDeprecated className={cls.skeleton} width={600} height={24} />
-				<SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
-				<SkeletonDeprecated className={cls.skeleton} width="100%" height={200} />
+				<Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+				<Skeleton className={cls.title} width={300} height={32} />
+				<Skeleton className={cls.skeleton} width={600} height={24} />
+				<Skeleton className={cls.skeleton} width="100%" height={200} />
+				<Skeleton className={cls.skeleton} width="100%" height={200} />
 			</>
 		);
 	} else if (error) {
-		content = <TextDeprecated align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке статьи.')} />;
+		content = (
+			<ToggleFeatures
+				feature={'isAppRedesigned'}
+				on={<Text align="center" title={t('Произошла ошибка при загрузке статьи.')} />}
+				off={<TextDeprecated align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке статьи.')} />}
+			/>
+		);
 	} else {
 		content = <ToggleFeatures feature={'isAppRedesigned'} on={<Redesigned />} off={<Deprecated />} />;
 	}

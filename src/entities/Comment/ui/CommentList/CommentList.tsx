@@ -2,8 +2,10 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/deprecated/Text/public';
+import { ToggleFeatures } from 'shared/lib/features/public';
+import { Text as TextDeprecated } from 'shared/ui/deprecated/Text/public';
 import { VStack } from 'shared/ui/redesigned/Stack/public';
+import { Text } from 'shared/ui/redesigned/Text/public';
 
 import { type Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
@@ -23,9 +25,13 @@ export const CommentList = memo((props: CommentListProps) => {
 	return (
 		<VStack gap="16" max className={classNames(cls.CommentList, {}, [className])}>
 			{comments?.length ? ( // Есть массив комментариев / Массива нет
-				comments.map((comment) => <CommentCard key={comment.id} isLoading={isLoading} className={cls.comment} comment={comment} />)
+				comments.map((comment) => <CommentCard key={comment.id} isLoading={isLoading} comment={comment} />)
 			) : (
-				<Text text={t('Комментарии отсутствуют')} />
+				<ToggleFeatures
+					feature={'isAppRedesigned'}
+					on={<Text text={t('Комментарии отсутствуют')} />}
+					off={<TextDeprecated text={t('Комментарии отсутствуют')} />}
+				/>
 			)}
 		</VStack>
 	);
