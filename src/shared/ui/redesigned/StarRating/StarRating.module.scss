@@ -1,0 +1,17 @@
+.starIcon {
+	cursor: pointer;
+}
+
+.selected {
+	cursor: auto;
+}
+
+.StarRatingRedesigned {
+	.normal {
+		fill: none;
+	}
+
+	.hovered {
+		fill: var(--icon-redesigned);
+	}
+}
