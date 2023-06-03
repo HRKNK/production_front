@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useTheme } from 'app/providers/ThemeProvider/public';
 import { AppRouter } from 'app/providers/router/public';
 import { getUserInited, initAuthData } from 'entities/User/public';
+import { AppLoaderLayout } from 'shared/layouts/AppLoaderLayout/AppLoaderLayout';
 import { MainLayout } from 'shared/layouts/MainLayout/public';
 // import { Link } from 'react-router-dom';
 // npm i react-router-dom
@@ -25,7 +26,13 @@ const App = () => {
 	}, [dispatch]);
 
 	if (!inited) {
-		return <PageLoader></PageLoader>;
+		// лоадер при инициализации
+		return (
+			<div id="app" className={classNames('app_redesigned', {}, [theme])}>
+				{/* <AppLoaderLayout /> */}
+				<ToggleFeatures feature={'isAppRedesigned'} on={<AppLoaderLayout />} off={<PageLoader />} />
+			</div>
+		);
 	}
 
 	// Фича-флаг
