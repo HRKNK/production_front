@@ -13,12 +13,16 @@ import { ToggleFeatures } from 'shared/lib/features/public';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { NavBar } from 'widgets/NavBar/public';
 import { PageLoader } from 'widgets/PageLoader/public';
+import { ScrollToolbar } from 'widgets/ScrollToolbar/public';
 import { SideBar } from 'widgets/SideBar/public';
+
+import { useAppToolbar } from './lib/useAppToolbar';
 
 const App = () => {
 	const { theme } = useTheme();
 	const dispatch = useAppDispatch();
 	const inited = useSelector(getUserInited); // проверка на авторизацию
+	const toolbar = useAppToolbar(); // где отрисовать тулбар
 
 	useEffect(() => {
 		// dispatch(userActions.initAuthData());
@@ -53,7 +57,8 @@ const App = () => {
 			on={
 				<div id="app" className={classNames('app_redesigned', {}, [theme])}>
 					<Suspense fallback="">
-						<MainLayout content={<AppRouter />} header={<NavBar />} sidebar={<SideBar />} toolbar={<div />}></MainLayout>
+						{/* <ScrollToolbar /> */}
+						<MainLayout content={<AppRouter />} header={<NavBar />} sidebar={<SideBar />} toolbar={toolbar} />
 					</Suspense>
 				</div>
 			}

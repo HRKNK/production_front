@@ -33,6 +33,20 @@ export enum AppRoutes {
 	NOT_FOUND = 'not_found',
 }
 
+// маппинг роутеров для useAppToolbar -> useRouteChange
+export const AppRouteByPathPattern: Record<string, AppRoutes> = {
+	'/': AppRoutes.MAIN,
+	'/about': AppRoutes.ABOUT,
+	'/profile/:id': AppRoutes.PROFILE,
+	'/articles': AppRoutes.ARTICLES,
+	'/articles/:id': AppRoutes.ARTICLES_DETAILS,
+	'/articles/:id/edit': AppRoutes.ARTICLES_EDIT,
+	'/articles/new': AppRoutes.ARTICLES_CREATE,
+	'/admin': AppRoutes.ADMIN_PANEL,
+	'/forbidden': AppRoutes.FORBIDDEN,
+	'/settings': AppRoutes.SETTINGS,
+};
+
 // Реализация путей через константу-функцию
 export const getRouteMain = () => '/';
 // export const getRouteAbout = () => '/about';
@@ -44,7 +58,7 @@ export const getRouteMain = () => '/';
 // export const getRouteAdmin = () => '/admin';
 // export const getRouteForbidden = () => '/forbidden';
 
-// Record специальный ТС класс, который указывает Ключ(строка) + Свойство (строка)
+// Record специальный ТС класс, который указывает Ключ(строка) + Свойство(строка)
 export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
