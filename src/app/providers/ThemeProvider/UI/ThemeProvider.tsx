@@ -2,11 +2,15 @@ import React, { type FC, type ReactNode, useEffect, useMemo, useState } from 're
 import { useSelector } from 'react-redux';
 
 import { getJsonSettings } from 'entities/User/public';
+import { LOCAL_STORAGE_THEME_KEY } from 'shared/const/localstorage';
 
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
+import { type Theme, ThemeContext } from '../lib/ThemeContext';
 
 // преобразование к типу через AS
 // const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
+const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
+
+console.log(fallbackTheme);
 
 interface ThemeProviderProps {
 	initialTheme?: Theme;
@@ -16,11 +20,12 @@ interface ThemeProviderProps {
 // FC типизация для Пропсов
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
 	const defaultTheme = useSelector(getJsonSettings).theme;
-	const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+	const [theme, setTheme] = useState<Theme>(initialTheme || fallbackTheme || defaultTheme);
 
 	useEffect(() => {
 		document.body.className = theme;
-		setTheme(defaultTheme);
+		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+		// setTheme(defaultTheme);
 	}, [defaultTheme, theme]);
 
 	const defaultProps = useMemo(

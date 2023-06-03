@@ -1,6 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { LOCAL_STORAGE_LAST_DESIGN_KEY, USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { setFeatureFlags } from 'shared/lib/features/setGetFeatures';
 
 import { initAuthData } from '../services/initAuthData';
@@ -20,6 +20,8 @@ export const userSlice = createSlice({
 			state.authData = action.payload;
 			setFeatureFlags(action.payload.features); // Фича флаги
 			localStorage.setItem(USER_LOCALSTORAGE_KEY, action.payload.id);
+			// Сохранение в локал представления дизайна
+			localStorage.setItem(LOCAL_STORAGE_LAST_DESIGN_KEY, action.payload.features?.isAppRedesigned ? 'new' : 'old');
 		},
 		// Перенесено в extraReducers
 		// initAuthData: (state) => {

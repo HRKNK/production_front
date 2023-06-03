@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { type ThunkConfig } from 'app/providers/storeProvider/public';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { LOCAL_STORAGE_LAST_DESIGN_KEY, USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
 import { getUserDataByIDQuery } from '../../api/userApi';
 import { type User } from '../types/user';
@@ -19,6 +19,9 @@ export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
 		try {
 			// Запрос без хука (позволяет вызвать вне компонентов) // https://redux-toolkit.js.org/rtk-query/usage/usage-without-react-hooks#adding-a-subscription
 			const response = await dispatch(getUserDataByIDQuery(userID)).unwrap(); // Разворачивает вызов мутации, чтобы предоставить необработанный ответ/ошибку.
+
+			// Сохранение в локал представления дизайна
+			localStorage.setItem(LOCAL_STORAGE_LAST_DESIGN_KEY, response.features?.isAppRedesigned ? 'new' : 'old');
 
 			if (!response.jsonSettings) return rejectWithValue('error');
 
