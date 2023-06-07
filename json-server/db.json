@@ -551,64 +551,68 @@
       ]
     },
     {
-      "title": "Test header",
-      "subtitle": "Subtitle",
-      "img": "https://png.pngtree.com/element_our/png_detail/20190103/gazettemedianewsnewsletternewspaper-purple-business-logo-png_307881.jpg",
-      "views": 100,
-      "createdAt": "01.01.2000",
+      "id": "100",
+      "title": "Характеристики Google Tensor G3 слили в сеть до презентации",
+      "subtitle": "#GoogleGoogle Pixel 8Google Tensor G3",
+      "img": "https://4pda.to/s/as6yrlOoHd6Wbjudk0P5A6ehBe4RZKVZAbkP.jpg?v=1685940327",
+      "views": 298,
+      "createdAt": "05.06.2023",
       "userId": "1",
       "type": [
-        "SCIENCE"
+        "IT"
       ],
       "blocks": [
-        ""
-      ],
-      "id": "fbKWXER"
-    },
-    {
-      "title": "Test header",
-      "subtitle": "Subtitle",
-      "img": "https://png.pngtree.com/element_our/png_detail/20190103/gazettemedianewsnewsletternewspaper-purple-business-logo-png_307881.jpg",
-      "views": 100,
-      "createdAt": "01.01.2000",
-      "userId": "1",
-      "type": [
-        "SCIENCE"
-      ],
-      "blocks": [
-        ""
-      ],
-      "id": "B4ZqwBT"
-    },
-    {
-      "title": "Test header",
-      "subtitle": "Subtitle",
-      "img": "https://png.pngtree.com/element_our/png_detail/20190103/gazettemedianewsnewsletternewspaper-purple-business-logo-png_307881.jpg",
-      "views": 100,
-      "createdAt": "01.01.2000",
-      "userId": "1",
-      "type": [
-        "SCIENCE"
-      ],
-      "blocks": [
-        ""
-      ],
-      "id": "6v71ELe"
-    },
-    {
-      "title": "Test header",
-      "subtitle": "Subtitle",
-      "img": "https://png.pngtree.com/element_our/png_detail/20190103/gazettemedianewsnewsletternewspaper-purple-business-logo-png_307881.jpg",
-      "views": 100,
-      "createdAt": "01.01.2000",
-      "userId": "1",
-      "type": [
-        "SCIENCE"
-      ],
-      "blocks": [
-        ""
-      ],
-      "id": "EeApc8X"
+        {
+          "id": "1",
+          "type": "TEXT",
+          "paragraphs": [
+            "Готовящийся к релизу Google Pixel 8 будет построен на фирменном процессоре Tensor G3. Благодаря источнику внутри компании портал Android Authority получил эксклюзивную информацию о будущем флагманском чипе."
+          ]
+        },
+        {
+          "id": "2",
+          "type": "IMAGE",
+          "src": "https://4pda.to/s/as6yw40lZH5EidoQEoN1Mz1oEdepi.jpg"
+        },
+        {
+          "id": "3",
+          "type": "TEXT",
+          "paragraphs": [
+            "По имеющимся данным, мобильная платформа Tensor G3 на архитектуре ARMv9 получит одно «большое» ядро Cortex-X3 (3,0 ГГц), четыре производительных Cortex-A715 (2,45 ГГц) и четыре энергоэффективных Cortex-A510 (2,15 ГГц). Новинка будет поддерживать только 64-битный софт."
+          ]
+        },
+        {
+          "id": "4",
+          "type": "IMAGE",
+          "src": "https://4pda.to/s/as6yv3CnGl6epNgc8z0Fz0m1oEdeJy.jpg"
+        },
+        {
+          "id": "5",
+          "type": "TEXT",
+          "paragraphs": [
+            "Одной из особенностей процессора станет поддержка MTE — технологии обнаружения нарушений целостности памяти. Она поможет защититься от хакерских атак через внутренний накопитель. За мультимедийные возможности SoC будет отвечать графический чип Mali-G715 Immortalis с 10 ядрами (890 МГц). Также заявлена поддержка кодека AV1 и записи 8K-видео, но Pixel 8, скорее всего, не сможет реализовать эту возможность:  чип в таком режиме будет сильно нагреваться."
+          ]
+        },
+        {
+          "id": "6",
+          "type": "IMAGE",
+          "src": "https://4pda.to/s/as6yuvf3BsP9wz0Ix7Oh4jnib5GB1ve.jpg"
+        },
+        {
+          "id": "7",
+          "type": "TEXT",
+          "paragraphs": [
+            "Сообщается и о появлении в составе мобильной платформы нового ИИ-модуля под кодовым названием Rio с частотой 1,1 ГГц, но информации о его преимуществах над решением для Tensor G2 пока нет. Ещё одним изменением станет внедрение сопроцессора callisto для обработки изображения в обход GPU (4 ядра, частота 1065 МГц). Последнее известное изменение — поддержка памяти UFS 4.0."
+          ]
+        },
+        {
+          "id": "8",
+          "type": "TEXT",
+          "paragraphs": [
+            "Дата релиза процессора Google Tensor 3 пока не объявлена."
+          ]
+        }
+      ]
     }
   ],
   "comments": [
@@ -669,7 +673,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": false,
         "isArticlesPageWasOpened": true,
         "settingsPageHasBeenOpen": false
@@ -782,6 +786,12 @@
       "rate": 4,
       "feedback": "Тестовый ответ",
       "id": "KqrCRSW"
+    },
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 4,
+      "id": "XxFG7A1"
     }
   ],
   "profile-ratings": [
