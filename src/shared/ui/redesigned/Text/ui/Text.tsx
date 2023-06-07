@@ -18,6 +18,7 @@ interface TextProps {
 	size?: TextSize;
 	bold?: boolean; // жирный?
 	'data-testid'?: string;
+	cut?: number;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'; // мапер тегов
@@ -33,8 +34,16 @@ const mapSizeToClass: Record<TextSize, string> = {
 	l: cls.size_l,
 };
 
+// function-helper
+const textCutting = (text: string, cutoffValue: number): string => {
+	if (text.length > cutoffValue) {
+		return `${text.slice(0, cutoffValue).trim()}...`;
+	}
+	return text;
+};
+
 export const Text = memo((props: TextProps) => {
-	const { className, text, title, bold, variant = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId = 'Text' } = props;
+	const { className, text, title, bold, cut = 0, variant = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId = 'Text' } = props;
 
 	const HeaderTag = mapSizeToHeaderTag[size]; // по размеру достаем текущий тэг // h1 | h2 | h3
 	const sizeClass = mapSizeToClass[size];
@@ -45,12 +54,12 @@ export const Text = memo((props: TextProps) => {
 		<div className={classNames(cls.Text, { [cls.bold]: bold }, additionalClasses)}>
 			{title && (
 				<HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
-					{title}
+					{cut ? textCutting(title, cut) : title}
 				</HeaderTag>
 			)}
 			{text && (
 				<p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
-					{text}
+					{cut ? textCutting(text, cut) : text}
 				</p>
 			)}
 		</div>
